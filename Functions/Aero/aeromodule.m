@@ -10,9 +10,9 @@ N=3;  %No of sections
 
 %Take design variables into a form the code likes
 S(1)=20;
-S(2:3)=x(3:4);
+S(2:3)=x(1:2);
 X(1)=0;
-X(2:3)=x(2:3);
+X(2:3)=x(3:4);
 Z(1)=0;
 Z(2:3)=x(5:6);
 dih=x(7);

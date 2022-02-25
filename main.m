@@ -12,7 +12,7 @@ fclose(ifile);
 
 % This isn't working yet but i cba to find out why, will probably use a
 % better method anyway
-x0=[10 2 10 20 15 20 5]
+x0=[10 5 5 10 10 20 5]
 
 [X,J]=fmincon(@(x)aeromodule(x),x0,[],[])
 

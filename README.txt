@@ -14,11 +14,14 @@
 
 APS Optimiser - Aero, Performance, Stability
 
-MAKE SURE YOU ADD THE 'APSOptimiser' FOLDER TO YOUR MATLAB PATH OTHERWISE IT WILL NOT WORK!
+MAKE SURE YOU ADD THE 'APSOptimiser' FOLDER TO YOUR MATLAB PATH AND SET AS ACTIVE FOLDER
+OTHERWISE IT WILL NOT WORK!
 
-YOU MUST HAVE AVL INSTALLED ON YOUR PC AND ADDED TO YOUR SYSTEM ENVIRONMENT VARIABLES ('path')
+YOU MUST HAVE AVL INSTALLED ON YOUR PC AND ADDED TO YOUR SYSTEM ENVIRONMENT VARIABLES ('path')!
 
-Ask me if you need help setting it up, and put in this file any other dependencies your code needs to run.
+
+
+Ask me if you need help setting it up, and mention in this file any other dependencies your code needs to run.
 
 
 If you make changes, create a new branch and then we can merge when we know everything works.
