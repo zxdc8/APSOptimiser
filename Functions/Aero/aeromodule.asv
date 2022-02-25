@@ -1,0 +1,41 @@
+function ClCd = aeromodule(X)
+
+%Set Parameters
+N=3;  %No of sections
+
+%Control Variables
+%S=[20 10 2];
+%X=[0 10 20];
+%Z=[0 15 20];
+
+%Take design variables into a form the code likes
+S(1)=0;
+S(2:3)=X(3:4);
+X(1)=0;
+X(2:3)=X(2:3);
+Z(1)=0;
+Z(2:3)=X(5:6);
+dih=X(7);
+
+%set iteration (should be looped)
+filename='iteration.csv';
+ifile=fopen(filename,'w');
+LastIteration=table2array(readtable(filename));
+iter=LastIteration;
+fprintf(ifile,'%i',1+iter);
+fclose(filename);
+
+%generate geometry
+filename=AVLgen(N,S,Z,dih,X,iter);
+
+%call avl
+outname=AVLcall(filename,'w.run',iter);
+
+%read data
+force=importfile(outname);
+
+ClCd=force(1)./force(2)
+
+
+
+end

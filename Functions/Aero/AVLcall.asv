@@ -1,7 +1,7 @@
 %AVL calling tester%
 function outname = AVLcall(avl,run,i)
 %define command file
-cmdfile=fopen('commandfile.txt','w');
+cmdfile=fopen('.\.\Inputs\commandfile.txt','w');
 
 %load input files, disable graphics, enter run window
 fprintf(cmdfile,'LOAD %s\nCASE %s\nPLOP\nGF\n\nOPER\n',avl,run);
@@ -15,6 +15,7 @@ fprintf(cmdfile,'\nquits')
 
 fclose(cmdfile);
 
+system('')
 system('avl < commandfile.txt')
 
 end

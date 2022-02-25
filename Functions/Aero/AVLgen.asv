@@ -1,4 +1,4 @@
-function filename = AVLgen(L,N,S,Z,dih,X,i)
+function filename = AVLgen(N,S,Z,dih,X,i)
 
 %define wing sweep %CURRENTLY REDUNDANT
 swp=30; %DEGREE 
@@ -29,8 +29,9 @@ Nspan=40;   %no spanwise vortices
 Sspace=-1.5; %spanwise spacing
 
 %create geometry file and create headers
+pth='././Inputs/AVLcases';
 filename=sprintf('case_%.0f.avl',i);
-gfile=fopen(filename,'w');
+gfile=fopen(fullfile(pth,filename),'w');
 fprintf(gfile,'test1\n%.2f\n0   0   0\n',M);
 fprintf(gfile,'%.2f      %.2f      %.2f\n',Lref);
 fprintf(gfile,'%.2f      %.2f      %.2f\n',XYZref);
