@@ -1,0 +1,249 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Payload Range Diagram</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-02-20"><meta name="DC.source" content="RunPayloadRange.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Payload Range Diagram</h1><!--introduction--><p>RunPayloadRange computes and plots the payload-range diagram</p><p>The main file for running the Design Case is <b>FindDesignPoint</b> For brief description type: <i>help FindDesignPoint</i></p><p>Created by: D Rezgui, S Mitchell and M Gibbons Copyright: University of Bristol</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Initialise aircraft parameters</a></li><li><a href="#2">Payload range diagram for case : MTOM = 230000 kg (Max Take Off Mass)</a></li><li><a href="#3">Payload range diagram for case : MTOM = 220000 kg (Max Take Off Mass)</a></li><li><a href="#4">Save results</a></li></ul></div><h2>Initialise aircraft parameters<a name="1"></a></h2><p>delete Par; clear Par;</p><pre class="codeinput">clear; clc
+disp(<span class="string">' '</span>)
+disp(<span class="string">'        ******** Aircraft Performance Tool ********'</span>);
+disp(<span class="string">'        ********  Payload Range Diagram ********'</span>)
+disp([<span class="string">'                  '</span>, datestr(clock)]);
+disp(<span class="string">' '</span>)
+
+<span class="comment">% Read Aircraft data from a re-defined file, e.g. 'AC_B777_AJenk'or 'AC_150C_twin'</span>
+ParFunc = <span class="string">'AC_B777_AJenk'</span>; <span class="comment">% or ParFunc = 'AC_150C_twin';</span>
+Par     = eval(ParFunc);  <span class="comment">% Set parameters in the "Par" object,</span>
+                          <span class="comment">% Default values are set in the ParFunc</span>
+
+disp([<span class="string">'... Aircraft parameters are set, based on '</span>, ParFunc, <span class="string">' data file'</span>])
+disp(<span class="string">' '</span>)
+
+<span class="comment">% Reset parameters from default values (other parameters can be changed in</span>
+<span class="comment">% the Par object)</span>
+Par.PL_req    = 29050; <span class="comment">% Required payload mass [kg]</span>
+
+<span class="comment">% You can also reset the following parameters. (you can also change these parameters in the ParFunc file)</span>
+<span class="comment">% Par.Range_req 			 =  4779; 	  % Required design range [nm]</span>
+<span class="comment">% Par.S                      = 376.4;     % Wing area [m^2]</span>
+<span class="comment">% Par.PLmax                  = 45000;     % Max payload [kg]</span>
+<span class="comment">% Par.MFC                    = 80000;     % Max Fuel capacity [kg]</span>
+<span class="comment">% Par.MTOM                   = 230000;    % Max Take Off Mass [kg]</span>
+<span class="comment">% Par.Airframe               = 130000;    % Operating Mass Empty [kg]</span>
+<span class="comment">% Par.Alt_Cruise    		 = 35000;     % Cruise Alt [ft]</span>
+<span class="comment">% Par.DragRise  	  		 = 0;         % Flag to switch drag rise in the drag polar: 1 = Yes, 0 = No</span>
+
+<span class="comment">% Reset engine data parameters (if needed)</span>
+Par.interp_method = <span class="string">'linear'</span>; <span class="comment">% or 'spline' - 'spline' is slower but allows to extrapolate data</span>
+Par.M_ext = []; <span class="comment">% Extend Mach number range to M_ext - change to something like 0.1 if needed</span>
+</pre><pre class="codeoutput"> 
+        ******** Aircraft Performance Tool ********
+        ********  Payload Range Diagram ********
+                  20-Feb-2017 14:06:03
+ 
+... Aircraft parameters are set, based on AC_B777_AJenk data file
+ 
+</pre><h2>Payload range diagram for case : MTOM = 230000 kg (Max Take Off Mass)<a name="2"></a></h2><pre class="codeinput">Par.MTOM  = 230000;;     <span class="comment">% Max Take Off Mass [kg]</span>
+
+<span class="comment">% Calculate the properties of the payload range diagram</span>
+plrd(1) = FindPayloadRangeDiag(Par);
+
+<span class="comment">% Plot the payload range diagram</span>
+PlotPLRD(plrd(1), <span class="string">'b'</span>) <span class="comment">% call plotter for payload range diagram</span>
+
+<span class="comment">% Plot Mission Profile</span>
+PlotMission(plrd(1).dp.Mission) <span class="comment">% Call plotter for mission profile</span>
+</pre><pre class="codeoutput"> 
+... Engine data prepared from UBB65Data
+ 
+Calculate the value of payload at the intersection point of MTOM curve with MFC line
+............................... Done
+ 
+Calculate the value of range at the intersection point of the MTOM curve with MFC curve
+.... Done
+ 
+Calculate the points along the curves that define the payload range diagram
+For the MTOM curve, calculating the range at each point
+....... Done
+ 
+For the MFC curve, calculating the range at each point
+....... Done
+ 
+Calculating the range for the required design payload
+.... Done
+ 
+Plot Payload/Range Diagram
+... Done ....
+ 
+</pre><img vspace="5" hspace="5" src="RunPayloadRange_01.png" alt=""> <img vspace="5" hspace="5" src="RunPayloadRange_02.png" alt=""> <img vspace="5" hspace="5" src="RunPayloadRange_03.png" alt=""> <img vspace="5" hspace="5" src="RunPayloadRange_04.png" alt=""> <img vspace="5" hspace="5" src="RunPayloadRange_05.png" alt=""> <img vspace="5" hspace="5" src="RunPayloadRange_06.png" alt=""> <h2>Payload range diagram for case : MTOM = 220000 kg (Max Take Off Mass)<a name="3"></a></h2><pre class="codeinput">Par.MTOM = 220000;     <span class="comment">% Max Take Off Mass [kg]</span>
+
+<span class="comment">% Calculate the properties of the payload range diagram</span>
+plrd(2) = FindPayloadRangeDiag(Par);
+
+<span class="comment">% Plot the payload range diagram</span>
+PlotPLRD(plrd(2), <span class="string">'g'</span>) <span class="comment">% call plotter for payload range diagram</span>
+
+<span class="comment">% Plot Mission Profile</span>
+PlotMission(plrd(2).dp.Mission) <span class="comment">% Call plotter for mission profile</span>
+</pre><pre class="codeoutput"> 
+... Engine data prepared from UBB65Data
+ 
+Calculate the value of payload at the intersection point of MTOM curve with MFC line
+............................... Done
+ 
+Calculate the value of range at the intersection point of the MTOM curve with MFC curve
+.... Done
+ 
+Calculate the points along the curves that define the payload range diagram
+For the MTOM curve, calculating the range at each point
+....... Done
+ 
+For the MFC curve, calculating the range at each point
+....... Done
+ 
+Calculating the range for the required design payload
+.... Done
+ 
+Plot Payload/Range Diagram
+... Done ....
+ 
+</pre><img vspace="5" hspace="5" src="RunPayloadRange_07.png" alt=""> <img vspace="5" hspace="5" src="RunPayloadRange_08.png" alt=""> <img vspace="5" hspace="5" src="RunPayloadRange_09.png" alt=""> <img vspace="5" hspace="5" src="RunPayloadRange_10.png" alt=""> <img vspace="5" hspace="5" src="RunPayloadRange_11.png" alt=""> <img vspace="5" hspace="5" src="RunPayloadRange_12.png" alt=""> <h2>Save results<a name="4"></a></h2><pre class="codeinput">savefile = <span class="string">'PayloadRange.mat'</span>;
+save(savefile, <span class="string">'plrd'</span>);
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Payload Range Diagram
+% RunPayloadRange computes and plots the payload-range diagram
+% 
+% The main file for running the Design Case is *FindDesignPoint*
+% For brief description type: _help FindDesignPoint_
+% 
+% Created by: D Rezgui, S Mitchell and M Gibbons
+% Copyright: University of Bristol
+
+%% Initialise aircraft parameters
+% delete Par; clear Par; 
+clear; clc
+disp(' ')
+disp('        ******** Aircraft Performance Tool ********');
+disp('        ********  Payload Range Diagram ********')
+disp(['                  ', datestr(clock)]);
+disp(' ')
+
+% Read Aircraft data from a re-defined file, e.g. 'AC_B777_AJenk'or 'AC_150C_twin'
+ParFunc = 'AC_B777_AJenk'; % or ParFunc = 'AC_150C_twin';
+Par     = eval(ParFunc);  % Set parameters in the "Par" object, 
+                          % Default values are set in the ParFunc
+
+disp(['... Aircraft parameters are set, based on ', ParFunc, ' data file'])
+disp(' ')
+
+% Reset parameters from default values (other parameters can be changed in
+% the Par object)         
+Par.PL_req    = 29050; % Required payload mass [kg]
+
+% You can also reset the following parameters. (you can also change these parameters in the ParFunc file)
+% Par.Range_req 			 =  4779; 	  % Required design range [nm]
+% Par.S                      = 376.4;     % Wing area [m^2]
+% Par.PLmax                  = 45000;     % Max payload [kg]
+% Par.MFC                    = 80000;     % Max Fuel capacity [kg]
+% Par.MTOM                   = 230000;    % Max Take Off Mass [kg]
+% Par.Airframe               = 130000;    % Operating Mass Empty [kg]
+% Par.Alt_Cruise    		 = 35000;     % Cruise Alt [ft]
+% Par.DragRise  	  		 = 0;         % Flag to switch drag rise in the drag polar: 1 = Yes, 0 = No
+
+% Reset engine data parameters (if needed)
+Par.interp_method = 'linear'; % or 'spline' - 'spline' is slower but allows to extrapolate data 
+Par.M_ext = []; % Extend Mach number range to M_ext - change to something like 0.1 if needed 
+
+%% Payload range diagram for case : MTOM = 230000 kg (Max Take Off Mass)
+Par.MTOM  = 230000;;     % Max Take Off Mass [kg]
+
+% Calculate the properties of the payload range diagram
+plrd(1) = FindPayloadRangeDiag(Par);
+
+% Plot the payload range diagram
+PlotPLRD(plrd(1), 'b') % call plotter for payload range diagram
+
+% Plot Mission Profile
+PlotMission(plrd(1).dp.Mission) % Call plotter for mission profile
+
+%% Payload range diagram for case : MTOM = 220000 kg (Max Take Off Mass)
+Par.MTOM = 220000;     % Max Take Off Mass [kg]
+
+% Calculate the properties of the payload range diagram
+plrd(2) = FindPayloadRangeDiag(Par);
+
+% Plot the payload range diagram
+PlotPLRD(plrd(2), 'g') % call plotter for payload range diagram
+
+% Plot Mission Profile
+PlotMission(plrd(2).dp.Mission) % Call plotter for mission profile
+
+%% Save results
+savefile = 'PayloadRange.mat';
+save(savefile, 'plrd');
+
+##### SOURCE END #####
+--></body></html>

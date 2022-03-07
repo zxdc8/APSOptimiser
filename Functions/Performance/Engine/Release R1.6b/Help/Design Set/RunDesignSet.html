@@ -1,0 +1,588 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Run Design Set</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-02-20"><meta name="DC.source" content="RunDesignSet.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Run Design Set</h1><!--introduction--><p>This file (RunDesignSet) illustrates how to calculate mission parameters (mass, fuel and range) for a set of design missions defined by a target payload, target range and aircraft parameters. The climb performance parameters are also calculated.</p><p>The main file for running the Design Case is <b>FindDesignPoint</b> For brief description type: <i>help FindDesignPoint</i></p><p>Created by: D Rezgui, S Mitchell and M Gibbons Copyright: University of Bristol</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Initialise aircraft parameters</a></li><li><a href="#2">Calculate the mass, fuel and range for a set of missions</a></li><li><a href="#3">Plot Mission Profile</a></li><li><a href="#4">Repeat Design Set calculations but with drag rise corrections</a></li><li><a href="#5">Plot Mission Profile</a></li><li><a href="#6">Save results</a></li><li><a href="#7">Load saved data to workspace</a></li></ul></div><h2>Initialise aircraft parameters<a name="1"></a></h2><p>delete Par; clear Par</p><pre class="codeinput">clear; clc
+disp(<span class="string">' '</span>)
+disp(<span class="string">'        ******** Aircraft Performance Tool ********'</span>);
+disp(<span class="string">'        ******** Run Design Mission Case ********'</span>)
+disp([<span class="string">'                  '</span>, datestr(clock)]);
+disp(<span class="string">' '</span>)
+
+<span class="comment">% Read Aircraft data from a re-defined file, e.g. 'AC_B777_AJenk'or 'AC_150C_twin'</span>
+ParFunc = <span class="string">'AC_B777_AJenk'</span>; <span class="comment">% or ParFunc = 'AC_150C_twin';</span>
+Par     = eval(ParFunc);  <span class="comment">% Set parameters in the "Par" object,</span>
+                          <span class="comment">% Default values are set in the ParFunc</span>
+
+disp([<span class="string">'... Aircraft parameters are set, based on '</span>, ParFunc, <span class="string">' data file'</span>])
+disp(<span class="string">' '</span>)
+
+<span class="comment">% Reset parameters from default values (other parameters can be changed in</span>
+<span class="comment">% the Par object)</span>
+Par.PL_req    = 29050; <span class="comment">% Required payload mass [kg]</span>
+Par.Range_req =  4779; <span class="comment">% Required design range [nm]</span>
+
+<span class="comment">% You can also reset the following parameters. (you can also change these parameters in the ParFunc file)</span>
+<span class="comment">% Par.S                      = 376.4;     % Wing area [m^2]</span>
+<span class="comment">% Par.PLmax                  = 45000;     % Max payload [kg]</span>
+<span class="comment">% Par.MFC                    = 80000;     % Max Fuel capacity [kg]</span>
+<span class="comment">% Par.MTOM                   = 230000;    % Max Take Off Mass [kg]</span>
+<span class="comment">% Par.Airframe               = 130000;    % Operating Mass Empty [kg]</span>
+<span class="comment">% Par.Alt_Cruise    		 = 35000;     % Cruise Alt [ft]</span>
+<span class="comment">% Par.DragRise  	  		 = 0;     % Flag to switch drag rise in the drag polar: 1 = Yes, 0 = No</span>
+
+<span class="comment">% Reset engine data parameters (if needed)</span>
+Par.interp_method = <span class="string">'linear'</span>; <span class="comment">% or 'spline' - 'spline' is slower but allows to extrapolate data</span>
+Par.M_ext = []; <span class="comment">% Extend Mach number range to M_ext - change to something like 0.1 if needed</span>
+</pre><pre class="codeoutput"> 
+        ******** Aircraft Performance Tool ********
+        ******** Run Design Mission Case ********
+                  20-Feb-2017 13:45:06
+ 
+... Aircraft parameters are set, based on AC_B777_AJenk data file
+ 
+</pre><h2>Calculate the mass, fuel and range for a set of missions<a name="2"></a></h2><p>Find mission properties for a set of Mach numbers</p><pre class="codeinput"><span class="comment">% Define a set of cruise numbers</span>
+par_set = 0.78:0.01:0.84; <span class="comment">% Define an appropriate parameter range</span>
+xlab = <span class="string">'Mach Number [-]'</span>; <span class="comment">% Define a label for the parameter used for the parameter set</span>
+
+<span class="comment">% Find results for the first design point (i=1)</span>
+i = 1;
+disp([<span class="string">'Start calculations for design point number: '</span> num2str(i)  <span class="string">' value: '</span> num2str(par_set(i))]);
+<span class="comment">% Set target design range. All other parameters are unchanged</span>
+Par.Mach_Cruise = par_set(i);     <span class="comment">% Required design range [nm].</span>
+<span class="comment">% call function FindDesignPoint to calculate mission properties</span>
+dp1(i) = FindDesignPoint(Par);
+
+<span class="comment">% Start loop for the rest of the design points</span>
+<span class="keyword">if</span> length(par_set)&gt;1
+	<span class="keyword">for</span> i=2:length(par_set)
+		disp([<span class="string">'Start calculations for design point number: '</span> num2str(i)  <span class="string">' value: '</span> num2str(par_set(i))]);
+		<span class="comment">% Set target design range. All other parameters are unchanged</span>
+		Par.Mach_Cruise = par_set(i);     <span class="comment">% Required design range [nm].</span>
+		<span class="comment">% call function FindDesignPoint to calculate mission properties</span>
+		dp1(i) = FindDesignPoint(Par, dp1(1).EngineData, dp1(1).TOM_design);
+	<span class="keyword">end</span>
+<span class="keyword">else</span>
+    disp(<span class="string">' '</span>);
+    warning(<span class="string">' ... There is only one design point in this parameter set'</span>);
+    disp(<span class="string">' '</span>);
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">Start calculations for design point number: 1 value: 0.78
+ 
+... Engine data prepared from UBB65Data
+ 
+... Calculating the value of aircraft Take-Off Mass (TOM) for the required design case
+Payload required :  29050 kg
+Range required   :  4779 nm
+Cruise altitude  :  35000 ft
+Cruise Mach No.  :  0.78 
+ 
+............................... Done
+Elapsed time is 12.880148 seconds.
+ 
+Calculate fuel burn for the required design case
+.... Done
+Elapsed time is 0.463897 seconds.
+ 
+TOM for required the mission  :  220279 kg
+Block time for the mission    :  665 minutes
+Block fuel for the mission    :  53424 kg
+Reserve fuel for the mission  :  8603 kg
+Total fuel for the mission    :  61874 kg
+ 
+Start calculations for design point number: 2 value: 0.79
+... Calculating the value of aircraft Take-Off Mass (TOM) for the required design case
+Payload required :  29050 kg
+Range required   :  4779 nm
+Cruise altitude  :  35000 ft
+Cruise Mach No.  :  0.79 
+ 
+................... Done
+Elapsed time is 5.828644 seconds.
+ 
+Calculate fuel burn for the required design case
+.... Done
+Elapsed time is 0.427956 seconds.
+ 
+TOM for required the mission  :  220198 kg
+Block time for the mission    :  657 minutes
+Block fuel for the mission    :  53299 kg
+Reserve fuel for the mission  :  8647 kg
+Total fuel for the mission    :  61794 kg
+ 
+Start calculations for design point number: 3 value: 0.8
+... Calculating the value of aircraft Take-Off Mass (TOM) for the required design case
+Payload required :  29050 kg
+Range required   :  4779 nm
+Cruise altitude  :  35000 ft
+Cruise Mach No.  :  0.8 
+ 
+................... Done
+Elapsed time is 7.600829 seconds.
+ 
+Calculate fuel burn for the required design case
+.... Done
+Elapsed time is 0.480079 seconds.
+ 
+TOM for required the mission  :  220169 kg
+Block time for the mission    :  650 minutes
+Block fuel for the mission    :  53225 kg
+Reserve fuel for the mission  :  8693 kg
+Total fuel for the mission    :  61765 kg
+ 
+Start calculations for design point number: 4 value: 0.81
+... Calculating the value of aircraft Take-Off Mass (TOM) for the required design case
+Payload required :  29050 kg
+Range required   :  4779 nm
+Cruise altitude  :  35000 ft
+Cruise Mach No.  :  0.81 
+ 
+................... Done
+Elapsed time is 7.075209 seconds.
+ 
+Calculate fuel burn for the required design case
+.... Done
+Elapsed time is 0.322760 seconds.
+ 
+TOM for required the mission  :  220183 kg
+Block time for the mission    :  643 minutes
+Block fuel for the mission    :  53191 kg
+Reserve fuel for the mission  :  8741 kg
+Total fuel for the mission    :  61779 kg
+ 
+Start calculations for design point number: 5 value: 0.82
+... Calculating the value of aircraft Take-Off Mass (TOM) for the required design case
+Payload required :  29050 kg
+Range required   :  4779 nm
+Cruise altitude  :  35000 ft
+Cruise Mach No.  :  0.82 
+ 
+................. Done
+Elapsed time is 4.812124 seconds.
+ 
+Calculate fuel burn for the required design case
+.... Done
+Elapsed time is 0.351904 seconds.
+ 
+TOM for required the mission  :  220234 kg
+Block time for the mission    :  636 minutes
+Block fuel for the mission    :  53193 kg
+Reserve fuel for the mission  :  8790 kg
+Total fuel for the mission    :  61830 kg
+ 
+Start calculations for design point number: 6 value: 0.83
+... Calculating the value of aircraft Take-Off Mass (TOM) for the required design case
+Payload required :  29050 kg
+Range required   :  4779 nm
+Cruise altitude  :  35000 ft
+Cruise Mach No.  :  0.83 
+ 
+................. Done
+Elapsed time is 4.734821 seconds.
+ 
+Calculate fuel burn for the required design case
+.... Done
+Elapsed time is 0.311316 seconds.
+ 
+TOM for required the mission  :  220330 kg
+Block time for the mission    :  629 minutes
+Block fuel for the mission    :  53237 kg
+Reserve fuel for the mission  :  8841 kg
+Total fuel for the mission    :  61926 kg
+ 
+Start calculations for design point number: 7 value: 0.84
+... Calculating the value of aircraft Take-Off Mass (TOM) for the required design case
+Payload required :  29050 kg
+Range required   :  4779 nm
+Cruise altitude  :  35000 ft
+Cruise Mach No.  :  0.84 
+ 
+..................... Done
+Elapsed time is 5.975207 seconds.
+ 
+Calculate fuel burn for the required design case
+.... Done
+Elapsed time is 0.311614 seconds.
+ 
+TOM for required the mission  :  220459 kg
+Block time for the mission    :  622 minutes
+Block fuel for the mission    :  53312 kg
+Reserve fuel for the mission  :  8895 kg
+Total fuel for the mission    :  62054 kg
+ 
+</pre><h2>Plot Mission Profile<a name="3"></a></h2><p>Call plotter Design Set</p><pre class="codeinput">PlotDSet(dp1,par_set,xlab)
+drawnow
+</pre><img vspace="5" hspace="5" src="RunDesignSet_01.png" alt=""> <h2>Repeat Design Set calculations but with drag rise corrections<a name="4"></a></h2><p>Calculate the mass, fuel and range for a set of missions Find mission properties for a set of Mack numbers</p><pre class="codeinput">Par.DragRise = 1;     <span class="comment">% Flag to switch drag rise in the drag polar: 1 = Yes, 0 = No</span>
+
+<span class="comment">% Find results for the first design point (i=1)</span>
+i = 1;
+disp([<span class="string">'Start calculations for design point number: '</span> num2str(i)  <span class="string">' value: '</span> num2str(par_set(i))]);
+<span class="comment">% Set target design range. All other parameters are unchanged</span>
+Par.Mach_Cruise = par_set(i);     <span class="comment">% Required design range [nm].</span>
+<span class="comment">% call function FindDesignPoint to calculate mission properties</span>
+dp2(i) = FindDesignPoint(Par);
+
+<span class="comment">% Start loop for the rest of the design points</span>
+<span class="keyword">if</span> length(par_set)&gt;1
+	<span class="keyword">for</span> i=2:length(par_set)
+		disp([<span class="string">'Start calculations for design point number: '</span> num2str(i)  <span class="string">' value: '</span> num2str(par_set(i))]);
+		<span class="comment">% Set target design range. All other parameters are unchanged</span>
+		Par.Mach_Cruise = par_set(i);     <span class="comment">% Required design range [nm].</span>
+		<span class="comment">% call function FindDesignPoint to calculate mission properties</span>
+		dp2(i) = FindDesignPoint(Par, dp2(1).EngineData, dp2(1).TOM_design);
+	<span class="keyword">end</span>
+<span class="keyword">else</span>
+    disp(<span class="string">' '</span>);
+    warning(<span class="string">' ... There is only one design point in this parameter set'</span>);
+    disp(<span class="string">' '</span>);
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">Start calculations for design point number: 1 value: 0.78
+ 
+... Engine data prepared from UBB65Data
+ 
+... Calculating the value of aircraft Take-Off Mass (TOM) for the required design case
+Payload required :  29050 kg
+Range required   :  4779 nm
+Cruise altitude  :  35000 ft
+Cruise Mach No.  :  0.78 
+ 
+............................... Done
+Elapsed time is 26.512157 seconds.
+ 
+Calculate fuel burn for the required design case
+.... Done
+Elapsed time is 0.864420 seconds.
+ 
+TOM for required the mission  :  220279 kg
+Block time for the mission    :  665 minutes
+Block fuel for the mission    :  53424 kg
+Reserve fuel for the mission  :  8603 kg
+Total fuel for the mission    :  61874 kg
+ 
+Start calculations for design point number: 2 value: 0.79
+... Calculating the value of aircraft Take-Off Mass (TOM) for the required design case
+Payload required :  29050 kg
+Range required   :  4779 nm
+Cruise altitude  :  35000 ft
+Cruise Mach No.  :  0.79 
+ 
+................... Done
+Elapsed time is 14.551483 seconds.
+ 
+Calculate fuel burn for the required design case
+.... Done
+Elapsed time is 0.875167 seconds.
+ 
+TOM for required the mission  :  220198 kg
+Block time for the mission    :  657 minutes
+Block fuel for the mission    :  53300 kg
+Reserve fuel for the mission  :  8647 kg
+Total fuel for the mission    :  61794 kg
+ 
+Start calculations for design point number: 3 value: 0.8
+... Calculating the value of aircraft Take-Off Mass (TOM) for the required design case
+Payload required :  29050 kg
+Range required   :  4779 nm
+Cruise altitude  :  35000 ft
+Cruise Mach No.  :  0.8 
+ 
+................... Done
+Elapsed time is 14.686534 seconds.
+ 
+Calculate fuel burn for the required design case
+.... Done
+Elapsed time is 0.896038 seconds.
+ 
+TOM for required the mission  :  220169 kg
+Block time for the mission    :  650 minutes
+Block fuel for the mission    :  53225 kg
+Reserve fuel for the mission  :  8693 kg
+Total fuel for the mission    :  61765 kg
+ 
+Start calculations for design point number: 4 value: 0.81
+... Calculating the value of aircraft Take-Off Mass (TOM) for the required design case
+Payload required :  29050 kg
+Range required   :  4779 nm
+Cruise altitude  :  35000 ft
+Cruise Mach No.  :  0.81 
+ 
+................... Done
+Elapsed time is 21.787933 seconds.
+ 
+Calculate fuel burn for the required design case
+.... Done
+Elapsed time is 1.642980 seconds.
+ 
+TOM for required the mission  :  220183 kg
+Block time for the mission    :  643 minutes
+Block fuel for the mission    :  53191 kg
+Reserve fuel for the mission  :  8741 kg
+Total fuel for the mission    :  61779 kg
+ 
+Start calculations for design point number: 5 value: 0.82
+... Calculating the value of aircraft Take-Off Mass (TOM) for the required design case
+Payload required :  29050 kg
+Range required   :  4779 nm
+Cruise altitude  :  35000 ft
+Cruise Mach No.  :  0.82 
+ 
+................. Done
+Elapsed time is 22.789081 seconds.
+ 
+Calculate fuel burn for the required design case
+.... Done
+Elapsed time is 1.645274 seconds.
+ 
+TOM for required the mission  :  220234 kg
+Block time for the mission    :  636 minutes
+Block fuel for the mission    :  53193 kg
+Reserve fuel for the mission  :  8790 kg
+Total fuel for the mission    :  61830 kg
+ 
+Start calculations for design point number: 6 value: 0.83
+... Calculating the value of aircraft Take-Off Mass (TOM) for the required design case
+Payload required :  29050 kg
+Range required   :  4779 nm
+Cruise altitude  :  35000 ft
+Cruise Mach No.  :  0.83 
+ 
+................... Done
+Elapsed time is 17.343578 seconds.
+ 
+Calculate fuel burn for the required design case
+.... Done
+Elapsed time is 0.930893 seconds.
+ 
+TOM for required the mission  :  220410 kg
+Block time for the mission    :  629 minutes
+Block fuel for the mission    :  53317 kg
+Reserve fuel for the mission  :  8841 kg
+Total fuel for the mission    :  62005 kg
+ 
+Start calculations for design point number: 7 value: 0.84
+... Calculating the value of aircraft Take-Off Mass (TOM) for the required design case
+Payload required :  29050 kg
+Range required   :  4779 nm
+Cruise altitude  :  35000 ft
+Cruise Mach No.  :  0.84 
+ 
+..................... Done
+Elapsed time is 25.569778 seconds.
+ 
+Calculate fuel burn for the required design case
+.... Done
+Elapsed time is 1.567328 seconds.
+ 
+TOM for required the mission  :  220572 kg
+Block time for the mission    :  622 minutes
+Block fuel for the mission    :  53425 kg
+Reserve fuel for the mission  :  8895 kg
+Total fuel for the mission    :  62168 kg
+ 
+</pre><h2>Plot Mission Profile<a name="5"></a></h2><p>Call plotter Design Set</p><pre class="codeinput">PlotDSet(dp2,par_set,xlab)
+</pre><img vspace="5" hspace="5" src="RunDesignSet_02.png" alt=""> <h2>Save results<a name="6"></a></h2><pre class="codeinput">savefile = <span class="string">'DSet1.mat'</span>;
+save(savefile, <span class="string">'dp1'</span>, <span class="string">'dp2'</span>, <span class="string">'par_set'</span>,<span class="string">'xlab'</span>);
+</pre><h2>Load saved data to workspace<a name="7"></a></h2><pre class="codeinput">delete <span class="string">Par</span>;
+clear <span class="comment">% clear workspace</span>
+load <span class="string">'DSet1.mat'</span>;
+whos <span class="comment">% show available variables in the workspace</span>
+</pre><pre class="codeoutput">Warning: File 'Par' not found. 
+  Name         Size             Bytes  Class          Attributes
+
+  dp1          1x7             425942  designpoint              
+  dp2          1x7             425942  designpoint              
+  par_set      1x7                 56  double                   
+  xlab         1x15                30  char                     
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Run Design Set
+% This file (RunDesignSet) illustrates how to calculate mission parameters (mass, fuel and
+% range) for a set of design missions defined by a target payload, target range and aircraft parameters.
+% The climb performance parameters are also calculated.
+% 
+% The main file for running the Design Case is *FindDesignPoint*
+% For brief description type: _help FindDesignPoint_
+% 
+% Created by: D Rezgui, S Mitchell and M Gibbons
+% Copyright: University of Bristol
+
+%% Initialise aircraft parameters
+% delete Par; clear Par
+clear; clc
+disp(' ')
+disp('        ******** Aircraft Performance Tool ********');
+disp('        ******** Run Design Mission Case ********')
+disp(['                  ', datestr(clock)]);
+disp(' ')
+
+% Read Aircraft data from a re-defined file, e.g. 'AC_B777_AJenk'or 'AC_150C_twin'
+ParFunc = 'AC_B777_AJenk'; % or ParFunc = 'AC_150C_twin';
+Par     = eval(ParFunc);  % Set parameters in the "Par" object, 
+                          % Default values are set in the ParFunc
+
+disp(['... Aircraft parameters are set, based on ', ParFunc, ' data file'])
+disp(' ')
+
+% Reset parameters from default values (other parameters can be changed in
+% the Par object)         
+Par.PL_req    = 29050; % Required payload mass [kg]
+Par.Range_req =  4779; % Required design range [nm]
+
+% You can also reset the following parameters. (you can also change these parameters in the ParFunc file)
+% Par.S                      = 376.4;     % Wing area [m^2]
+% Par.PLmax                  = 45000;     % Max payload [kg]
+% Par.MFC                    = 80000;     % Max Fuel capacity [kg]
+% Par.MTOM                   = 230000;    % Max Take Off Mass [kg]
+% Par.Airframe               = 130000;    % Operating Mass Empty [kg]
+% Par.Alt_Cruise    		 = 35000;     % Cruise Alt [ft]
+% Par.DragRise  	  		 = 0;     % Flag to switch drag rise in the drag polar: 1 = Yes, 0 = No
+
+% Reset engine data parameters (if needed)
+Par.interp_method = 'linear'; % or 'spline' - 'spline' is slower but allows to extrapolate data 
+Par.M_ext = []; % Extend Mach number range to M_ext - change to something like 0.1 if needed 
+
+%% Calculate the mass, fuel and range for a set of missions
+% Find mission properties for a set of Mach numbers
+
+% Define a set of cruise numbers
+par_set = 0.78:0.01:0.84; % Define an appropriate parameter range
+xlab = 'Mach Number [-]'; % Define a label for the parameter used for the parameter set
+
+% Find results for the first design point (i=1)
+i = 1;
+disp(['Start calculations for design point number: ' num2str(i)  ' value: ' num2str(par_set(i))]);
+% Set target design range. All other parameters are unchanged
+Par.Mach_Cruise = par_set(i);     % Required design range [nm].
+% call function FindDesignPoint to calculate mission properties
+dp1(i) = FindDesignPoint(Par);
+    
+% Start loop for the rest of the design points
+if length(par_set)>1
+	for i=2:length(par_set)
+		disp(['Start calculations for design point number: ' num2str(i)  ' value: ' num2str(par_set(i))]);
+		% Set target design range. All other parameters are unchanged
+		Par.Mach_Cruise = par_set(i);     % Required design range [nm].
+		% call function FindDesignPoint to calculate mission properties
+		dp1(i) = FindDesignPoint(Par, dp1(1).EngineData, dp1(1).TOM_design);
+	end
+else
+    disp(' ');
+    warning(' ... There is only one design point in this parameter set');
+    disp(' ');
+end
+
+%% Plot Mission Profile
+% Call plotter Design Set
+PlotDSet(dp1,par_set,xlab)
+drawnow
+%% Repeat Design Set calculations but with drag rise corrections
+% Calculate the mass, fuel and range for a set of missions
+% Find mission properties for a set of Mack numbers
+
+Par.DragRise = 1;     % Flag to switch drag rise in the drag polar: 1 = Yes, 0 = No
+
+% Find results for the first design point (i=1)
+i = 1;
+disp(['Start calculations for design point number: ' num2str(i)  ' value: ' num2str(par_set(i))]);
+% Set target design range. All other parameters are unchanged
+Par.Mach_Cruise = par_set(i);     % Required design range [nm].
+% call function FindDesignPoint to calculate mission properties
+dp2(i) = FindDesignPoint(Par);
+    
+% Start loop for the rest of the design points
+if length(par_set)>1
+	for i=2:length(par_set)
+		disp(['Start calculations for design point number: ' num2str(i)  ' value: ' num2str(par_set(i))]);
+		% Set target design range. All other parameters are unchanged
+		Par.Mach_Cruise = par_set(i);     % Required design range [nm].
+		% call function FindDesignPoint to calculate mission properties
+		dp2(i) = FindDesignPoint(Par, dp2(1).EngineData, dp2(1).TOM_design);
+	end
+else
+    disp(' ');
+    warning(' ... There is only one design point in this parameter set');
+    disp(' ');
+end
+
+%% Plot Mission Profile
+% Call plotter Design Set
+PlotDSet(dp2,par_set,xlab)
+
+%% Save results
+savefile = 'DSet1.mat';
+save(savefile, 'dp1', 'dp2', 'par_set','xlab');
+
+%% Load saved data to workspace
+delete Par; 
+clear % clear workspace
+load 'DSet1.mat';
+whos % show available variables in the workspace
+
+
+##### SOURCE END #####
+--></body></html>
