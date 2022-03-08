@@ -1,4 +1,4 @@
-function ClCd = aeromodule(x)
+function CdCl = aeromodule(x)
 
 %Set Parameters
 N=3;  %No of sections
@@ -9,6 +9,14 @@ N=3;  %No of sections
 %Z=[0 15 20];
 
 %Take design variables into a form the code likes
+% S(1)=20;
+% S(2:3)=x(1:2);
+% X(1)=0;
+% X(2:3)=[5 10] %x(3:4);
+% Z(1)=0;
+% Z(2:3)=[10 20] %x(5:6);
+% dih=5 %x(7);
+
 S(1)=20;
 S(2:3)=x(1:2);
 X(1)=0;
@@ -39,8 +47,7 @@ outname=AVLcall(filename,'w.run',iter);
 %read data
 force=importfile(outname);
 
-ClCd=force(1)./force(2)
-
+CdCl=force(2)./force(1)
 
 
 end
