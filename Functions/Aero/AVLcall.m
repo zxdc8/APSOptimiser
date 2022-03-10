@@ -1,4 +1,4 @@
-%AVL calling tester%
+%///////CALLS AVL/////////
 function outname = AVLcall(avl,run,i)
 %define command file
 cmdfile=fopen('.\.\commandfile.txt','w');
@@ -7,18 +7,18 @@ cmdfile=fopen('.\.\commandfile.txt','w');
 fprintf(cmdfile,'LOAD Inputs/AVLcases/%s\nCASE Inputs/%s\nPLOP\nGF\n\nOPER\n',avl,run);
 
 %Initialise, run, get forces
-outname=sprintf('out_%.0f.txt',i)
-fprintf(cmdfile,'#\nX\nFT\n%s\nO\n',outname)
+outname=sprintf('out_%.0f.txt',i);
+fprintf(cmdfile,'#\nX\nFT\n%s\nO\n',outname);
 
 %Exit
-fprintf(cmdfile,'\nquits')
+fprintf(cmdfile,'\nquits');
 
 fclose(cmdfile);
 
-system('avl < commandfile.txt')
+system('avl < commandfile.txt');
 
-filename=sprintf('out_%.0f.txt',i)
-movefile(filename,'Outputs')
+filename=sprintf('out_%.0f.txt',i);
+movefile(filename,'Outputs');
 
 end
 
