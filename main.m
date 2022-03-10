@@ -12,7 +12,7 @@ fclose(ifile);
 
 %Define x0 - Start Point
 % x0=[10 5 5 10 10 20 5];
-x0=[10 10 10 0 0 10 10];
+x0=[10 5 2 5 10 7.5 7.5];
 
 %Write AVL case file and get filename, constraint values
 [filename,iter,At]=aeromodule(x0);
@@ -25,13 +25,13 @@ x0=[10 10 10 0 0 10 10];
 % UB=[20 15 15 30 20 40 10];
 
 LB=[1 1 1 0 0 0 0];
-UB=[50 50 50 50 50 7.5 7.5];
+UB=[30 30 30 30 30 7.5 7.5];
 
 %Define Objective Function
 [objFun]=@(x)objective(x);
 
 %Define solver options
-options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',0.5,'FunctionTolerance',1e-10,'PlotFcns',@optimplotfval);
+options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',0.5,'FunctionTolerance',1e-6,'PlotFcns',@optimplotfval);
 
 %Run Optimisation
 [X,J]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options)
