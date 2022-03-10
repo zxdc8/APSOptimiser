@@ -1,14 +1,9 @@
-function filename = AVLgen(N,S,Z,dih,X,i)
+%////////GENERATES AVL CASE FILE/////////////
 
-%define wing sweep %CURRENTLY REDUNDANT
-swp=30; %DEGREE 
-swp=swp*pi/180;
+function [filename,At] = AVLgen(S,Z,dih,X,i)
 
 %Redefine dihedral in radians
 dih=dih*pi/180;
-
-%Wing length and section number
-
 
 %Calculate planform area
 A=0.5*(S(1:length(S)-1)+S(2:length(S)))*(Z(2));
@@ -37,12 +32,10 @@ fprintf(gfile,'%.2f      %.2f      %.2f\n',Lref);
 fprintf(gfile,'%.2f      %.2f      %.2f\n',XYZref);
 fprintf(gfile,'%.2f\n',CDp);
 
-
 %create wing surface
 fprintf(gfile,'SURFACE\nWing\n');
 fprintf(gfile,'%.2f    %.2f    %.2f    %.2f\n',Nchord,Cspace, Nspan,Sspace);
 fprintf(gfile,'YDUPLICATE\n0\n');
-
 
 %construct wing
 for ii=1:length(Z)
@@ -62,10 +55,7 @@ for ii=1:length(Z)
 
 end
 
-
 fclose(gfile);
-
-f=0;
 
 end
 

@@ -1,53 +1,22 @@
-function CdCl = aeromodule(x)
-
-%Set Parameters
-N=3;  %No of sections
-
-%Control Variables
-%S=[20 10 2];
-%X=[0 10 20];
-%Z=[0 15 20];
+%////////AERO GEOMETRY WRAPPER/////////
+function [filename,iter,At] = aeromodule(x)
 
 %Take design variables into a form the code likes
+[S,X,Z,dih]=DesignToSXZ(x);
+
 % S(1)=20;
 % S(2:3)=x(1:2);
 % X(1)=0;
-% X(2:3)=[5 10] %x(3:4);
+% X(2:3)=x(3:4);
 % Z(1)=0;
-% Z(2:3)=[10 20] %x(5:6);
-% dih=5 %x(7);
+% Z(2:3)=x(5:6);
+% dih=x(7);
 
-S(1)=20;
-S(2:3)=x(1:2);
-X(1)=0;
-X(2:3)=x(3:4);
-Z(1)=0;
-Z(2:3)=x(5:6);
-dih=x(7);
 
-%set iteration (should be looped)
-filename='iteration.csv';
-ifile=fopen(filename,'r');
+%Get iteration number
+iter=getIteration;
 
-LastIteration=table2array(readtable(filename));
-iter=LastIteration;
-
-fclose(ifile);
-
-ifile=fopen(filename,'w');
-fprintf(ifile,'%i',1+iter);
-fclose(ifile);
-
-%generate geometry
-filename=AVLgen(N,S,Z,dih,X,iter);
-
-%call avl
-outname=AVLcall(filename,'w.run',iter);
-
-%read data
-force=importfile(outname);
-
-CdCl=force(2)./force(1)
-
+%Generate AVL Aero Input file
+[filename,At]=AVLgen(S,Z,dih,X,iter);
 
 end
