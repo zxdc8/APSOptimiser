@@ -1,3 +1,5 @@
+%////////MAIN FILE - RUN THIS/////////
+fclose('all')
 close all
 clear all
 
@@ -8,12 +10,30 @@ fprintf(ifile,'1');
 
 fclose(ifile);
 
-%define objective function - for example, fmincon only considering Cl, Cd
+%Define x0 - Start Point
+% x0=[10 5 5 10 10 20 5];
+x0=[10 5 2 5 10 7.5 7.5];
 
-% This isn't working yet but i cba to find out why, will probably use a
-% better method anyway
-x0=[10 5 5 10 10 20 5]
+%Write AVL case file and get filename, constraint values
+[filename,iter,At]=aeromodule(x0);
 
-[X,J]=fmincon(@(x)aeromodule(x),x0,[],[])
+%Define Constraints
+%consts=@constraints(At);
+
+%Set Limits
+% LB=[5 2 2 5 2 4 2];
+% UB=[20 15 15 30 20 40 10];
+
+LB=[1 1 1 0 0 0 0];
+UB=[30 30 30 30 30 7.5 7.5];
+
+%Define Objective Function
+[objFun]=@(x)objective(x);
+
+%Define solver options
+options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',0.5,'FunctionTolerance',1e-6,'PlotFcns',@optimplotfval);
+
+%Run Optimisation
+[X,J]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options)
 
 fclose('all');
