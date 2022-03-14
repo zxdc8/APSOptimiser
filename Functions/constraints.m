@@ -16,11 +16,17 @@ Npas=200;
 
 VpasT=Vpas*Npas;
 
+%Estimate Volume of Fuel- RICKY!
+VFuel=704;
+
+%Total Volume
+VT=VFuel+VpasT;
+
 %Inequality Constraints
 C(1)=S(2)-S(1);
 C(2)=S(3)-S(2);
 
 %Equality Constraints
-Ceq=-VpasT+V;
+Ceq=-VT+V;
 
 end
