@@ -17,7 +17,7 @@ fclose(ifile);
 %Z      mid/tip
 
 x0=[10 5 2 5 10 7.5 7.5];
-LB=[1 1 1 0 0 0 0];
+LB=[1 1 1 0 0 0.5 0.5];
 UB=[60 60 60 60 60 16 16];
 
 %Write AVL case file and get filename, constraint values
@@ -31,5 +31,9 @@ options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detail
 
 %Run Optimisation
 [X,J]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options)
+
+%Generate Final Geometry For Viewing
+aeromodule(X)
+
 
 fclose('all');
