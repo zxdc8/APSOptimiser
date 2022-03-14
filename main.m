@@ -11,21 +11,17 @@ fprintf(ifile,'1');
 fclose(ifile);
 
 %Define x0 - Start Point
-% x0=[10 5 5 10 10 20 5];
+%And Upper/Lower Bounds, format:
+%Scale  Root/mid/tip%
+%X      mid/tip
+%Z      mid/tip
+
 x0=[10 5 2 5 10 7.5 7.5];
+LB=[1 1 1 0 0 0.5 0.5];
+UB=[60 60 60 60 60 16 16];
 
 %Write AVL case file and get filename, constraint values
 [filename,iter,At]=aeromodule(x0);
-
-%Define Constraints
-%consts=@constraints(At);
-
-%Set Limits
-% LB=[5 2 2 5 2 4 2];
-% UB=[20 15 15 30 20 40 10];
-
-LB=[1 1 1 0 0 0 0];
-UB=[30 30 30 30 30 7.5 7.5];
 
 %Define Objective Function
 [objFun]=@(x)objective(x);
@@ -35,5 +31,9 @@ options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detail
 
 %Run Optimisation
 [X,J]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options)
+
+%Generate Final Geometry For Viewing
+aeromodule(X)
+
 
 fclose('all');
