@@ -50,7 +50,8 @@ i = 1;
 
 
 Par.Mach_Cruise = 0.7;
-
+Par.Alt_Cruise = 35000;
+Par.S = 300;
 
 
 
@@ -58,42 +59,6 @@ Par.Mach_Cruise = 0.7;
 % call function FindDesignPoint to calculate mission properties
 dp1(i) = FindDesignPoint(Par);
     
-%% 
-% % Start loop for the rest of the design points
-% if length(par_set)>1
-% 	for i=2:length(par_set)
-% 		disp(['Start calculations for design point number: ' num2str(i)  ' value: ' num2str(par_set(i))]);
-% 		% Set target design range. All other parameters are unchanged
-% 
-%    
-% %           Par.Alt_Cruise = par_set(i);
-%         
-%         Par.Mach_Cruise = par_set(i);        
-% %         Par.Mach_Diversion         = 0.5;      % Mach number Div cruise [-]
-% %         Par.Mach_Mis_Climb         = Par.Mach_Cruise;      % Mach number Climb high alt [-]
-% %         Par.Mach_Mis_Descent       = Par.Mach_Cruise;      % Mach number Decent High [-]
-% %         Par.Mach_Div_Climb         = Par.Mach_Cruise;      % Mach number Div Climb [-]
-% %         Par.Mach_Div_Descent       = Par.Mach_Cruise;      % Mach number Div Descent [-]
-% 
-% %         % Required design range [nm].
-% 		% call function FindDesignPoint to calculate mission properties
-% 		dp1(i) = FindDesignPoint(Par, dp1(1).EngineData, dp1(1).TOM_design);
-% 	end
-% else
-%     disp(' ');
-%     warning(' ... There is only one design point in this parameter set');
-%     disp(' ');
-% end
-
-%% Plot Mission Profile
-% Call plotter Design Set
-% PlotDSet(dp1,par_set,xlab)
-% drawnow
-
-
-%% Plot Mission Profile
-% Call plotter Design Set
-%PlotDSet(dp2,par_set,xlab)
 
 %% Save results
 savefile = 'NewTanksV2.mat';
