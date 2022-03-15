@@ -11,26 +11,26 @@ Par.g                      = 9.80665;   % Gravity [m/s^2]
 Par.rho0                   = 1.225;     % Sea level density [kg/m^3]
 
 % Design Parameters
-Par.S                      = 376.4;     % Wing area [m^2] (DP)
-Par.Range_req              = 3500;     % Required design range [nm] (DP)
-Par.PLmax                  = 45000;     % Max payload [kg] (DP)
-Par.MFC                    = 30000;       % Max Fuel capacity [kg] (DP)
-Par.MTOM                   = 230000;    % Max Take Off Mass [kg] (DP)
-Par.Airframe               = 130000;    % Operating Mass Empty [kg] (DP)
-Par.PL_req                 = 30000;     % Design Payload [kg] (DP)
+Par.S                      = 500;       % Wing area [m^2] (DP)
+Par.Range_req              = 7750;      % Required design range [nm] (DP)
+Par.PLmax                  = 48000;     % Max payload [kg] (DP)
+Par.MFC                    = 60000;     % Max Fuel capacity [kg] (DP)
+Par.MTOM                   = 313000;    % Max Take Off Mass [kg] (DP)
+Par.Airframe               = 205000;    % Operating Mass Empty [kg] (DP)
+Par.PL_req                 = 48000;     % Design Payload [kg] (DP)
 
 % Engine parmetars
 Par.EngFileName            = 'HydrogenTurbojet'; % Aircraft type for engine data selection
-Par.n                      = 2;         % Number of engines (DP)
+Par.n                      = 3;         % Number of engines (DP)
 Par.BPR                    = 12;         % By pass ratio
-Par.TakeoffStaticThrust_lb = 30000;     % Take off thrust [lb] (DP)
+Par.TakeoffStaticThrust_lb = 45000;     % Take off thrust [lb] (DP)
 
 % Aerodynamics data From typical values for large turboprop 
 % Aerodynamics data
 Par.CD0_Clean              = 0.015;     % Zero Lift Drag Coef [-] (DP)
 Par.CD0_LD                 = 0.055;     % Zero Lift Drag Coef - flaps down [-] (DP)
 Par.K_Clean                = 0.05 ;     % Induced Drag factor - clean [-] (DP)
-Par.K_LD                   = 0.05 ;     % Induced Drag factor - flaps down [-] (DP)
+Par.K_LD                   = Par.K_Clean ;     % Induced Drag factor - flaps down [-] (DP)
 Par.CLmax_LD               = 2.5 ;      % Max Lift Coef - flaps down [-] (DP)
 Par.DragRise               = 0;         % Flag to switch drag rise in the drag polar: 1 = Yes, 0 = No
 Par.DragRise_Func          = 'DragRise_B777_AJenk'; % Name of Drag Rise Funcitn, e.g.'DragRise_B777_AJenk';
@@ -38,8 +38,8 @@ Par.DragRise_Func          = 'DragRise_B777_AJenk'; % Name of Drag Rise Funcitn,
 % Mission Parameters
 Par.Time_Taxiout           = 7   ;      % Time Taxiout [min]
 Par.Time_Approach          = 1   ;      % Time Approach [min]
-Par.Time_ContCruise        = 45   ;     % Time Continuous Cruise [min]
-Par.Time_Hold              = 0   ;     % Time Hold [min] NO HOLD accounted
+Par.Time_ContCruise        = 0   ;     % Time Continuous Cruise [min]
+Par.Time_Hold              = 90   ;     % Time Hold [min] 
 Par.Time_Taxiin            = 5   ;      % Time Taxi-in[min]
 
 Par.CAS_Hold               = 225.5 ;    % Speed CAS in Hold [kts]
@@ -52,7 +52,7 @@ Par.CAS_Div_ClimbHigh      = 300   ;    % Speed CAS Div Climb - High [kts]
 Par.CAS_Div_DescentLow     = 250   ;    % Speed CAS Div Descent - Low [kts]
 Par.CAS_Div_DescentHigh    = 300   ;    % Speed CAS Div Descent - High [kts]
 
-Par.Mach_Cruise            = 0.45;      % Mach number cruise [-]
+Par.Mach_Cruise            = 0.7;      % Mach number cruise [-]
 Par.Mach_Diversion         = Par.Mach_Cruise;      % Mach number Div cruise [-]
 Par.Mach_Mis_Climb         = Par.Mach_Cruise-0.02;      % Mach number Climb high alt [-]
 Par.Mach_Mis_Descent       = Par.Mach_Cruise-0.02;      % Mach number Decent High [-]

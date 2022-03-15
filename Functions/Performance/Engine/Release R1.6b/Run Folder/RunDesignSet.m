@@ -51,7 +51,7 @@ i = 1;
 
 Par.Mach_Cruise = 0.7;
 Par.Alt_Cruise = 35000;
-Par.S = 300;
+Par.S = 800;
 
 
 

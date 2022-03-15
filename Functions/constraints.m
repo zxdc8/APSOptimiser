@@ -10,14 +10,15 @@ At=sum(A)*2;
 %Estimate volume (Area*Area*0.5)
 V=At^2*0.5;
 
-%Estimate Volume of a Passenger
+%Estimate Volume of a Passenger - IF WORKING FROM BWB 450 - 468 PAX
 Vpas=2*0.5*0.5;
-Npas=200;
+Npas=468;
 
 VpasT=Vpas*Npas;
 
-%Estimate Volume of Fuel- RICKY!
-VFuel=704;
+%Estimate Volume of Fuel- INITIAL ESTIMATE BASED ON NOTHING - WILL MAYBE
+%LOOK AT HAVING A VARIABLE CONSTRAINT? V_f<=V_favail - Discuss with Oli
+VFuel=1000;
 
 %Total Volume
 VT=VFuel+VpasT;
