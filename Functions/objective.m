@@ -14,7 +14,7 @@ CdCl=force(2)./force(1);
 
 
 
-f=CdCl; - this will be old I reckon
+f=CdCl; %- this will be old I reckon
 
 iterUpdate;
 
