@@ -6,9 +6,27 @@ function [C, Ceq]= constraints(x)
 
 A=0.5*(S(1)+S(2))*(Z(2));
 At=sum(A)*2;
+<<<<<<< HEAD
 
 %Estimate volume (Area*Area*0.5)
 V=At^2*0.5;
+=======
+
+%Estimate volume (Area*Area*0.5)
+V=At^2*0.5;
+
+%Estimate Volume of a Passenger
+Vpas=2*0.5*0.5;
+Npas=200;
+
+VpasT=Vpas*Npas;
+
+%Estimate Volume of Fuel- RICKY!
+VFuel=704;
+
+%Total Volume
+VT=VFuel+VpasT;
+>>>>>>> parent of 267c056 (Changed sizings, added volume calcs)
 
 %Estimate Volume of a Passenger - IF WORKING FROM BWB 450 - 468 PAX
 Vpas=2*0.5*0.5;
