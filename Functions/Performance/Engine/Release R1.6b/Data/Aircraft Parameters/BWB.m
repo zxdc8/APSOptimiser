@@ -16,14 +16,22 @@ Par.Range_req              = 7750;      % Required design range [nm] (DP)
 Par.PLmax                  = 48000;     % Max payload [kg] (DP)
 Par.MFC                    = 60000;     % Max Fuel capacity [kg] (DP)
 Par.MTOM                   = 313000;    % Max Take Off Mass [kg] (DP)
+<<<<<<< Updated upstream
 Par.Airframe               = 200000;    % Operating Mass Empty [kg] (DP)
+=======
+Par.Airframe               = 205000;    % Operating Mass Empty [kg] (DP)
+>>>>>>> Stashed changes
 Par.PL_req                 = 48000;     % Design Payload [kg] (DP)
 
 % Engine parmetars
 Par.EngFileName            = 'HydrogenTurbojet'; % Aircraft type for engine data selection
 Par.n                      = 3;         % Number of engines (DP)
 Par.BPR                    = 12;         % By pass ratio
+<<<<<<< Updated upstream
 Par.TakeoffStaticThrust_lb = 120000;     % Take off thrust [lb] (DP)
+=======
+Par.TakeoffStaticThrust_lb = 45000;     % Take off thrust [lb] (DP)
+>>>>>>> Stashed changes
 
 % Aerodynamics data From typical values for large turboprop 
 % Aerodynamics data

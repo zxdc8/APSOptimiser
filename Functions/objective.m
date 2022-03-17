@@ -14,7 +14,11 @@ CdCl=force(2)./force(1);
 
 
 
+<<<<<<< Updated upstream
 f=CdCl; %- this will be old I reckon
+=======
+f=CdCl; - this will be old I reckon
+>>>>>>> Stashed changes
 
 iterUpdate;
 
@@ -23,6 +27,7 @@ iterUpdate;
 %Outputs Fuel Weight and Fuel Volume - NOTE Fuel Volume used for
 %constraints
 
+<<<<<<< Updated upstream
 %Example inputs
 M = 0.7;
 Alt = 38000;
@@ -30,6 +35,8 @@ S = 400;
 CD0 = 0.014;
 k = 0.05;
 
+=======
+>>>>>>> Stashed changes
 [Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k);
 
 

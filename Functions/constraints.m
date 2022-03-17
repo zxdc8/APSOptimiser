@@ -16,8 +16,11 @@ Npas=468;
 
 VpasT=Vpas*Npas;
 
+<<<<<<< Updated upstream
 
 %% Fuel Volume constraint
+=======
+>>>>>>> Stashed changes
 %Estimate Volume of Fuel- INITIAL ESTIMATE BASED ON NOTHING - WILL MAYBE
 %LOOK AT HAVING A VARIABLE CONSTRAINT? V_f<=V_favail - Discuss with Oli
 VFuel=1000;
