@@ -104,7 +104,7 @@ RC{8} = [20
 %% Thrust Scaling
 %
 % MODIFY THIS VALUE FOR THRUST SCALE
-TScaleFactor= 1;
+TScaleFactor= 1.2;
 %
 %
 disp(['Using Thrust Scale Factor of ',num2str(TScaleFactor)]);

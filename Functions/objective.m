@@ -23,6 +23,13 @@ iterUpdate;
 %Outputs Fuel Weight and Fuel Volume - NOTE Fuel Volume used for
 %constraints
 
+%Example inputs
+M = 0.7;
+Alt = 38000;
+S = 400;
+CD0 = 0.014;
+k = 0.05;
+
 [Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k);
 
 

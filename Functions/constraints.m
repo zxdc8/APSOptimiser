@@ -16,6 +16,8 @@ Npas=468;
 
 VpasT=Vpas*Npas;
 
+
+%% Fuel Volume constraint
 %Estimate Volume of Fuel- INITIAL ESTIMATE BASED ON NOTHING - WILL MAYBE
 %LOOK AT HAVING A VARIABLE CONSTRAINT? V_f<=V_favail - Discuss with Oli
 VFuel=1000;
@@ -23,6 +25,17 @@ VFuel=1000;
 %Total Volume
 VT=VFuel+VpasT;
 
+%Requires function for Mach, Alt, S, CD0, k
+
+%Calculate current volume of fuel tank required
+%[Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k);
+
+%Function for current wing volume
+%[Vwing Vfuse] = volumewing(x) %OLI 
+
+%C(3) = Vf - (Vwing+Vfuse/2)
+
+%% 
 %Inequality Constraints
 C(1)=S(2)-S(1);
 C(2)=S(3)-S(2);

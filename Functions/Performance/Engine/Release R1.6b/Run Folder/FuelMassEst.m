@@ -3,14 +3,13 @@ function [Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k)
 %% Run Design Set
 %This file is based on AVDASI 4 RunDesignSet - with output of Wf - fuel
 %weight, and Vf - Volume of fuel tanks
-
 %It accepts the following Opt variables Mach number, M, Cruise Altitude,
 %Alt, Wing Surface Area, S, Zero Lift Drag Coef, CD0, Induced Drag factor,
 %k
 
 %% Initialise aircraft parameters
 
-clear; clc
+
 disp(' ')
 disp('        ******** Aircraft Performance Tool ********');
 disp('        ******** Run Design Mission Case ********')
