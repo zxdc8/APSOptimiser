@@ -30,7 +30,7 @@ S = 400;
 CD0 = 0.014;
 k = 0.05;
 
-[Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k);
+%[Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k);
 
 
 %f = Mf; - Load fuel mass as objective function

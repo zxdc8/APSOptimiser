@@ -1,3 +1,4 @@
+%/////Works out required CL and writes to run file//////
 function CL=LiftCalc(M,At)
 
 

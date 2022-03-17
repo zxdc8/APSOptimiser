@@ -17,8 +17,8 @@ fclose(ifile);
 %Z      mid/tip
 
 
-x0=[50 30 5 30 40 20 20];
-LB=[1 1 1 0 0 5 5];
+x0=[50 30 15 30 40 20 20];
+LB=[20 5 5 0 0 5 5];
 UB=[50 72 72 72 72 35 40];
 
 %Write AVL case file and get filename, constraint values
