@@ -14,7 +14,7 @@ Lref=[At S(1) Z(length(Z))];
 XYZref=[0.0 0.0 0.0];
 
 %Define Mach, Cdp
-M=0.7;
+M=0.5;
 CDp=0;
 
 %Define number of vortices and spacing etc
