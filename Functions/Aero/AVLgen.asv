@@ -6,7 +6,7 @@ function [filename,At] = AVLgen(S,Z,dih,X,i)
 dih=dih*pi/180;
 
 %Calculate planform area
-A=0.5*(S(1:length(S)-1)+S(2:length(S)))*(Z(2));
+A=0.5*(S(1:length(S)-1)+S(2:length(S))).*(Z(1:length(Z)-1));
 At=sum(A)*2;
 
 %Define reference lengths, places
@@ -18,7 +18,7 @@ M=0.7;
 CDp=0.016;
 
 %Define CL
-3
+CL=LiftCalc(M,At)
 
 %Define number of vortices and spacing etc
 Nchord=12;  %number of chordwise vortices
@@ -30,14 +30,14 @@ Sspace=-1.5; %spanwise spacing
 pth='././Inputs/AVLcases';
 filename=sprintf('case_%.0f.avl',i);
 gfile=fopen(fullfile(pth,filename),'w');
-fprintf(gfile,'test1\n%.2f\n0   0   0\n',M);
+fprintf(gfile,'Cruise\n%.2f\n0   0   0\n',M);
 fprintf(gfile,'%.2f      %.2f      %.2f\n',Lref);
 fprintf(gfile,'%.2f      %.2f      %.2f\n',XYZref);
 fprintf(gfile,'%.2f\n',CDp);
 
 %create wing surface
 fprintf(gfile,'SURFACE\nWing\n');
-fprintf(gfile,'%.2f    %.2f    %.2f    %.2f\n',Nchord,Cspace, Nspan,Sspace);
+fprintf(gfile,'%.2f  %.2f\n',Nchord,Cspace, Nspan,Sspace);
 fprintf(gfile,'YDUPLICATE\n0\n');
 
 %construct wing

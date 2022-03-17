@@ -10,20 +10,21 @@ A=0.5*(S(1:length(S)-1)+S(2:length(S))).*(Z(1:length(Z)-1));
 At=sum(A)*2;
 
 %Define reference lengths, places
-Lref=[At S(1) Z(length(Z))];
+Lref=[At S(1) 2*Z(length(Z))];
 XYZref=[0.0 0.0 0.0];
 
 %Define Mach, Cdp
 M=0.7;
 CDp=0.016;
+CD0=0.01;
 
 %Define CL
-CL=LiftCalc(M,At)
+CL=LiftCalc(M,At,CD0)
 
 %Define number of vortices and spacing etc
 Nchord=12;  %number of chordwise vortices
 Cspace=1;   %chordwise spacing, linear, cosine etc
-Nspan=40;   %no spanwise vortices
+Nspan=20;   %no spanwise vortices
 Sspace=-1.5; %spanwise spacing
 
 %create geometry file and create headers
@@ -37,7 +38,7 @@ fprintf(gfile,'%.2f\n',CDp);
 
 %create wing surface
 fprintf(gfile,'SURFACE\nWing\n');
-fprintf(gfile,'%.2f    %.2f    %.2f    %.2f\n',Nchord,Cspace, Nspan,Sspace);
+fprintf(gfile,'%.2f  %.2f\n',Nchord,Cspace);
 fprintf(gfile,'YDUPLICATE\n0\n');
 
 %construct wing
@@ -51,7 +52,7 @@ for ii=1:length(Z)
     
     %define section properties
     fprintf(gfile,'SECTION\n');
-    fprintf(gfile,'%.2f      %.2f  %.2f  %.2f   %.2f\n',Xle,Yle,Zle,Chord,Ainc);
+    fprintf(gfile,'%.2f      %.2f  %.2f  %.2f  %.2f  %.2f  %.2f\n ',Xle,Yle,Zle,Chord,Ainc, Nspan,Sspace);
     
     %define section camber line
     fprintf(gfile,'NACA\n2412\n');
