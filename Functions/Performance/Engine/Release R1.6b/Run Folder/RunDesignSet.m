@@ -30,6 +30,7 @@ disp(' ')
 
 % Reset engine data parameters (if needed)
 Par.interp_method = 'spline'; % or 'spline' - 'spline' is slower but allows to extrapolate data 
+
 Par.M_ext = []; % Extend Mach number range to M_ext - change to something like 0.1 if needed 
 Par.DragRise = 0;
 
@@ -38,25 +39,19 @@ Par.DragRise = 0;
 
 % Define a set of cruise numbers
 
- par_set = 0.5:0.05:0.8; % Define an appropriate parameter range
+% par_set = 0.5:0.05:0.8; % Define an appropriate parameter range
 
 xlab = 'Mach Cruise Speed [-]'; % Define a label for the parameter used for the parameter set
 
 % Find results for the first design point (i=1)
 i = 1;
-disp(['Start calculations for design point number: ' num2str(i)  ' value: ' num2str(par_set(i))]);
+% disp(['Start calculations for design point number: ' num2str(i)  ' value: ' num2str(par_set(i))]);
 % Set target design range. All other parameters are unchanged
 
-% 
-Par.Mach_Cruise = par_set(i);
-% Par.Mach_Diversion         = 0.5;      % Mach number Div cruise [-]
-% Par.Mach_Mis_Climb         = Par.Mach_Cruise;      % Mach number Climb high alt [-]
-% Par.Mach_Mis_Descent       = Par.Mach_Cruise;      % Mach number Decent High [-]
-% Par.Mach_Div_Climb         = Par.Mach_Cruise;      % Mach number Div Climb [-]
-% Par.Mach_Div_Descent       = Par.Mach_Cruise;      % Mach number Div Descent [-]
-% 
 
-% Par.Alt_Cruise = par_set(i);
+Par.Mach_Cruise = 0.7;
+Par.Alt_Cruise = 35000;
+Par.S = 800;
 
 
 
@@ -64,46 +59,12 @@ Par.Mach_Cruise = par_set(i);
 % call function FindDesignPoint to calculate mission properties
 dp1(i) = FindDesignPoint(Par);
     
-% Start loop for the rest of the design points
-if length(par_set)>1
-	for i=2:length(par_set)
-		disp(['Start calculations for design point number: ' num2str(i)  ' value: ' num2str(par_set(i))]);
-		% Set target design range. All other parameters are unchanged
-
-   
-%           Par.Alt_Cruise = par_set(i);
-        
-        Par.Mach_Cruise = par_set(i);        
-%         Par.Mach_Diversion         = 0.5;      % Mach number Div cruise [-]
-%         Par.Mach_Mis_Climb         = Par.Mach_Cruise;      % Mach number Climb high alt [-]
-%         Par.Mach_Mis_Descent       = Par.Mach_Cruise;      % Mach number Decent High [-]
-%         Par.Mach_Div_Climb         = Par.Mach_Cruise;      % Mach number Div Climb [-]
-%         Par.Mach_Div_Descent       = Par.Mach_Cruise;      % Mach number Div Descent [-]
-
-%         % Required design range [nm].
-		% call function FindDesignPoint to calculate mission properties
-		dp1(i) = FindDesignPoint(Par, dp1(1).EngineData, dp1(1).TOM_design);
-	end
-else
-    disp(' ');
-    warning(' ... There is only one design point in this parameter set');
-    disp(' ');
-end
-
-%% Plot Mission Profile
-% Call plotter Design Set
-PlotDSet(dp1,par_set,xlab)
-drawnow
-
-
-%% Plot Mission Profile
-% Call plotter Design Set
-%PlotDSet(dp2,par_set,xlab)
 
 %% Save results
 savefile = 'NewTanksV2.mat';
 %save(savefile, 'dp1', 'dp2', 'par_set','xlab');
-save(savefile, 'dp1', 'par_set','xlab');
+% save(savefile, 'dp1', 'par_set','xlab');
+save(savefile, 'dp1');
 %% Load saved data to workspace
 
 clear % clear workspace
