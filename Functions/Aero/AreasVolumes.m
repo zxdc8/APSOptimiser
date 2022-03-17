@@ -12,7 +12,7 @@ function [VF,VW,VP] = AreasVolumes(S,X,Z,dih)
     
     %Estimate Volume of a Passenger
     Vpas=1.5*0.79*0.43;
-    Npas=450;
+    Npas=468;
     
     VP=Vpas*Npas;
 

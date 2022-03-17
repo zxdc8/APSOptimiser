@@ -4,12 +4,6 @@ function [C, Ceq]= constraints(x)
 %Calculate Wing Area
 [S,X,Z,dih]=DesignToSXZ(x);
 
-%Estimate Volume of a Passenger - IF WORKING FROM BWB 450 - 468 PAX
-Vpas=2*0.5*0.5;
-Npas=468;
-
-VpasT=Vpas*Npas;
-
 
 %% Fuel Volume constraint
 [VFus, VW, VP]=AreasVolumes(S,X,Z,dih);

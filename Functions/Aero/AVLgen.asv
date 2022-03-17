@@ -18,7 +18,7 @@ M=0.7;
 CDp=0.016;
 
 %Define CL
-
+3
 
 %Define number of vortices and spacing etc
 Nchord=12;  %number of chordwise vortices
