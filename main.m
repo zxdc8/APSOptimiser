@@ -16,9 +16,9 @@ fclose(ifile);
 %X      mid/tip
 %Z      mid/tip
 
-x0=[10 5 2 5 10 7.5 7.5];
-LB=[1 1 1 0 0 0.5 0.5];
-UB=[60 60 60 60 60 16 16];
+x0=[50 30 5 30 40 20 20];
+LB=[1 1 1 0 0 5 5];
+UB=[50 72 72 72 72 35 40];
 
 %Write AVL case file and get filename, constraint values
 [filename,iter,At]=aeromodule(x0);
@@ -27,7 +27,7 @@ UB=[60 60 60 60 60 16 16];
 [objFun]=@(x)objective(x);
 
 %Define solver options
-options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',0.5,'FunctionTolerance',1e-6,'PlotFcns',@optimplotfval);
+options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',0.2,'FunctionTolerance',1e-7,'PlotFcns',@optimplotfval);
 
 %Run Optimisation
 [X,J]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options)
