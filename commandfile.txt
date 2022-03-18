@@ -1,4 +1,4 @@
-LOAD Inputs/AVLcases/case_1.avl
+LOAD Inputs/AVLcases/case_15.avl
 CASE Inputs/w.run
 PLOP
 GF
@@ -7,7 +7,7 @@ OPER
 #
 X
 FT
-out_1.txt
+out_15.txt
 G
 V
 0 90

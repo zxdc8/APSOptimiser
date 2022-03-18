@@ -8,16 +8,19 @@ function [C, Ceq]= constraints(x)
 %% Fuel Volume constraint
 [VFus, VW, VP]=AreasVolumes(S,X,Z,dih);
 
+iter=getIteration();
+
+outname=sprintf('out_%i.txt',iter)
 
 %Requires function for Mach, Alt, S, CD0, k - func
 
-[CdCl, CD0, S, k, M]=ReadOutput(outname,x);
+[CdCl, CD0, s, k, M]=ReadOutput(outname,x);
 
 Alt=38000;
 M=0.7; %Placeholder
 
 %Calculate current volume of fuel tank required
-[Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k);
+[Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
 
 %OR USE FIXED FUEL
 %Vf = 100;

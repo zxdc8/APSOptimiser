@@ -9,7 +9,7 @@ outname=AVLcall(filename,'w.run',iter);
 
 %read data
 
-[CdCl, CD0, S, k, M]=ReadOutput(outname,x);
+[CdCl, CD0, s, k, M]=ReadOutput(outname,x);
 
 %f=CdCl; %- this will be old I reckon
 
@@ -24,7 +24,7 @@ iterUpdate;
 
 Alt = 38000;
 
-[Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k);
+[Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
 
 
 f = Mf;  %Load fuel mass as objective function
