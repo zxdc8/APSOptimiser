@@ -11,9 +11,16 @@ function [C, Ceq]= constraints(x)
 
 %Requires function for Mach, Alt, S, CD0, k - func
 
-%Calculate current volume of fuel tank required
-%[Mf, Vf] = FuelMassEst(M,Alt,Swing,CD0,k);
+[CdCl, CD0, S, k, M]=ReadOutput(outname,x);
 
+Alt=38000;
+M=0.7; %Placeholder
+
+%Calculate current volume of fuel tank required
+[Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k);
+
+%OR USE FIXED FUEL
+%Vf = 100;
 
 
 %C(3) = Vf - (Vwing+Vfuse/2)
@@ -27,11 +34,9 @@ C(3)=S(2)+X(2)-72;  %Length Constraint
 C(4)=S(3)+X(3)-72;  %Length Constraint
 C(5)=x(6)+x(7)-40; %Wingspan
 
-%fix
-Vf = 100;
 
-%Equality Constraints- Currently Trying Pax in Wings
-Ceq(1)=Vf-VW;     %Fuel Volume
-Ceq(2)=VP-VFus;      %Pax Volume
+%Equality Constraints
+Ceq(1)=Vf-VW-((1/3)*VFus);     %Fuel Volume
+Ceq(2)=VP-(2/3)*VFus;      %Pax Volume
 
 end

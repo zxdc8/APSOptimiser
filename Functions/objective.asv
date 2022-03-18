@@ -1,0 +1,54 @@
+%////////OBJECTIVE FUNCTION/////////
+function f = objective(x)
+%generate geometry
+
+[filename,iter]=aeromodule(x);
+
+%call avl
+outname=AVLcall(filename,'w.run',iter);
+
+%read data
+force=importfile(outname);
+
+oswald=importe(outname);
+
+SM=importfileSM(outname);
+
+%Glide Ratio
+CdCl=force(2)./force(1);
+
+%CD0
+CD0=force(2)-oswald(1);
+
+%E
+e=oswald(2);
+
+%Aspect ratio
+AR=((x(6)+x(7)*2).^2)/SM(1)
+
+%Span efficiency factor
+k=1/(pi*e*AR)
+
+%MACH
+M=SM(2) %Broken ATM
+M=0.7
+
+%f=CdCl; %- this will be old I reckon
+
+iterUpdate;
+
+%% Performance part of objective function
+%load into function Mach, Alt, Wing Area, Zero lift Drag, Induced Drag
+%Outputs Fuel Weight and Fuel Volume - NOTE Fuel Volume used for
+%constraints
+
+%Example inputs
+
+Alt = 38000;
+
+[Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k);
+
+
+f = Mf; - %Load fuel mass as objective function
+
+end

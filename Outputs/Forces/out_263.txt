@@ -6,7 +6,7 @@
      # Strips   =  80
      # Vortices = 960
 
-  Sref =  1865.5       Cref =  72.000       Bref =  101.13    
+  Sref =  119.58       Cref =  20.500       Bref =  72.730    
   Xref =  0.0000       Yref =  0.0000       Zref =  0.0000    
 
  Standard axis orientation,  X fwd, Z down         
@@ -17,15 +17,15 @@
   Beta  =   0.00000     qc/2V =   0.00000
   Mach  =     0.000     rb/2V =  -0.00000     r'b/2V =  -0.00000
 
-  CXtot =  -0.02388     Cltot =  -0.00000     Cl'tot =  -0.00000
-  CYtot =  -0.00001     Cmtot =  -0.18879
-  CZtot =  -0.26830     Cntot =  -0.00000     Cn'tot =  -0.00000
+  CXtot =  -0.02450     Cltot =  -0.00000     Cl'tot =  -0.00000
+  CYtot =  -0.00002     Cmtot =  -0.86047
+  CZtot =  -0.64368     Cntot =   0.00000     Cn'tot =   0.00000
 
-  CLtot =   0.26830
-  CDtot =   0.02388
-  CDvis =   0.02000     CDind = 0.0038791
-  CLff  =   0.26830     CDff  = 0.0044598    | Trefftz
-  CYff  =   0.00000         e =    0.9372    | Plane  
+  CLtot =   0.64368
+  CDtot =   0.02450
+  CDvis =   0.02000     CDind = 0.0045046
+  CLff  =   0.64368     CDff  = 0.0034003    | Trefftz
+  CYff  =   0.00000         e =    0.8768    | Plane  
 
 
  ---------------------------------------------------------------

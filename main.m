@@ -33,8 +33,9 @@ options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detail
 %Run Optimisation
 [X,J]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options)
 
-%Generate Final Geometry For Viewing
-aeromodule(X)
+%Generate Final AVL case file
+[filename, iter]=aeromodule(X)
 
+AVLcall(filename,'w.run',iter);
 
 fclose('all');

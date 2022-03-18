@@ -8,13 +8,10 @@ function f = objective(x)
 outname=AVLcall(filename,'w.run',iter);
 
 %read data
-force=importfile(outname);
 
-CdCl=force(2)./force(1);
+[CdCl, CD0, S, k, M]=ReadOutput(outname,x);
 
-
-
-f=CdCl; %- this will be old I reckon
+%f=CdCl; %- this will be old I reckon
 
 iterUpdate;
 
@@ -24,15 +21,12 @@ iterUpdate;
 %constraints
 
 %Example inputs
-M = 0.7;
+
 Alt = 38000;
-S = 400;
-CD0 = 0.014;
-k = 0.05;
 
-%[Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k);
+[Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k);
 
 
-%f = Mf; - Load fuel mass as objective function
+f = Mf;  %Load fuel mass as objective function
 
 end
