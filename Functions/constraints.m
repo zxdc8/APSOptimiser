@@ -25,6 +25,7 @@ C(2)=S(3)-S(2);
 
 C(3)=S(2)+X(2)-72;  %Length Constraint
 C(4)=S(3)+X(3)-72;  %Length Constraint
+C(5)=x(6)+x(7)-40; %Wingspan
 
 %fix
 Vf = 100;
@@ -32,5 +33,5 @@ Vf = 100;
 %Equality Constraints- Currently Trying Pax in Wings
 Ceq(1)=Vf-VW;     %Fuel Volume
 Ceq(2)=VP-VFus;      %Pax Volume
-Ceq(3)=x(6)+x(7)-40; %Wingspan
+
 end

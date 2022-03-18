@@ -55,17 +55,14 @@ function [VF,VW,VP] = AreasVolumes(S,X,Z,dih)
 
     [kW, VW]=convhull(Wing3D(:,1),Wing3D(:,2),Wing3D(:,3),'Simplify',true);
 
-%     figure
-%     trisurf(kF,Fus3D(:,1),Fus3D(:,2),Fus3D(:,3))
-%     axis equal
-% 
-%     figure
-%     trisurf(kF,Wing3D(:,1),Wing3D(:,2),Wing3D(:,3))
-%     axis equal
+    figure
+    trisurf(kF,Fus3D(:,1),Fus3D(:,2),Fus3D(:,3))
+    axis equal
 
-    %Multiply volumes by two for each wing
-    VF=2*VF;
-    VW=2*VW;
+    figure
+    trisurf(kF,Wing3D(:,1),Wing3D(:,2),Wing3D(:,3))
+    axis equal
+
     
     %Estimate Volume of a Passenger
     Vpas=1.5*0.79*0.43;
