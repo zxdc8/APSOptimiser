@@ -24,8 +24,8 @@ CL=LiftCalc(M,At,CD0)
 %Define number of vortices and spacing etc
 Nchord=12;  %number of chordwise vortices
 Cspace=1;   %chordwise spacing, linear, cosine etc
-Nspan=20;   %no spanwise vortices
-Sspace=-1.5; %spanwise spacing
+Nspan=20;   %no spanwise vortices per section
+Sspace=1.0; %spanwise spacing
 
 %create geometry file and create headers
 pth='././Inputs/AVLcases';
