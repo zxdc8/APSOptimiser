@@ -12,7 +12,7 @@ function [VF,VW,VP] = AreasVolumes(S,X,Z,dih)
     %% NEW METHOD-CONVEX HULL
     %Generate a wing geometry
     %Import NACA aerofoil
-    NACA=table2array(readtable('././Inputs/NACA2412.txt'))
+    NACA=table2array(readtable('././Inputs/NACA23012.txt'))
     len=length(NACA);
 
     %GENERATE 3D WING POINTS
@@ -57,10 +57,13 @@ function [VF,VW,VP] = AreasVolumes(S,X,Z,dih)
 
 %     figure
 %     trisurf(kF,Fus3D(:,1),Fus3D(:,2),Fus3D(:,3))
-%     axis equal
-% 
-%     figure
-%     trisurf(kF,Wing3D(:,1),Wing3D(:,2),Wing3D(:,3))
+%     hold all
+%     trisurf(kW,Wing3D(:,1),Wing3D(:,2),Wing3D(:,3))
+%     hold all
+%     trisurf(kF,Fus3D(:,1),Fus3D(:,2),-Fus3D(:,3))
+%     hold all
+%     trisurf(kW,Wing3D(:,1),Wing3D(:,2),-Wing3D(:,3))
+%     
 %     axis equal
 
     %Multiply volumes by two for each wing

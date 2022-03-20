@@ -1,0 +1,31 @@
+ ---------------------------------------------------------------
+ Vortex Lattice Output -- Total Forces
+
+ Configuration: Cruise                                                      
+     # Surfaces =   2
+     # Strips   =  80
+     # Vortices = 960
+
+  Sref =  125.64       Cref =  28.140       Bref =  31.740    
+  Xref =  0.0000       Yref =  0.0000       Zref =  0.0000    
+
+ Standard axis orientation,  X fwd, Z down         
+
+ Run case:  -unnamed-                              
+
+  Alpha =   0.00000     pb/2V =  -0.00000     p'b/2V =  -0.00000
+  Beta  =   0.00000     qc/2V =   0.00000
+  Mach  =     0.000     rb/2V =  -0.00000     r'b/2V =  -0.00000
+
+  CXtot =  -0.02559     Cltot =   0.00000     Cl'tot =   0.00000
+  CYtot =  -0.00007     Cmtot =  -0.38903
+  CZtot =  -0.22729     Cntot =   0.00005     Cn'tot =   0.00005
+
+  CLtot =   0.22729
+  CDtot =   0.02559
+  CDvis =   0.02246     CDind = 0.0031309
+  CLff  =   0.22729     CDff  = 0.0033869    | Trefftz
+  CYff  =   0.00000         e =    0.6055    | Plane  
+
+
+ ---------------------------------------------------------------
