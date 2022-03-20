@@ -2,8 +2,14 @@
 function CL=LiftCalc(M,At,CD0)
     
     %Calculate required Cl for Wing Area
-    [~,a,~,rho]=atmosisa(11582.4);
+    [T,a,~,rho]=atmosisa(11582.4);
     CL=(300e3*9.81)/(0.5*rho*At*(M*a)^2);
+    
+    %Also work out reynolds number
+    
+    DynVisc=14.23e-6;
+    c=(80^2)/At;
+    Re= (rho*a*M*c)/DynVisc;
 
     %Create Run File
     pth='././Inputs';
