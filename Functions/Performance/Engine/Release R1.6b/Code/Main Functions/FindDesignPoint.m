@@ -56,18 +56,18 @@ disp(' ')
 TOM_design = fsolve(MProfile2,TOM_0,options);
 
 disp('... Done')
-toc
+
 disp(' ')
 
 %% Calculate fuel burn for the design case
-tic
+
 disp('Calculate fuel burn for the required design case')
 
 % Calculate the output values by inputting TOM_design into MProfile2
 [~, TotalFuel, Block, Mission] = MProfile2(TOM_design);
 
 disp('... Done')
-toc
+
 disp(' ')
 
 % Display the TOM

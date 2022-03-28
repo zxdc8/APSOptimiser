@@ -13,8 +13,13 @@ fprintf(cmdfile,'OPER\nX\n');
 tot_forc=sprintf('Tot_Forc_%.0f.txt',i);
 stab_deri=sprintf('Stab_Deri_%.0f.txt',i);
 
+<<<<<<< HEAD
 fprintf(cmdfile,'FT\n%s\n',tot_forc);
 fprintf(cmdfile,'ST\n%s\n',stab_deri);
+=======
+fprintf(cmdfile,'FT\n%s\nO\n',tot_forc);
+fprintf(cmdfile,'ST\n%s\nO\n',stab_deri);
+>>>>>>> abf7b881a385c434dba1d9ee54ad87c6fc9aad7b
 
 % Exit
 fprintf(cmdfile,'\nquits');

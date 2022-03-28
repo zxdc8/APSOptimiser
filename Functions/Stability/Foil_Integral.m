@@ -24,7 +24,11 @@ U_Fin = abs(integral( Y_U_int, P, 1));
 L_Int = abs(integral( Y_L_int, 0, P));
 L_Fin = abs(integral( Y_L_int, P, 1));
 
+<<<<<<< HEAD
 NACA_Area = (U_Int+U_Fin+L_Int+L_Fin)*10; %Total Area of NACA Foil
+=======
+NACA_Area = U_Int+U_Fin+L_Int+L_Fin; %Total Area of NACA Foil
+>>>>>>> abf7b881a385c434dba1d9ee54ad87c6fc9aad7b
 
 %% Find Centroid 
 X_U_fin = @(x) x - y_t(x).*sin(theta_fin(x)); 
@@ -41,6 +45,10 @@ X(2) = integral( X_Fun, P, 1); %Finds CoM of relevant lower section, X
 Y_Fun = @(x) x.*Y_L_fin(x);
 Y(2) = integral( Y_Fun, P, 1); %Finds Y CoM coord
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> abf7b881a385c434dba1d9ee54ad87c6fc9aad7b
 Cen_X = (X(1)*U_Fin + X(2)*L_Fin)/(U_Fin + L_Fin);
 Cen_Y = (Y(1)*U_Fin + Y(2)*L_Fin)/(U_Fin + L_Fin);
 

@@ -13,7 +13,6 @@ function [Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k)
 disp(' ')
 disp('        ******** Aircraft Performance Tool ********');
 disp('        ******** Run Design Mission Case ********')
-disp(['                  ', datestr(clock)]);
 disp(' ')
 
 % Read Aircraft data from a re-defined file, e.g. BWB for the blended wing
@@ -59,7 +58,7 @@ Mf = dp1.TotalFuel;
 rholh2 = 71; %[kg/m3]
 
 
-Vf = (Mf*1.2)/rholh2;%[m3]
+Vf = (Mf)/rholh2;%[m3]
 
 end
 
