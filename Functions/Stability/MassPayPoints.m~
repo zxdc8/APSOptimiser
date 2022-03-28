@@ -1,5 +1,6 @@
 function [CoM_Pass, CoM_Fuel] = MassPayPoints(Vol_Seg, Payload_Mass, Fuel_Mass, filename)
 
+
 fid = fopen(filename);
 tline = fgetl(fid);
 X_Pos = [];
@@ -23,19 +24,14 @@ while ischar(tline)
 end
 
 Spar_Clear = 1; %m, distance of Passenger Cabin from TE & LE of Main Segments (1 & 2)
-X_Pos_Array = [];
-for mc = [1:length(X_Pos)] %Loop creates an array needed for finding Passenger Cabin sizing 
-    if mc == 1 || mc == 2 || mc == 3
-        X_Pos_Array = [X_Pos_Array Spar_Clear];
-    else
-        X_Pos_Array = [X_Pos_Array 0];
-    end
-end
+
+for ac
+
 
 
 for mc = [1:length(X_Pos)-1]
     if mc == 1 || mc == 2
-        X_Pos = (X_Pos + X_Pos_Array);
+        X_Pos = (X_Pos + [Spar_Clear Spar_Clear Spar_Clear 0 0]);
         Chord = Chord - Spar_Clear*2;
         
         Area_Pass(mc) = area(polyshape( [ X_Pos(mc)+Chord(mc) X_Pos(mc+1)+Chord(mc+1) X_Pos(mc+1) X_Pos(mc)], [Y_Pos(mc) Y_Pos(mc+1) Y_Pos(mc+1) Y_Pos(mc)] ));
@@ -44,7 +40,7 @@ for mc = [1:length(X_Pos)-1]
         CoM_X_Pass(mc) = cx;
         CoM_Y_Pass(mc) = cy; 
         
-        X_Pos = (X_Pos - X_Pos_Array);
+        X_Pos = (X_Pos - [Spar_Clear Spar_Clear Spar_Clear 0 0]);
         Chord = Chord + Spar_Clear*2;
     else
         Vol_Fuel(mc-2) = Vol_Seg(mc);

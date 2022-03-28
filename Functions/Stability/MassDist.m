@@ -1,4 +1,4 @@
-function massfilename = MassDist(iter, Struc_Mass, Payload_Mass, Fuel_Mass)
+function [massfilename, Area_Pass, Vol_Fuel] = MassDist(iter, Struc_Mass, Payload_Mass, Fuel_Mass)
 
 %Units of measurement
 Lunit = 1; % metres
@@ -42,6 +42,8 @@ for mcc = [1:2]
     fprintf(gfile,'\n');
 end
 
+Area_Pass = sum(CoM_Pass(4,:));
+Vol_Fuel = sum(CoM_Fuel(4,:));
 
 %% Graph Mass point coords of BWB components
 BWB_Mass_Graph(Wing_Pos, CoM_Pass, CoM_Fuel, CoM_X_Disp, CoM_Y_Disp)

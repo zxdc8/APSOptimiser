@@ -1,4 +1,4 @@
-function [CoM_X_Disp, CoM_Y_Disp, CoM_Z_Disp, Seg_Mass, Vol_Seg, Wing_Pos] = MassPoints(Mass, filename)
+function [CoM_X_Disp, CoM_Y_Disp, CoM_Z_Disp, Seg_Mass, Vol_Seg, Wing_Pos] = MassPoints(Struc_Mass, filename)
 
 fid = fopen(filename);
 tline = fgetl(fid);
@@ -46,7 +46,7 @@ for i = [1:length(Foil_No)]
 end
 
 
-for i = [1:4]
+for i = [1:length(X_Pos)-1]
     %fun = @(x) (Chord(i)^2 * FoilA1 - ( (Chord(i)^2 * FoilA1 - Chord(i+1)^2*FoilA2) /5).*x)
     %Below lines check for the saved NACA foil areas and call upon them during the segment volume calculation
     fun = @(x) (Chord(i)^2 .* str2double(NACA_Unit( find(Foil_No == str2double(FoilA(i))) ,2)) ...
@@ -76,7 +76,7 @@ for i = [1:4]
 end
 Vol = 2*sum(Vol_Seg); %Total Volume of wing Structure
 
-Vol_Dens = Mass/Vol; %Theoretical Density of Segments - Not strucutrally concerned 
+Vol_Dens = Struc_Mass/Vol; %Theoretical Density of Segments - Not strucutrally concerned 
 Seg_Mass = Vol_Seg * Vol_Dens;
 
 CoM_x = sum( CoM_X_Disp.*Seg_Mass)/sum(Seg_Mass);
