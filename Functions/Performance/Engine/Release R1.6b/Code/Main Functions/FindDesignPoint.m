@@ -29,7 +29,7 @@ end
 if nargin <3
     TOM_0  = Par.Airframe+Par.MFC; % [kg], Set an initial estimate for the take-off mass
 end
-tic
+
 
 %% Update Kink altitude values
 Par.Alt_kink_Mis_Climb = KinkFunc(Par.CAS_Mis_ClimbHigh, Par.Mach_Mis_Climb);
