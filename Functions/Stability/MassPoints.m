@@ -1,4 +1,4 @@
-function [CoM_X_Disp, CoM_Y_Disp, CoM_Z_Disp, Seg_Mass] = MassPoints(Mass, filename)
+function [CoM_X_Disp, CoM_Y_Disp, CoM_Z_Disp, Seg_Mass, Vol_Seg, Wing_Pos] = MassPoints(Struc_Mass, filename)
 
 fid = fopen(filename);
 tline = fgetl(fid);
