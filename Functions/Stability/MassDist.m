@@ -1,14 +1,11 @@
-<<<<<<< HEAD
 function massfilename = MassDist(iter, Struc_Mass, Payload_Mass, Fuel_Mass)
-=======
-function massfilename = MassDist(iter);
->>>>>>> abf7b881a385c434dba1d9ee54ad87c6fc9aad7b
+
 
 %Units of measurement
 Lunit = 1; % metres
 Munit = 1; % kilograms
 Tunit = 1; % seconds
-<<<<<<< HEAD
+
 filename = sprintf('case_%.0f.avl',iter);
 
 %Establish .mass file and dimensional units of measurements into file
