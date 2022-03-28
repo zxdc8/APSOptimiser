@@ -1,14 +1,10 @@
-LOAD Inputs/AVLcases/case_5.avl
-CASE Inputs/w.run
+LOAD Inputs/AVLcases/case_1.avl
+MASS Inputs/w.run
+CASE Inputs/
 PLOP
 GF
 
+mset
+0
 OPER
-#
-X
-FT
-out_5.txt
-G
-V
-0 90
-H
+
