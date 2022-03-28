@@ -41,7 +41,6 @@ X(2) = integral( X_Fun, P, 1); %Finds CoM of relevant lower section, X
 Y_Fun = @(x) x.*Y_L_fin(x);
 Y(2) = integral( Y_Fun, P, 1); %Finds Y CoM coord
 
-
 Cen_X = (X(1)*U_Fin + X(2)*L_Fin)/(U_Fin + L_Fin);
 Cen_Y = (Y(1)*U_Fin + Y(2)*L_Fin)/(U_Fin + L_Fin);
 

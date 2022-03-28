@@ -27,6 +27,7 @@ for mc = [1:length(Seg_Mass)]
 fprintf(gfile,'%.2f %.2f %.2f %.2f 0 0 0\n',Seg_Mass(mc),CoM_X_Disp(mc),CoM_Y_Disp(mc),CoM_Z_Disp(mc));
 fprintf(gfile,'%.2f %.2f -%.2f %.2f 0 0 0\n',Seg_Mass(mc),CoM_X_Disp(mc),CoM_Y_Disp(mc),CoM_Z_Disp(mc));
 end
+fprintf(gfile,'\n');
 
 % Below loop implements Mass point of Passengers based on area of 1st and 2nd segment
 Payload_Mass = Payload_Mass*0.453592;
