@@ -13,7 +13,6 @@ function [Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k)
 disp(' ')
 disp('        ******** Aircraft Performance Tool ********');
 disp('        ******** Run Design Mission Case ********')
-disp(['                  ', datestr(clock)]);
 disp(' ')
 
 % Read Aircraft data from a re-defined file, e.g. BWB for the blended wing
