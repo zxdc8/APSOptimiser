@@ -4,7 +4,7 @@ clear all
 
 %Set Parameters
 L=20;
-N=7; 
+N=4; 
 
 S=[11 7 6 3 2 1.5 1];
 X=[0 3 5 9 13 15 16];

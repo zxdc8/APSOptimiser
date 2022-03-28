@@ -32,21 +32,22 @@ fprintf(gfile,'\n');
 % Below loop implements Mass point of Passengers based on area of 1st and 2nd segment
 Payload_Mass = Payload_Mass*0.453592;
 Fuel_Mass = Fuel_Mass*0.453592;
-[CoM_Pass, CoM_Fuel] = MassPayPoints(Vol_Seg, Payload_Mass, Fuel_Mass, filename);
+[CoM_Array] = MassPayPoints(Vol_Seg, Payload_Mass, Fuel_Mass, filename);
 
-for mcc = [1:2]
-    for mc = [1:length(CoM_Fuel(1,:))]
-        fprintf(gfile,'%.2f %.2f %.2f %.2f 0 0 0\n',CoM_Fuel(4,mc),CoM_Fuel(1,mc),CoM_Fuel(2,mc),CoM_Fuel(3,mc));
-        fprintf(gfile,'%.2f %.2f -%.2f %.2f 0 0 0\n',CoM_Fuel(4,mc),CoM_Fuel(1,mc),CoM_Fuel(2,mc),CoM_Fuel(3,mc));
+for mcc = [1:length(CoM_Array)]
+    CoM = CoM_Array{mcc};
+    for mc = [1:length(CoM(1,:))]
+        fprintf(gfile,'%.2f %.2f %.2f %.2f 0 0 0\n',CoM(4,mc),CoM(1,mc),CoM(2,mc),CoM(3,mc));
+        fprintf(gfile,'%.2f %.2f -%.2f %.2f 0 0 0\n',CoM(4,mc),CoM(1,mc),CoM(2,mc),CoM(3,mc));
     end
     fprintf(gfile,'\n');
 end
 
-Area_Pass = sum(CoM_Pass(4,:));
-Vol_Fuel = sum(CoM_Fuel(4,:));
+Area_Pass = sum(CoM_Array{1}(4,:));
+Vol_Fuel = sum(CoM_Array{2}(4,:));
 
 %% Graph Mass point coords of BWB components
-BWB_Mass_Graph(Wing_Pos, CoM_Pass, CoM_Fuel, CoM_X_Disp, CoM_Y_Disp)
+BWB_Mass_Graph(Wing_Pos, CoM_Array{1}, CoM_Array{2}, CoM_X_Disp, CoM_Y_Disp)
 
 fclose(gfile);
 

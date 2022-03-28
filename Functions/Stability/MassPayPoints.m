@@ -1,4 +1,4 @@
-function [CoM_Pass, CoM_Fuel] = MassPayPoints(Vol_Seg, Payload_Mass, Fuel_Mass, filename)
+function [CoM_Array] = MassPayPoints(Vol_Seg, Payload_Mass, Fuel_Mass, filename)
 
 fid = fopen(filename);
 tline = fgetl(fid);
@@ -69,6 +69,8 @@ for c = [1:length(CoM_Fuel(1,:))]
     CoM_Fuel(4,c) = Vol_Fuel(c)/sum(Vol_Fuel)*Fuel_Mass/2;
 end
 
+CoM_Array{1} = CoM_Pass;
+CoM_Array{2} = CoM_Fuel;
 
 end
 
