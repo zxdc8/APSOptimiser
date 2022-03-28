@@ -1,4 +1,4 @@
-function [CoM_X_Disp, CoM_Y_Disp, CoM_Z_Disp, Seg_Mass, Vol_Seg, Wing_Pos] = MassPoints(Struc_Mass, filename)
+function [CoM_X_Disp, CoM_Y_Disp, CoM_Z_Disp, Seg_Mass, Vol_Seg, Wing_Pos] = MassPoints(Mass, filename)
 
 fid = fopen(filename);
 tline = fgetl(fid);
@@ -11,29 +11,34 @@ while ischar(tline)
     tline = fgetl(fid);
     string_line = string(tline);
     
-        if string_line == string('SECTION')
+        if string_line == string('SECTION') %Reads the dimensional components of the aerofoil in the line following the SECTION phrase
             tline = fgetl(fid);
             string_line = string(tline);
             panel_values = double(split(string_line));
-            X_Pos = [X_Pos panel_values(1)];
+            X_Pos = [X_Pos panel_values(1)]; %following lists contain the respective attribute of all the Aerofoils after the loop
             Y_Pos = [Y_Pos panel_values(2)];
             Z_Pos = [Z_Pos panel_values(3)];
             Chord = [Chord panel_values(4)];
-        elseif string_line == string(' NACA') || string_line == string('NACA')
+        elseif string_line == string(' NACA') || string_line == string('NACA') %Reads the NACA foil number of each aerofoil
             tline = fgetl(fid);
             NACA_Unit = string(tline);
-            FoilA = [FoilA NACA_Unit];
+            FoilA = [FoilA NACA_Unit]; %List contains the NACA no. for each aerofoil of the .avl file
         end
         
 end
 fclose(fid);
+
+Wing_Pos(1,:) = X_Pos;
+Wing_Pos(2,:) = Y_Pos;
+Wing_Pos(3,:) = Z_Pos;
+Wing_Pos(4,:) = Chord;
 
 %Run through the list of Segment NACA Foils, if a new foil no. comes up
 %then add to a list that sends the specific no's through the Foil function 
 Foil_No = unique(str2double(FoilA));
 
 for i = [1:length(Foil_No)]
-    [NACA_Area, Cen_X, Cen_Y] = Foil_Integral( Foil_No(i) );
+    [NACA_Area, Cen_X, Cen_Y] = Foil_Integral( Foil_No(i) ); %Finds the relative area to a 1m chord of the Aerofoil NACA no.
     NACA_Unit(i,1) = Foil_No(i);
     NACA_Unit(i,2) = NACA_Area;
     NACA_Unit(i,3) = Cen_X;
@@ -54,7 +59,7 @@ for i = [1:4]
     %Below Lines use quadratic and Linear Distirbution of Segemnt Masses to find Displacment of the Segments x-component 
     %from the segments forwardmost aerofoil 
     x = [ 0:0.01: (Y_Pos(i+1)-Y_Pos(i)) ];
-    K = cumtrapz(( Chord(i+1) ^2 - Chord(i) ^2)/ (Y_Pos(i+1)-Y_Pos(i)) ^2.* x.^2 + Chord(i)^2);
+    K = cumtrapz(( Chord(i+1) ^2 - Chord(i) ^2)/ (Y_Pos(i+1)-Y_Pos(i)) ^2.* x.^2 + Chord(i)^2); %use of cumulative distribution finds halfway centre of mass value
     below = find(K < K(end)/2);
 
     X_A = Chord(i)*str2double(NACA_Unit( find(Foil_No == str2double(FoilA(i))) ,3));
