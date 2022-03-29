@@ -4,11 +4,14 @@ clear all
 
 %Set Parameters
 L=20;
-N = 7; %Total no. of segment sides to make Wing modules 
-Np = 4; %No. of segment sides dedicated to Passenger Cabin modules
+N = 3; %Total no. of segment sides to make Wing modules 
+Np = 2; %No. of segment sides dedicated to Passenger Cabin modules
 
-S=[11 7 6 4 2 1.5 1];
-X=[0 3 5 9 13 15 17];
+S=[11 7 5];
+X=[0 3 5];
+
+% S=[11 7 6 4 2 1.5 1];
+% X=[0 3 5 9 13 15 17];
 
 %set iteration (should be looped)
 iter=1;
