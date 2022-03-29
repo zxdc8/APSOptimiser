@@ -12,7 +12,7 @@ function [VF,VW,VP] = AreasVolumes(S,X,Z,dih)
     %% NEW METHOD-CONVEX HULL
     %Generate a wing geometry
     %Import NACA aerofoil
-    NACA=table2array(readtable('././Inputs/NACA2412.txt'))
+    NACA=table2array(readtable('././Inputs/NACA23012.txt'))
     len=length(NACA);
 
     %GENERATE 3D WING POINTS

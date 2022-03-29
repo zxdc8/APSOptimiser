@@ -4,7 +4,7 @@ function [massfilename, Area_Pass, Vol_Fuel] = MassDist(Np, iter, Struc_Mass, Pa
 Lunit = 1; % metres
 Munit = 1; % kilograms
 Tunit = 1; % seconds
-filename = sprintf('case_%.0f.avl',iter);
+filename = sprintf('././Inputs/AVLcases/case_%.0f.avl',iter);
 
 %Establish .mass file and dimensional units of measurements into file
 massfilename=sprintf('././Inputs/Massfiles/mass_%.0f.mass',iter); 

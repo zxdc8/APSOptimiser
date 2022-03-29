@@ -10,7 +10,7 @@ function [C, Ceq]= constraints(x)
 
 iter=getIteration();
 
-outname=sprintf('out_%i.txt',iter)
+outname=sprintf('Out_Force_%i.txt',iter-1)
 
 %Requires function for Mach, Alt, S, CD0, k - func
 

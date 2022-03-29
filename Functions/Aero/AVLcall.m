@@ -5,13 +5,13 @@ cmdfile=fopen('.\.\commandfile.txt','w');
 
 %load input files, disable graphics, enter run window
 %fprintf(cmdfile,'LOAD Inputs/AVLcases/%s\nMASS Inputs/Massfiles/%s\nCASE Inputs/%s\nPLOP\nGF\n\nmset\n0\nOPER\n\n',avl,mass,run);
-fprintf(cmdfile,'LOAD Inputs/AVLcases/%s\nMASS Inputs/Massfiles/%s\nPLOP\nGF\n\nmset\n0\nOPER\n\n',avl,mass);
+fprintf(cmdfile,'LOAD Inputs/AVLcases/%s\nMASS Inputs/Massfiles/%s\nPLOP\nGF\n\nmset\n0\nOPER\n',avl,mass);
 
 %Initialise, run, get forces
 tot_forc=sprintf('Out_Force_%.0f.txt',i);
 stab_deri=sprintf('Stab_Deri_%.0f.txt',i);
-fprintf(cmdfile,'#\nX\nFT\n%s\nO\n',tot_forc);
-fprintf(cmdfile,'#\nX\nST\n%s\nO\n\n',stab_deri);
+fprintf(cmdfile,'X\nFT\n%s\n',tot_forc);
+fprintf(cmdfile,'ST\n%s\n',stab_deri);
 
 %Plot Geometry
 fprintf(cmdfile,'G\nV\n0 90\nH\n');
@@ -34,7 +34,9 @@ filename=sprintf('geom_%.0f.ps',i)
 movefile('plot.ps',filename)
 movefile(filename,'Outputs/Plots/Geometry')
 
-outname=sprintf('out_%.0f.txt',i);
+%outname=sprintf('out_%.0f.txt',i);
+
+outname=tot_forc;
 
 end
 
