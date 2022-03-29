@@ -1,4 +1,4 @@
-function [massfilename, Area_Pass, Vol_Fuel] = MassDist(iter, Struc_Mass, Payload_Mass, Fuel_Mass)
+function [massfilename, Area_Pass, Vol_Fuel] = MassDist(Np, iter, Struc_Mass, Payload_Mass, Fuel_Mass)
 
 %Units of measurement
 Lunit = 1; % metres
@@ -32,7 +32,7 @@ fprintf(gfile,'\n');
 % Below loop implements Mass point of Passengers based on area of 1st and 2nd segment
 Payload_Mass = Payload_Mass*0.453592;
 Fuel_Mass = Fuel_Mass*0.453592;
-[CoM_Array] = MassPayPoints(Vol_Seg, Payload_Mass, Fuel_Mass, filename);
+[CoM_Array] = MassPayPoints(Np, Vol_Seg, Payload_Mass, Fuel_Mass, filename);
 
 for mcc = [1:length(CoM_Array)]
     CoM = CoM_Array{mcc};
@@ -47,7 +47,7 @@ Area_Pass = sum(CoM_Array{1}(4,:));
 Vol_Fuel = sum(CoM_Array{2}(4,:));
 
 %% Graph Mass point coords of BWB components
-BWB_Mass_Graph(Wing_Pos, CoM_Array{1}, CoM_Array{2}, CoM_X_Disp, CoM_Y_Disp)
+BWB_Mass_Graph(Np, Wing_Pos, CoM_Array{1}, CoM_Array{2}, CoM_X_Disp, CoM_Y_Disp)
 
 fclose(gfile);
 

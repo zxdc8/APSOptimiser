@@ -1,4 +1,4 @@
-function [CoM_Array] = MassPayPoints(Vol_Seg, Payload_Mass, Fuel_Mass, filename)
+function [CoM_Array] = MassPayPoints(Np, Vol_Seg, Payload_Mass, Fuel_Mass, filename)
 
 fid = fopen(filename);
 tline = fgetl(fid);
@@ -25,7 +25,7 @@ end
 Spar_Clear = 1; %m, distance of Passenger Cabin from TE & LE of Main Segments (1 & 2)
 X_Pos_Array = [];
 for mc = [1:length(X_Pos)] %Loop creates an array needed for finding Passenger Cabin sizing 
-    if mc == 1 || mc == 2 || mc == 3
+    if mc <= Np
         X_Pos_Array = [X_Pos_Array Spar_Clear];
     else
         X_Pos_Array = [X_Pos_Array 0];
@@ -34,7 +34,7 @@ end
 
 
 for mc = [1:length(X_Pos)-1]
-    if mc == 1 || mc == 2
+    if mc <= (Np - 1)
         X_Pos = (X_Pos + X_Pos_Array);
         Chord = Chord - Spar_Clear*2;
         
@@ -47,11 +47,11 @@ for mc = [1:length(X_Pos)-1]
         X_Pos = (X_Pos - X_Pos_Array);
         Chord = Chord + Spar_Clear*2;
     else
-        Vol_Fuel(mc-2) = Vol_Seg(mc);
+        Vol_Fuel(mc-(Np-1)) = Vol_Seg(mc);
         [cx, cy] = centroid(polyshape( [ X_Pos(mc)+Chord(mc) X_Pos(mc+1)+Chord(mc+1) X_Pos(mc+1) X_Pos(mc)], [Y_Pos(mc) Y_Pos(mc+1) Y_Pos(mc+1) Y_Pos(mc)] ));
-        CoM_Z_Fuel(mc-2) = tan( (Z_Pos(mc+1)-Z_Pos(mc))/(Y_Pos(mc+1)-Y_Pos(mc)) )*cy;
-        CoM_X_Fuel(mc-2) = cx;
-        CoM_Y_Fuel(mc-2) = cy; 
+        CoM_Z_Fuel(mc-(Np-1)) = tan( (Z_Pos(mc+1)-Z_Pos(mc))/(Y_Pos(mc+1)-Y_Pos(mc)) )*cy;
+        CoM_X_Fuel(mc-(Np-1)) = cx;
+        CoM_Y_Fuel(mc-(Np-1)) = cy; 
     end
 
 end
