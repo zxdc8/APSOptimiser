@@ -29,7 +29,7 @@ end
 if nargin <3
     TOM_0  = Par.Airframe+Par.MFC; % [kg], Set an initial estimate for the take-off mass
 end
-tic
+
 
 %% Update Kink altitude values
 Par.Alt_kink_Mis_Climb = KinkFunc(Par.CAS_Mis_ClimbHigh, Par.Mach_Mis_Climb);
@@ -56,18 +56,18 @@ disp(' ')
 TOM_design = fsolve(MProfile2,TOM_0,options);
 
 disp('... Done')
-toc
+
 disp(' ')
 
 %% Calculate fuel burn for the design case
-tic
+
 disp('Calculate fuel burn for the required design case')
 
 % Calculate the output values by inputting TOM_design into MProfile2
 [~, TotalFuel, Block, Mission] = MProfile2(TOM_design);
 
 disp('... Done')
-toc
+
 disp(' ')
 
 % Display the TOM
