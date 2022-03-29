@@ -7,7 +7,7 @@ Tunit = 1; % seconds
 filename = sprintf('case_%.0f.avl',iter);
 
 %Establish .mass file and dimensional units of measurements into file
-massfilename=sprintf('mass_%.0f.mass',iter); 
+massfilename=sprintf('././Inputs/Massfiles/mass_%.0f.mass',iter); 
 gfile=fopen(massfilename,'w');
 fprintf(gfile,'Lunit = %.2f m\n',Lunit);
 fprintf(gfile,'Munit = %.2f kg\n',Munit);
@@ -51,6 +51,6 @@ BWB_Mass_Graph(Np, Wing_Pos, CoM_Array{1}, CoM_Array{2}, CoM_X_Disp, CoM_Y_Disp)
 
 fclose(gfile);
 
-copyfile( 'mass_1.mass', 'mass_1.txt' );
+%copyfile( 'mass_1.mass', 'mass_1.txt' );
 
 end

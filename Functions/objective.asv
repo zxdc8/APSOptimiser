@@ -29,11 +29,10 @@ Fuel_Mass = 390720; %weight of fuel @ take-off
 
 %filename = AVLgen(L,N,S,X,iter,alpha);
     
-[massfilepath, Area_Pass, Vol_Fuel] = MassDist(Np, iter, Struc_Mass, Payload_Mass, Fuel_Mass); %Uses MassPoints & Foil_Integral functions to determine Mass distribution of Segments using previously made .avl file
+[massfilename, Area_Pass, Vol_Fuel] = MassDist(Np, iter, Struc_Mass, Payload_Mass, Fuel_Mass); %Uses MassPoints & Foil_Integral functions to determine Mass distribution of Segments using previously made .avl file
 
-massfile=sprintf('mass_%.0f.mass',iter)
 %call avl
-outname=AVLcall(filename,massfile,'w.run',iter);
+outname=AVLcall(filename,massfil'w.run',iter);
 
 %read data
 

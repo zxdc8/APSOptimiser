@@ -28,15 +28,24 @@ M=0.7; %Placeholder
 
 %C(3) = Vf - (Vwing+Vfuse/2)
 
+%Stability Part
+target_cmtot = -0.01;
+alpha_tol = 1.01; % 1% tolerance from target Cm
+
+Case_Results = fscanf( fopen(outname,'r'), '%s');   %fscanf(fileID, formatSpec)
+Cmtot = str2double( Case_Results([ strfind(Case_Results,'Cmtot=') + 6 :  strfind(Case_Results,'CZtot') - 1 ]) );
+
+
 %% 
 %Inequality Constraints
-C(1)=S(2)-S(1);
+C(1)=S(2)-S(1);     %Make sure wing tapers
 C(2)=S(3)-S(2);
 
 C(3)=S(2)+X(2)-72;  %Length Constraint
 C(4)=S(3)+X(3)-72;  %Length Constraint
 C(5)=x(6)+x(7)-40; %Wingspan
 
+C(6)=Cmtot*alpha_tol-target_cmtot;  %Longitudinal stability
 
 %Equality Constraints
 Ceq(1)=Vf-VW-((1/3)*VFus);     %Fuel Volume
