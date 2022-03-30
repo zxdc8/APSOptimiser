@@ -4,8 +4,8 @@ function outname = AVLcall(avl,mass,run,i)
 cmdfile=fopen('.\.\commandfile.txt','w');
 
 %load input files, disable graphics, enter run window
-%fprintf(cmdfile,'LOAD Inputs/AVLcases/%s\nMASS Inputs/Massfiles/%s\nCASE Inputs/%s\nPLOP\nGF\n\nmset\n0\nOPER\n\n',avl,mass,run);
-fprintf(cmdfile,'LOAD Inputs/AVLcases/%s\nMASS Inputs/Massfiles/%s\nPLOP\nGF\n\nmset\n0\nOPER\n',avl,mass);
+fprintf(cmdfile,'LOAD Inputs/AVLcases/%s\nMASS Inputs/Massfiles/%s\nCASE Inputs/%s\nPLOP\nGF\n\nmset\n0\nOPER\n',avl,mass,run);
+%fprintf(cmdfile,'LOAD Inputs/AVLcases/%s\nMASS Inputs/Massfiles/%s\nPLOP\nGF\n\nmset\n0\nOPER\n',avl,mass);
 
 %Initialise, run, get forces
 tot_forc=sprintf('Out_Force_%.0f.txt',i);

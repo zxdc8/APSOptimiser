@@ -11,21 +11,21 @@
 
  Standard axis orientation,  X fwd, Z down         
 
- Run case:  -unnamed-                              
+ Run case: Cruise                                  
 
-  Alpha =   0.00000     pb/2V =  -0.00000     p'b/2V =  -0.00000
+  Alpha =  13.86086     pb/2V =  -0.00000     p'b/2V =  -0.00000
   Beta  =   0.00000     qc/2V =   0.00000
   Mach  =     0.000     rb/2V =  -0.00000     r'b/2V =  -0.00000
 
-  CXtot =  -0.01498     Cltot =   0.00000     Cl'tot =   0.00000
-  CYtot =  -0.00007     Cmtot =  -0.01439
-  CZtot =  -0.12344     Cntot =  -0.00003     Cn'tot =  -0.00003
+  CXtot =   0.12095     Cltot =  -0.00000     Cl'tot =  -0.00028
+  CYtot =  -0.00334     Cmtot =   0.31341
+  CZtot =  -0.92137     Cntot =  -0.00118     Cn'tot =  -0.00114
 
-  CLtot =   0.12344
-  CDtot =   0.01498
-  CDvis =   0.01314     CDind = 0.0018466
-  CLff  =   0.12344     CDff  = 0.0019689    | Trefftz
-  CYff  =   0.00000         e =    0.6929    | Plane  
+  CLtot =   0.92351
+  CDtot =   0.10330
+  CDvis =   0.01430     CDind = 0.0889949
+  CLff  =   0.94547     CDff  = 0.0914923    | Trefftz
+  CYff  =   0.00000         e =    0.8747    | Plane  
 
 
  ---------------------------------------------------------------

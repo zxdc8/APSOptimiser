@@ -49,6 +49,6 @@ options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detail
 %Generate Final AVL case file
 [filename, iter]=aeromodule(X)
 
-AVLcall(filename,'w.run',iter);
+AVLcall(filename,'mass_1.avl','w.run',iter);
 
 fclose('all');
