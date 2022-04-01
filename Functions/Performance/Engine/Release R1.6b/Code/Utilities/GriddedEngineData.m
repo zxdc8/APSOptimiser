@@ -19,13 +19,14 @@ end
 
 M_ext = Par.M_ext;
 EngFileName = Par.EngFileName;
+SF = Par.SF;
 
-EngineData.Climb      = EngineGridFunc3( 'Climb'     , 1, EngFileName, M_ext ); % Climb
-EngineData.Cruise     = EngineGridFunc3( 'Cruise'    , 1, EngFileName, M_ext ); % Mission Cruise
-EngineData.Descent    = EngineGridFunc3( 'Descent'   , 1, EngFileName, M_ext ); % Descent
-EngineData.Diversion  = EngineGridFunc3( 'Diversion' , 1, EngFileName, M_ext ); % Diversion Cruise
-EngineData.Hold       = EngineGridFunc3( 'Hold'      , 1, EngFileName, M_ext ); % Hold
-EngineData.Approach   = EngineGridFunc3( 'Approach'  , 1, EngFileName, M_ext ); % Approach
+EngineData.Climb      = EngineGridFunc3( 'Climb'     , 1, EngFileName, M_ext, SF ); % Climb
+EngineData.Cruise     = EngineGridFunc3( 'Cruise'    , 1, EngFileName, M_ext, SF ); % Mission Cruise
+EngineData.Descent    = EngineGridFunc3( 'Descent'   , 1, EngFileName, M_ext, SF ); % Descent
+EngineData.Diversion  = EngineGridFunc3( 'Diversion' , 1, EngFileName, M_ext, SF ); % Diversion Cruise
+EngineData.Hold       = EngineGridFunc3( 'Hold'      , 1, EngFileName, M_ext, SF ); % Hold
+EngineData.Approach   = EngineGridFunc3( 'Approach'  , 1, EngFileName, M_ext, SF ); % Approach
 
 disp(' ');
 disp(['... Engine data prepared from ' EngFileName]);

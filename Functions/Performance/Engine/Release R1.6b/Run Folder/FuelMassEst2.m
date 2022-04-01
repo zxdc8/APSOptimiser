@@ -1,4 +1,5 @@
-function [Mf, Vf] = FuelMassEst(M,Alt,S,CD0,k)
+clear all
+close all
 
 %% Run Design Set
 %This file is based on AVDASI 4 RunDesignSet - with output of Wf - fuel
@@ -28,11 +29,11 @@ disp(' ')
 %% Calculate the mass, fuel and range for a set of missions
 
 
-Par.Mach_Cruise            = M;      % Mach number cruise [-]
-Par.Alt_Cruise             = Alt;     % Cruise Alt [ft]
-Par.S                      = S;       % Wing area [m^2] (DP)
-Par.CD0_Clean              = CD0;     % Zero Lift Drag Coef [-] (DP)
-Par.K_Clean                = k;     % Induced Drag factor - clean [-] (DP)
+Par.Mach_Cruise            = 0.7;      % Mach number cruise [-]
+Par.Alt_Cruise             = 38000;     % Cruise Alt [ft]
+Par.S                      = 450;       % Wing area [m^2] (DP)
+Par.CD0_Clean              = 0.0164;     % Zero Lift Drag Coef [-] (DP)
+Par.K_Clean                = 0.3;     % Induced Drag factor - clean [-] (DP)
 
 
 
@@ -42,24 +43,38 @@ Par.Range_req              = 7750;      % Required design range [nm] (DP)
 Par.PLmax                  = 48000;     % Max payload [kg] (DP)
 Par.MFC                    = 60000;     % Max Fuel capacity [kg] (DP)
 Par.MTOM                   = 313000;    % Max Take Off Mass [kg] (DP)
-Par.Airframe               = 160000;    % Operating Mass Empty [kg] (DP)
+Par.Airframe               = 200000;    % Operating Mass Empty [kg] (DP)
 Par.PL_req                 = 48000;     % Design Payload [kg] (DP)
 
-Par.SF = 40;
+Par.SF = 20;
+
 
 % call function FindDesignPoint to calculate mission properties
 dp1 = FindDesignPoint(Par);
 
+
 for jj = 1:16
  while dp1.Mission.Range(jj)< 0
      
-    Par.SF = Par.SF + 10; 
+    Par.SF = Par.SF + 1; 
      
      dp1 = FindDesignPoint(Par);
 
  end
  
 end
+
+% for jj = 1:37
+%  while dp1.Mission.Data.h_ft(jj)< Par.Alt_Cruise
+%      
+%     Par.SF = Par.SF + 10; 
+%      
+%      dp1 = FindDesignPoint(Par);
+% 
+%  end
+%  
+% end
+
 %% Output results
 
      astring = ['SF = ' num2str(Par.SF)];
@@ -78,7 +93,8 @@ rholh2 = 71; %[kg/m3]
 
 Vf = (Mf)/rholh2;%[m3]
 
-end
+
+% end
 
 
 
