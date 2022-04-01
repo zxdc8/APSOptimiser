@@ -6,26 +6,26 @@
      # Strips   =  80
      # Vortices = 960
 
-  Sref =  730.88       Cref =  31.530       Bref =  63.230    
-  Xref =  32.657       Yref = 0.14038E-06   Zref =  0.0000    
+  Sref =  1727.2       Cref =  24.360       Bref =  80.000    
+  Xref =  28.748       Yref = 0.30053E-06   Zref =  0.0000    
 
  Standard axis orientation,  X fwd, Z down         
 
  Run case: Cruise                                  
 
-  Alpha =   7.60079     pb/2V =  -0.00000     p'b/2V =  -0.00000
+  Alpha =   3.99595     pb/2V =  -0.00000     p'b/2V =  -0.00000
   Beta  =   0.00000     qc/2V =   0.00000
   Mach  =     0.000     rb/2V =  -0.00000     r'b/2V =  -0.00000
 
-  CXtot =   0.04617     Cltot =  -0.00000     Cl'tot =  -0.00001
-  CYtot =  -0.00041     Cmtot =  -0.00821
-  CZtot =  -0.56748     Cntot =  -0.00010     Cn'tot =  -0.00010
+  CXtot =   0.00431     Cltot =   0.00000     Cl'tot =   0.00000
+  CYtot =  -0.00014     Cmtot =  -0.02208
+  CZtot =  -0.24089     Cntot =   0.00001     Cn'tot =   0.00001
 
-  CLtot =   0.56860
-  CDtot =   0.02930
-  CDvis =   0.00740     CDind = 0.0218950
-  CLff  =   0.57152     CDff  = 0.0211881    | Trefftz
-  CYff  =   0.00000         e =    0.8971    | Plane  
+  CLtot =   0.24060
+  CDtot =   0.01249
+  CDvis =   0.00602     CDind = 0.0064688
+  CLff  =   0.24105     CDff  = 0.0074825    | Trefftz
+  CYff  =   0.00000         e =    0.6671    | Plane  
 
 
  ---------------------------------------------------------------
