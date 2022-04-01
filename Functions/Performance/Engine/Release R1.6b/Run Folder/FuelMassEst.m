@@ -42,19 +42,37 @@ Par.Range_req              = 7750;      % Required design range [nm] (DP)
 Par.PLmax                  = 48000;     % Max payload [kg] (DP)
 Par.MFC                    = 60000;     % Max Fuel capacity [kg] (DP)
 Par.MTOM                   = 313000;    % Max Take Off Mass [kg] (DP)
-Par.Airframe               = 205000;    % Operating Mass Empty [kg] (DP)
+Par.Airframe               = 160000;    % Operating Mass Empty [kg] (DP)
 Par.PL_req                 = 48000;     % Design Payload [kg] (DP)
+
+Par.SF = 40;
 
 % call function FindDesignPoint to calculate mission properties
 dp1 = FindDesignPoint(Par);
-    
 
+for jj = 1:16
+ while dp1.Mission.Range(jj)< 0
+     
+    Par.SF = Par.SF + 10; 
+     
+     dp1 = FindDesignPoint(Par);
+
+ end
+ 
+end
 %% Output results
+
+     astring = ['SF = ' num2str(Par.SF)];
+     disp(astring)
+     
+     
+     
+Meng = enginemass(Par.SF);
 
 %Fuel Consumption
 Mf = dp1.TotalFuel;
 
-%Fuel Volume required - NOTE: 20% space for tanks 
+%Fuel Volume required
 rholh2 = 71; %[kg/m3]
 
 

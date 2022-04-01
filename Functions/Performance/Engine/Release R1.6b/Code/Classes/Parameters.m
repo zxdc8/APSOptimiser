@@ -20,6 +20,7 @@ classdef Parameters
         MFC                    = 80000;     % Max Fuel capacity [kg]
         MTOM                   = 230000;    % Max Take Off Mass [kg]
         Airframe               = 130000;    % Operating Mass Empty [kg]
+        SF = 3;
         
         % Engine parmetars
         

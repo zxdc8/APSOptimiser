@@ -20,10 +20,11 @@ Par.Airframe               = 200000;    % Operating Mass Empty [kg] (DP)
 Par.PL_req                 = 48000;     % Design Payload [kg] (DP)
 
 % Engine parmetars
-Par.EngFileName            = 'HydrogenTurbojet'; % Aircraft type for engine data selection
+Par.EngFileName            = 'TF15Data'; % Aircraft type for engine data selection
 Par.n                      = 3;         % Number of engines (DP)
-Par.BPR                    = 12;         % By pass ratio
-Par.TakeoffStaticThrust_lb = 120000;     % Take off thrust [lb] (DP)
+Par.BPR                    = 8;         % By pass ratio
+Par.TakeoffStaticThrust_lb = 200000;     % Take off thrust [lb] (DP)
+Par.SF                     = 3;         %SF of engine to meet requirements
 
 % Aerodynamics data From typical values for large turboprop 
 % Aerodynamics data
@@ -75,11 +76,11 @@ Par.Range_Takeoff          = 0;         % Take-off [nm]
 Par.PercentagePolicy       = 0;         % Percentage cruise fuel reserve [%] - optional
 
 % Computation parameters
-Par.Tol_ContCruise         = 0.01;      % Computation Tolerance for criuse iterations
-Par.Tol_Diversion          = 0.01;      % Computation Tolerance for Div iterations
-Par.Tol_PercentPolicy      = 0.01;      % Computation Tolerance for reserve iterations
-Par.dM_max                 = 0.2;       % Max allowed difference for Mach number in engine data
-Par.dh_max                 = 5000;      % Max allowed difference for Alltitide in engine data
+Par.Tol_ContCruise         = 0.02;      % Computation Tolerance for criuse iterations
+Par.Tol_Diversion          = 0.02;      % Computation Tolerance for Div iterations
+Par.Tol_PercentPolicy      = 0.02;      % Computation Tolerance for reserve iterations
+Par.dM_max                 = 0.4;       % Max allowed difference for Mach number in engine data
+Par.dh_max                 = 10000;      % Max allowed difference for Alltitide in engine data
 
 Par.interp_method          = 'spline';  % 'spline' or 'linear'
 
