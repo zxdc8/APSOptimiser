@@ -43,9 +43,7 @@ switch (Option)
         SF = 0.8;
 end
 % Formula for take-off fuel burn directly from Airbus Specification
-% Fuel_lb = (fuelpar2 + (fuelpar3 / BPR)) * 0.001 * Mass_lb * SF;
-%Fuel = lb2kg(Fuel_lb);
-%Modified, Fuel as 8kg for Hydrogen as in Airbus Task Spec
-Fuel = 8;  
+Fuel_lb = (fuelpar2 + (fuelpar3 / BPR)) * 0.001 * Mass_lb * SF;
+Fuel = lb2kg(Fuel_lb); 
 end
 

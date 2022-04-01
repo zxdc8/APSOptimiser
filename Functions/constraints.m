@@ -20,10 +20,10 @@ Alt=38000;
 M=0.7; %Placeholder
 
 %Calculate current volume of fuel tank required
-%[Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
+[Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
 
 %OR USE FIXED FUEL
-Vf = 400;
+%Vf = 400;
 
 
 %C(3) = Vf - (Vwing+Vfuse/2)

@@ -1,12 +1,10 @@
-function RawEngineData = UBB65Data
+function RawEngineData = UBB65Data(SF)
 %UBB65Data provides raw engine data for the engine UBB65 scaled up to a
 %maximum thrust of 75,000 lbf.
 %
 % Engine data for Diversion, Climb, Descent, Cruise, Hold and Approach
 %
 % Source: Mr N. A. Mitchell ( July 2016)
-% 
-% Data provided as [altitude [ft], Mach number [-], Thrust [N], Fuel Flow [kg/hr] ]
 
 RawEngineData.Max.Continuous = [14000   0.5 130689.6454	5093.317735	;
                                 14000	0.6	122146.2037	5223.663878	;
@@ -17,6 +15,8 @@ RawEngineData.Max.Continuous = [14000   0.5 130689.6454	5093.317735	;
                                 20000	0.5	111862.9459	4369.236472	;
                                 20000	0.6	106143.6758	4494.509737	;
                                 20000	0.7	101742.108	4634.475486	];
+                            
+
                             
 RawEngineData.Diversion  = [25000	0.65	-2282.627539	285.3567945;
                             25000	0.65	33976.21728 	1663.159208;                    
@@ -285,5 +285,21 @@ RawEngineData.Hold = [      1500 0.35 -521.3656172	461.341957	;
                             1500 0.35 134487.2247 	4664.654638	;
                             1500 0.35 168108.4751 	5752.255709	;
                             1500 0.35 180761.8848   6171.736005	];
+                        
+                        
+                        
+RawEngineData.Diversion(:,3) =  RawEngineData.Diversion(:,3).*SF;                  
+RawEngineData.Diversion(:,4) =  RawEngineData.Diversion(:,4).*SF/3; 
+RawEngineData.Climb(:,3) =  RawEngineData.Climb(:,3).*SF;                  
+RawEngineData.Climb(:,4) =  RawEngineData.Climb(:,4).*SF/3;
+RawEngineData.Descent(:,3) =  RawEngineData.Descent(:,3).*SF;                  
+RawEngineData.Descent(:,4) =  RawEngineData.Descent(:,4).*SF/3;
+RawEngineData.Cruise(:,3) =  RawEngineData.Cruise(:,3).*SF;                  
+RawEngineData.Cruise(:,4) =  RawEngineData.Cruise(:,4).*SF/3;
+RawEngineData.Hold(:,3) =  RawEngineData.Hold(:,3).*SF;                  
+RawEngineData.Hold(:,4) =  RawEngineData.Hold(:,4).*SF/3;  
+RawEngineData.Diversion(:,3) =  RawEngineData.Diversion(:,3).*SF;                  
+RawEngineData.Diversion(:,4) =  RawEngineData.Diversion(:,4).*SF/3;  
+
 end
 

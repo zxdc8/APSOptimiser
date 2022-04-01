@@ -1,4 +1,4 @@
-function data = EngineGridFunc3( Setting, Extrap, EngFileName, M_ext )
+function data = EngineGridFunc3( Setting, Extrap, EngFileName, M_ext,SF )
 %EngineGridFunc grids the engine data into a usable look-up grid
 % 
 % Created by: *D Rezgui*, *S Mitchell* and *M Gibbons*, 
@@ -19,7 +19,7 @@ T_inc = 20; % Number of Thrust data points
 M_inc = 20; % Number of Mach number data points
 
 %% Select an aircraft
-RawEngineData = feval(EngFileName);
+RawEngineData = feval(EngFileName,SF);
 
 %% Select a thrust setting
 switch (Setting)
