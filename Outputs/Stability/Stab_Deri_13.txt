@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  ---------------------------------------------------------------
  Vortex Lattice Output -- Total Forces
 
@@ -51,3 +52,58 @@
  Neutral point  Xnp =  42.982201
 
  Clb Cnr / Clr Cnb  =   0.023045    (  > 1 if spirally stable )
+=======
+ ---------------------------------------------------------------
+ Vortex Lattice Output -- Total Forces
+
+ Configuration: Cruise                                                      
+     # Surfaces =   2
+     # Strips   =  80
+     # Vortices = 960
+
+  Sref =  705.73       Cref =  34.530       Bref =  76.010    
+  Xref =  5.2453       Yref =-0.40727E-06   Zref =  0.0000    
+
+ Standard axis orientation,  X fwd, Z down         
+
+ Run case: Cruise                                  
+
+  Alpha =   7.58160     pb/2V =  -0.00000     p'b/2V =  -0.00000
+  Beta  =   0.00000     qc/2V =   0.00000
+  Mach  =     0.000     rb/2V =  -0.00000     r'b/2V =  -0.00000
+
+  CXtot =   0.05351     Cltot =  -0.00000     Cl'tot =  -0.00000
+  CYtot =  -0.00017     Cmtot =   0.02998
+  CZtot =  -0.58694     Cntot =  -0.00000     Cn'tot =  -0.00000
+
+  CLtot =   0.58886
+  CDtot =   0.02440
+  CDvis =   0.00769     CDind = 0.0167117
+  CLff  =   0.59109     CDff  = 0.0176636    | Trefftz
+  CYff  =   0.00000         e =    0.7691    | Plane  
+
+
+ ---------------------------------------------------------------
+
+ Stability-axis derivatives...
+
+                             alpha                beta
+                  ----------------    ----------------
+ z' force CL |    CLa =   3.537024    CLb =  -0.000008
+ y  force CY |    CYa =  -0.001663    CYb =  -0.007946
+ x' mom.  Cl'|    Cla =  -0.000012    Clb =  -0.018427
+ y  mom.  Cm |    Cma =   0.278030    Cmb =   0.000000
+ z' mom.  Cn'|    Cna =  -0.000059    Cnb =   0.001071
+
+                     roll rate  p'      pitch rate  q'        yaw rate  r'
+                  ----------------    ----------------    ----------------
+ z' force CL |    CLp =   0.000042    CLq =   0.514867    CLr =  -0.000007
+ y  force CY |    CYp =   0.019331    CYq =  -0.000915    CYr =  -0.001258
+ x' mom.  Cl'|    Clp =  -0.360373    Clq =   0.000003    Clr =   0.131232
+ y  mom.  Cm |    Cmp =  -0.000000    Cmq =  -0.122280    Cmr =  -0.000000
+ z' mom.  Cn'|    Cnp =  -0.033556    Cnq =   0.000025    Cnr =  -0.008073
+
+ Neutral point  Xnp =   2.531029
+
+ Clb Cnr / Clr Cnb  =   1.058766    (  > 1 if spirally stable )
+>>>>>>> da57431f0eca6f5b3e2a61fff76496693f4577e8

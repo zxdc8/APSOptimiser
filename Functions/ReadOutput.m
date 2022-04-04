@@ -19,7 +19,7 @@ e=oswald(2);
 S=SM(1);
 
 %Aspect ratio
-AR=((x(6)+x(7)*2).^2)/S
+AR=(((x(6)+x(7))*2).^2)/S
 
 %Span efficiency factor
 k=1/(pi*e*AR)
