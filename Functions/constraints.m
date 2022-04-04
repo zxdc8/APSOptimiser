@@ -1,17 +1,28 @@
 %////////CONSTRAINTS/////////
-function [C, Ceq]= constraints(x)
+function [C, Ceq] = constraints(x, Np, Struc_Mass, Payload_Mass, Fuel_Mass)
 
 %Calculate Wing Area
 [S,X,Z,dih]=DesignToSXZ(x);
 
 
 %% Fuel Volume constraint
-[VFus, VW, VP]=AreasVolumes(S,X,Z,dih);
+% [VFus, VW, VP]=AreasVolumes(S,X,Z,dih);
 
 iter=getIteration();
+outname=sprintf('Out_Force_%i.txt',iter-1);
 
-outname=sprintf('Out_Force_%i.txt',iter-1)
+Np
+iter
+Struc_Mass
+Payload_Mass
+Fuel_Mass
 
+[massfilename, Area_Pass, Vol_Fuel] = MassDist(Np, iter, Struc_Mass, Payload_Mass, Fuel_Mass);
+Area_Pass; %Area of Passenger module floor, used to determine if there is enough floor space for all passengers ...
+           %Given the height of the aerofoils for the passeneger modules, assume at all points there is enough ...
+           %height space for passengers to sit
+Vol_Fuel; %Volume of Fuel module, should be multiplied by a factor to account for structures and sub-systems that take up volume in this moudle
+           
 %Requires function for Mach, Alt, S, CD0, k - func
 
 [CdCl, CD0, s, k, M]=ReadOutput(outname,x);

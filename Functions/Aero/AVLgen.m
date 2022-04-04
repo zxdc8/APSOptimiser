@@ -19,7 +19,7 @@ CDp=0.0;
 CD0=0.0;
 
 %Define CL
-CL=LiftCalc(M,At,CD0)
+CL=LiftCalc(M,At,CD0);
 
 %Define number of vortices and spacing etc
 Nchord=12;  %number of chordwise vortices
@@ -28,7 +28,8 @@ Nspan=20;   %no spanwise vortices per section
 Sspace=1.0; %spanwise spacing
 
 %create geometry file and create headers
-pth='././Inputs/AVLcases';
+pth = fullfile('C:','Users','Joe','OneDrive - University of Bristol','Documents','GitHub','APSOptimiser','Inputs','AVLcases');
+% pth='././Inputs/AVLcases';
 filename=sprintf('case_%.0f.avl',i);
 gfile=fopen(fullfile(pth,filename),'w');
 fprintf(gfile,'Cruise\n%.2f\n0   0   0\n',M);

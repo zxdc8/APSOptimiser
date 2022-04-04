@@ -11,7 +11,7 @@ fprintf(ifile,'1');
 fclose(ifile);
 
 %Joe's Parameters
-L=20;
+L = 20;
 N = 3; %Total no. of segment sides to make Wing modules 
 Np = 2; %No. of segment sides dedicated to Passenger Cabin modules
 
@@ -40,11 +40,14 @@ UB=[72 72 72 72 72 35 40];
 %Define Objective Function
 [objFun]=@(x)objective(x);
 
-%Define solver options
+%Define solver options 
 options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',0.5,'FunctionTolerance',1e-7,'PlotFcns',@optimplotfval);
 
 %Run Optimisation
-[X,J]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options)
+[X,J]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options)   
+%////////////////// Constraints module to use
+% [C, Ceq] = constraints(x, Np, Struc_Mass, Payload_Mass, Fuel_Mass);  <--List of variables that the constraint module requires from the main.m script
+
 
 %Generate Final AVL case file
 [filename, iter]=aeromodule(X)

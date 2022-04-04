@@ -25,12 +25,12 @@ system('avl < commandfile.txt');
 
 %Move output files
 tot_forc=sprintf('Out_Force_%.0f.txt',i);
-movefile(tot_forc,'Outputs/Forces');
+movefile(tot_forc,'Outputs/Forces')
 stab_deri=sprintf('Stab_Deri_%.0f.txt',i);
 movefile(stab_deri,'Outputs/Stability');
 
 %Move plot file
-filename=sprintf('geom_%.0f.ps',i)
+filename=sprintf('geom_%.0f.ps',i);
 movefile('plot.ps',filename)
 movefile(filename,'Outputs/Plots/Geometry')
 

@@ -1,5 +1,5 @@
 %////////OBJECTIVE FUNCTION/////////
-function f = objective(x)
+function [objFun] = objective(x)
 %generate geometry
 
 [filename,iter]=aeromodule(x);
@@ -8,30 +8,26 @@ function f = objective(x)
 [S,X,Z,dih]=DesignToSXZ(x);
 
 %Get iteration number
-iter=getIteration;
 
+iter=getIteration();
 
 %Joe's Parameters
 L=20;
 N = 3; %Total no. of segment sides to make Wing modules 
 Np = 2; %No. of segment sides dedicated to Passenger Cabin modules
 
-
 %Establish Weights of BWB components
 Struc_Mass = 131375; %weight of wing structures
 Payload_Mass = 105160; %weight of Passengers
 Fuel_Mass = 390720; %weight of fuel @ take-off
     
-
-
 %Generate AVL Aero Input file
 [filename,At]=AVLgen(S,Z,dih,X,iter);
 
 %filename = AVLgen(L,N,S,X,iter,alpha);
-    
 [massfilepath, Area_Pass, Vol_Fuel] = MassDist(Np, iter, Struc_Mass, Payload_Mass, Fuel_Mass); %Uses MassPoints & Foil_Integral functions to determine Mass distribution of Segments using previously made .avl file
 
-massfile=sprintf('mass_%.0f.mass',iter)
+massfile=sprintf('mass_%.0f.mass',iter);
 %call avl
 outname=AVLcall(filename,massfile,'w.run',iter);
 
@@ -39,7 +35,8 @@ outname=AVLcall(filename,massfile,'w.run',iter);
 
 [CdCl, CD0, s, k, M]=ReadOutput(outname,x);
 
-f=CdCl; %- this will be old I reckon
+
+objFun = CdCl; %- this will be old I reckon
 
 iterUpdate;
 
