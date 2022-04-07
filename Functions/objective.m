@@ -35,12 +35,8 @@ outname=AVLcall(filename,massfile,'w.run',iter);
 
 [CdCl, CD0, s, k, M]=ReadOutput(outname,x);
 
-<<<<<<< HEAD
 
 objFun = CdCl; %- this will be old I reckon
-=======
-%f=CdCl; %- this will be old I reckon
->>>>>>> da57431f0eca6f5b3e2a61fff76496693f4577e8
 
 iterUpdate;
 
@@ -53,9 +49,9 @@ iterUpdate;
 
 Alt = 38000;
 
-[Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
+%[Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
 
 
-f = Mf;  %Load fuel mass as objective function
+%f = Mf;  %Load fuel mass as objective function
 
 end

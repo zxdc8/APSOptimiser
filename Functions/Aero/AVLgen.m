@@ -6,7 +6,7 @@ function [filename,At] = AVLgen(S,Z,dih,X,i)
 dih=dih*pi/180;
 
 %Calculate planform area
-A=0.5*(S(1:length(S)-1)+S(2:length(S))).*(Z(2:length(Z))-Z(1:length(Z)-1));
+A=0.5*(S(1:length(S)-1)+S(2:length(S))).*(Z(1:length(Z)-1));
 At=sum(A)*2;
 
 %Define reference lengths, places

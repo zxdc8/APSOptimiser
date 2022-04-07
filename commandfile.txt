@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 LOAD Inputs/AVLcases/case_.avl
 MASS Inputs/Massfiles/mass_.mass
-=======
-LOAD Inputs/AVLcases/case_65.avl
-MASS Inputs/Massfiles/mass_65.mass
->>>>>>> da57431f0eca6f5b3e2a61fff76496693f4577e8
 CASE Inputs/w.run
 PLOP
 GF
@@ -14,15 +9,9 @@ mset
 OPER
 X
 FT
-<<<<<<< HEAD
 Out_Force_.txt
 ST
 Stab_Deri_.txt
-=======
-Out_Force_65.txt
-ST
-Stab_Deri_65.txt
->>>>>>> da57431f0eca6f5b3e2a61fff76496693f4577e8
 G
 V
 0 90
