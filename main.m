@@ -1,7 +1,7 @@
 %////////MAIN FILE - RUN THIS/////////
 fclose('all')
 close all
-clear allc
+clear all
 
 %set iteration file-workaround
 filename='iteration.csv';

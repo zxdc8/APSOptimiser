@@ -2,21 +2,17 @@
 -------------------------
 Run     case   1:       Cruise
 
-<<<<<<< HEAD
-alpha        ->  CL          =  0.923514
-=======
+
 alpha        ->  CL          =  0.509033
->>>>>>> da57431f0eca6f5b3e2a61fff76496693f4577e8
+
 beta         ->  beta        =   0.00000   
 pb/2V        ->  pb/2V       =   0.00000
 qc/2V        ->  qc/2V       =   0.00000
 rb/2V        ->  rb/2V       =   0.00000
 
-<<<<<<< HEAD
-CL   =   0.9235
-=======
+
 CL   =   0.5090
->>>>>>> da57431f0eca6f5b3e2a61fff76496693f4577e8
+
 CDo   =   0.00
 velocity   =   206.55
 density  =   0.33
