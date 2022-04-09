@@ -45,9 +45,6 @@ options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detail
 
 %Run Optimisation
 [X,J]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options)   
-%////////////////// Constraints module to use
-% [C, Ceq] = constraints(x, Np, Struc_Mass, Payload_Mass, Fuel_Mass);  <--List of variables that the constraint module requires from the main.m script
-
 
 %Generate Final AVL case file
 [filename, iter]=aeromodule(X)

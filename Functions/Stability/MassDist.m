@@ -4,10 +4,14 @@ function [massfilename, Area_Pass, Vol_Fuel] = MassDist(Np, iter, Struc_Mass, Pa
 Lunit = 1; % metres
 Munit = 1; % kilograms
 Tunit = 1; % seconds
+
 filename = sprintf('././Inputs/AVLcases/case_%.0f.avl',iter);
+% filename = sprintf('C:/Users/Joe/OneDrive - University of Bristol/Documents/GitHub/APSOptimiser/Inputs/AVLcases/case_%.0f.avl',iter); %/\/\/\/\
 
 %Establish .mass file and dimensional units of measurements into file
-massfilename=sprintf('././Inputs/Massfiles/mass_%.0f.mass',iter); 
+massfilename=sprintf('././Inputs/Massfiles/mass_%.0f.mass',iter) 
+% massfilename=sprintf('C:/Users/Joe/OneDrive - University of Bristol/Documents/GitHub/APSOptimiser/Inputs/Massfiles/mass_%.0f.mass',iter); %/\/\/\/\
+
 gfile=fopen(massfilename,'w');
 fprintf(gfile,'Lunit = %.2f m\n',Lunit);
 fprintf(gfile,'Munit = %.2f kg\n',Munit);

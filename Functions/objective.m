@@ -10,6 +10,7 @@ function [objFun] = objective(x)
 %Get iteration number
 
 iter=getIteration();
+% iter = 1; %/\/\/\/\
 
 %Joe's Parameters
 L=20;
@@ -21,6 +22,14 @@ Struc_Mass = 131375; %weight of wing structures
 Payload_Mass = 105160; %weight of Passengers
 Fuel_Mass = 390720; %weight of fuel @ take-off
     
+%Create Input File for Constraints function
+pth='././APSOptimiser';
+% pth = 'C:/Users/Joe/OneDrive - University of Bristol/Documents/GitHub/APSOptimiser'; %/\/\/\/\
+confilename=sprintf('Constraint_Input.txt');
+confile = fopen(fullfile(pth,confilename),'w');
+fprintf(confile,'%d\n%d\n%d\n%d\n', Np, Struc_Mass, Payload_Mass, Fuel_Mass);
+fclose(confile);
+
 %Generate AVL Aero Input file
 [filename,At]=AVLgen(S,Z,dih,X,iter);
 
@@ -28,6 +37,7 @@ Fuel_Mass = 390720; %weight of fuel @ take-off
 [massfilepath, Area_Pass, Vol_Fuel] = MassDist(Np, iter, Struc_Mass, Payload_Mass, Fuel_Mass); %Uses MassPoints & Foil_Integral functions to determine Mass distribution of Segments using previously made .avl file
 
 massfile=sprintf('mass_%.0f.mass',iter);
+
 %call avl
 outname=AVLcall(filename,massfile,'w.run',iter);
 

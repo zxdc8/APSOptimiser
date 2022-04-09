@@ -28,7 +28,7 @@ Nspan=20;   %no spanwise vortices per section
 Sspace=1.0; %spanwise spacing
 
 %create geometry file and create headers
-%pth = fullfile('C:','Users','Joe','OneDrive - University of Bristol','Documents','GitHub','APSOptimiser','Inputs','AVLcases');
+% pth = fullfile('C:','Users','Joe','OneDrive - University of Bristol','Documents','GitHub','APSOptimiser','Inputs','AVLcases'); %/\/\/\/\
 pth='././Inputs/AVLcases';
 filename=sprintf('case_%.0f.avl',i);
 gfile=fopen(fullfile(pth,filename),'w');

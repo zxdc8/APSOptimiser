@@ -12,12 +12,11 @@ function CL=LiftCalc(M,At,CD0)
     Re= (rho*a*M*c)/DynVisc;
     
     %Create Run File
-%     pth='././Inputs';
-    f = fullfile('C:','Users','Joe','OneDrive - University of Bristol','Documents','GitHub','APSOptimiser','Inputs');
+    pth='././Inputs';
+%     pth = fullfile('C:','Users','Joe','OneDrive - University of Bristol','Documents','GitHub','APSOptimiser','Inputs'); %/\/\/\/\
     filename=sprintf('w.run');
-    gfile=fopen('././Inputs/w.run','w');
 
-    %gfile=fopen(fullfile(f,filename),'w');
+    gfile=fopen(fullfile(pth,filename),'w');
 
 
     fprintf(gfile,['\n-------------------------\nRun     case   1:       Cruise\n\n' ...

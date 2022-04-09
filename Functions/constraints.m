@@ -1,9 +1,18 @@
 %////////CONSTRAINTS/////////
-function [C, Ceq] = constraints(x, Np, Struc_Mass, Payload_Mass, Fuel_Mass)
+function [C, Ceq] = constraints(x)
 
 %Calculate Wing Area
 [S,X,Z,dih]=DesignToSXZ(x);
 
+%Read out Constrains Input Text file
+pth='././APSOptimiser';
+% pth = 'C:/Users/Joe/OneDrive - University of Bristol/Documents/GitHub/APSOptimiser'; %/\/\/\/\
+confilename=sprintf('Constraint_Input.txt');
+confid = fopen(fullfile(pth,confilename)); %Opens Constraint Input file
+Np = str2double(fgetl(confid)); %Read out each text file line in order and assign to subsequent variable
+Struc_Mass = str2double(fgetl(confid));
+Payload_Mass = str2double(fgetl(confid));
+Fuel_Mass = str2double(fgetl(confid));
 
 %% Fuel Volume constraint
 % [VFus, VW, VP]=AreasVolumes(S,X,Z,dih);
@@ -11,11 +20,7 @@ function [C, Ceq] = constraints(x, Np, Struc_Mass, Payload_Mass, Fuel_Mass)
 iter=getIteration();
 outname=sprintf('Out_Force_%i.txt',iter-1);
 
-Np
-iter
-Struc_Mass
-Payload_Mass
-Fuel_Mass
+Np = 2;
 
 [massfilename, Area_Pass, Vol_Fuel] = MassDist(Np, iter, Struc_Mass, Payload_Mass, Fuel_Mass);
 Area_Pass; %Area of Passenger module floor, used to determine if there is enough floor space for all passengers ...
