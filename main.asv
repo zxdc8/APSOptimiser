@@ -38,7 +38,7 @@ UB=[72 72 72 72 72 35 40];
 [filename,iter,At]=aeromodule(x0);
 
 %Define Objective Function
-objFun=@(x)objective(x);
+objFun=@objective;
 
 %Define solver options 
 options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',0.5,'FunctionTolerance',1e-7,'PlotFcns',@optimplotfval);
