@@ -1,4 +1,3 @@
-<<<<<<< HEAD
  ---------------------------------------------------------------
  Vortex Lattice Output -- Total Forces
 
@@ -7,59 +6,26 @@
      # Strips   =  80
      # Vortices = 960
 
-  Sref =  600.00       Cref =  50.000       Bref =  40.000    
-  Xref =  45.013       Yref =-0.42708E-07   Zref =  0.0000    
+  Sref =  3600.0       Cref =  40.000       Bref =  150.00    
+  Xref =  32.404       Yref =-0.74825E-06   Zref =  0.0000    
 
  Standard axis orientation,  X fwd, Z down         
 
  Run case: Cruise                                  
 
-  Alpha =   8.85675     pb/2V =  -0.00000     p'b/2V =  -0.00000
+  Alpha =  -0.63698     pb/2V =  -0.00000     p'b/2V =  -0.00000
   Beta  =   0.00000     qc/2V =   0.00000
   Mach  =     0.000     rb/2V =  -0.00000     r'b/2V =  -0.00000
 
-  CXtot =   0.03086     Cltot =   0.00000     Cl'tot =  -0.00007
-  CYtot =  -0.00108     Cmtot =   0.11795
-  CZtot =  -0.69619     Cntot =  -0.00048     Cn'tot =  -0.00047
+  CXtot =  -0.00788     Cltot =   0.00000     Cl'tot =  -0.00000
+  CYtot =  -0.00000     Cmtot =  -0.00982
+  CZtot =  -0.11536     Cntot =   0.00000     Cn'tot =   0.00000
 
-  CLtot =   0.69264
-  CDtot =   0.07670
-  CDvis =   0.01555     CDind = 0.0611460
-  CLff  =   0.70216     CDff  = 0.0593645    | Trefftz
-  CYff  =   0.00000         e =    0.9914    | Plane  
-
-
- ---------------------------------------------------------------
-=======
- ---------------------------------------------------------------
- Vortex Lattice Output -- Total Forces
-
- Configuration: Cruise                                                      
-     # Surfaces =   2
-     # Strips   =  80
-     # Vortices = 960
-
-  Sref =  1550.0       Cref =  50.000       Bref =  40.000    
-  Xref =  45.013       Yref =-0.42708E-07   Zref =  0.0000    
-
- Standard axis orientation,  X fwd, Z down         
-
- Run case: Cruise                                  
-
-  Alpha =   8.85674     pb/2V =  -0.00000     p'b/2V =  -0.00000
-  Beta  =   0.00000     qc/2V =   0.00000
-  Mach  =     0.000     rb/2V =  -0.00000     r'b/2V =  -0.00000
-
-  CXtot =   0.01194     Cltot =   0.00000     Cl'tot =  -0.00003
-  CYtot =  -0.00042     Cmtot =   0.04566
-  CZtot =  -0.26949     Cntot =  -0.00019     Cn'tot =  -0.00018
-
-  CLtot =   0.26812
-  CDtot =   0.02969
-  CDvis =   0.00602     CDind = 0.0236694
-  CLff  =   0.27181     CDff  = 0.0229798    | Trefftz
-  CYff  =   0.00000         e =    0.9914    | Plane  
+  CLtot =   0.11544
+  CDtot =   0.00660
+  CDvis =   0.00587     CDind = 0.0007241
+  CLff  =   0.11543     CDff  = 0.0006843    | Trefftz
+  CYff  =   0.00000         e =    0.9916    | Plane  
 
 
  ---------------------------------------------------------------
->>>>>>> da57431f0eca6f5b3e2a61fff76496693f4577e8
