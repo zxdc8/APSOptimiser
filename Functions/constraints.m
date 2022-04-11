@@ -7,7 +7,6 @@ function [C, Ceq] = constraints(x)
 
 
 %% Fuel Volume constraint
-% [VFus, VW, VP]=AreasVolumes(S,X,Z,dih);
 
 iter=getIteration();
 outname=sprintf('Out_Force_%i.txt',iter-1);
