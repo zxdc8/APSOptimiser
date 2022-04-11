@@ -23,7 +23,7 @@ Payload_Mass = 105160; %weight of Passengers
 Fuel_Mass = 390720; %weight of fuel @ take-off
     
 %Create Input File for Constraints function
-pth='././APSOptimiser';
+pth='././';
 % pth = 'C:/Users/Joe/OneDrive - University of Bristol/Documents/GitHub/APSOptimiser'; %/\/\/\/\
 confilename=sprintf('Constraint_Input.txt');
 confile = fopen(fullfile(pth,confilename),'w');

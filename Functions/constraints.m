@@ -5,7 +5,7 @@ function [C, Ceq] = constraints(x)
 [S,X,Z,dih]=DesignToSXZ(x);
 
 %Read out Constrains Input Text file
-pth='././APSOptimiser';
+pth='././';
 % pth = 'C:/Users/Joe/OneDrive - University of Bristol/Documents/GitHub/APSOptimiser'; %/\/\/\/\
 confilename=sprintf('Constraint_Input.txt');
 confid = fopen(fullfile(pth,confilename)); %Opens Constraint Input file
