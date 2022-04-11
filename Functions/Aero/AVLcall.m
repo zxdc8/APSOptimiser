@@ -35,11 +35,11 @@ stab_deri=sprintf('Stab_Deri_%.0f.txt',i);
 movefile(stab_deri,'Outputs/Stability');
 
 % Move plot file
-% filename=sprintf('geom_%.0f.ps',i);
-% movefile('plot.ps',filename)
-% movefile(filename,'Outputs/Plots/Geometry')
-% 
-% outname=sprintf('out_%.0f.txt',i);
+filename=sprintf('geom_%.0f.ps',i);
+movefile('plot.ps',filename)
+movefile(filename,'Outputs/Plots/Geometry')
+
+outname=sprintf('out_%.0f.txt',i);
 
 outname=tot_forc;
 

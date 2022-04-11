@@ -20,13 +20,6 @@ Fuel_Mass = str2double(fgetl(confid));
 iter=getIteration();
 outname=sprintf('Out_Force_%i.txt',iter-1);
 
-Np = 2;
-
-[massfilename, Area_Pass, Vol_Fuel] = MassDist(Np, iter-1, Struc_Mass, Payload_Mass, Fuel_Mass);
-Area_Pass; %Area of Passenger module floor, used to determine if there is enough floor space for all passengers ...
-           %Given the height of the aerofoils for the passeneger modules, assume at all points there is enough ...
-           %height space for passengers to sit
-Vol_Fuel; %Volume of Fuel module, should be multiplied by a factor to account for structures and sub-systems that take up volume in this moudle
            
 %Requires function for Mach, Alt, S, CD0, k - func
 
@@ -37,6 +30,14 @@ M=0.7; %Placeholder
 
 %Calculate current volume of fuel tank required
 [Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
+
+Np = 2;
+
+[massfilename, Area_Pass, Vol_Fuel] = MassDist(Np, iter-1, Struc_Mass, Payload_Mass, Mf);
+Area_Pass; %Area of Passenger module floor, used to determine if there is enough floor space for all passengers ...
+           %Given the height of the aerofoils for the passeneger modules, assume at all points there is enough ...
+           %height space for passengers to sit
+Vol_Fuel; %Volume of Fuel module, should be multiplied by a factor to account for structures and sub-systems that take up volume in this moudle
 
 %Express area of passengers required
 Ap=450*0.5*0.5*1.2;

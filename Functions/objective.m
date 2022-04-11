@@ -48,8 +48,6 @@ outname=AVLcall(filename,massfile,'w.run',iter);
 
 objFun = CdCl; %- this will be old I reckon
 
-iterUpdate;
-
 %% Performance part of objective function
 %load into function Mach, Alt, Wing Area, Zero lift Drag, Induced Drag
 %Outputs Fuel Weight and Fuel Volume - NOTE Fuel Volume used for
@@ -61,6 +59,16 @@ Alt = 38000;
 
 [Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
 
+%Now to rerun AVL with corrected mass
+
+[massfilepath, Area_Pass, Vol_Fuel] = MassDist(Np, iter, Struc_Mass, Payload_Mass, Mf); %Uses MassPoints & Foil_Integral functions to determine Mass distribution of Segments using previously made .avl file
+
+massfile=sprintf('mass_%.0f.mass',iter);
+
+%call avl
+outname=AVLcall(filename,massfile,'w.run',iter);
+
+iterUpdate;
 
 objFun = Mf;  %Load fuel mass as objective function
 
