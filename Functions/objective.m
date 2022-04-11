@@ -36,6 +36,8 @@ fclose(confile);
 %filename = AVLgen(L,N,S,X,iter,alpha);
 [massfilepath, Area_Pass, Vol_Fuel] = MassDist(Np, iter, Struc_Mass, Payload_Mass, Fuel_Mass); %Uses MassPoints & Foil_Integral functions to determine Mass distribution of Segments using previously made .avl file
 
+
+
 massfile=sprintf('mass_%.0f.mass',iter);
 
 %call avl
@@ -59,14 +61,6 @@ Alt = 38000;
 
 [Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
 
-%Now to rerun AVL with corrected mass
-
-[massfilepath, Area_Pass, Vol_Fuel] = MassDist(Np, iter, Struc_Mass, Payload_Mass, Mf); %Uses MassPoints & Foil_Integral functions to determine Mass distribution of Segments using previously made .avl file
-
-massfile=sprintf('mass_%.0f.mass',iter);
-
-%call avl
-outname=AVLcall(filename,massfile,'w.run',iter);
 
 iterUpdate;
 

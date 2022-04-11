@@ -5,8 +5,18 @@ function [C, Ceq] = constraints(x)
 [S,X,Z,dih]=DesignToSXZ(x);
 
 
+%Read out Constrains Input Text file
+pth='././';
+% pth = 'C:/Users/Joe/OneDrive - University of Bristol/Documents/GitHub/APSOptimiser'; %/\/\/\/\
+confilename=sprintf('Constraint_Input.txt');
+confid = fopen(fullfile(pth,confilename)); %Opens Constraint Input file
+Np = str2double(fgetl(confid)); %Read out each text file line in order and assign to subsequent variable
+Struc_Mass = str2double(fgetl(confid));
+Payload_Mass = str2double(fgetl(confid));
+Fuel_Mass = str2double(fgetl(confid));
 
 %% Fuel Volume constraint
+% [VFus, VW, VP]=AreasVolumes(S,X,Z,dih);
 
 iter=getIteration();
 outname=sprintf('Out_Force_%i.txt',iter-1);
@@ -25,9 +35,6 @@ M=0.7; %Placeholder
 
 %% Joes code
 Np = 2;
-Struc_Mass = 131375; %weight of wing structures
-Payload_Mass = 105160; %weight of Passengers
-
 
 [massfilename, Area_Pass, Vol_Fuel] = MassDist(Np, iter-1, Struc_Mass, Payload_Mass, Mf);
 Area_Pass; %Area of Passenger module floor, used to determine if there is enough floor space for all passengers ...
@@ -35,9 +42,9 @@ Area_Pass; %Area of Passenger module floor, used to determine if there is enough
            %height space for passengers to sit
 Vol_Fuel; %Volume of Fuel module, should be multiplied by a factor to account for structures and sub-systems that take up volume in this moudle
 
-%Express area of passengers required
-Ap=225*0.5*0.8*1.2;
 
+%Express area of passengers required
+Ap=450*0.5*0.5*1.2;
 
 
 %Stability Part
@@ -57,11 +64,11 @@ C(3)=S(2)+X(2)-72;  %Length Constraint
 C(4)=S(3)+X(3)-72;  %Length Constraint
 C(5)=x(6)+x(7)-40; %Wingspan
 
-C(6)=Cmtot*alpha_tol-target_cmtot;  %Longitudinal stability
+%C(6)=Cmtot*alpha_tol-target_cmtot;  %Longitudinal stability
 
 %Equality Constraints
 Ceq=[]
-Ceq(1)=Vf-Vol_Fuel;     %Fuel Volume
-Ceq(2)=Ap-Area_Pass;      %Pax Volume
+%Ceq(1)=Vf-Vol_Fuel;     %Fuel Volume
+%Ceq(2)=Ap-Area_Pass;      %Pax Volume
 
 end
