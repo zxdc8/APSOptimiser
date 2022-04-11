@@ -67,8 +67,8 @@ C(5)=x(6)+x(7)-40; %Wingspan
 C(6)=Cmtot*alpha_tol-target_cmtot;  %Longitudinal stability
 
 %Equality Constraints
-%Ceq=[]
-Ceq(1)=Vf-Vol_Fuel;     %Fuel Volume
-Ceq(2)=Ap-Area_Pass;      %Pax Volume
+Ceq=[]
+% Ceq(1)=Vf-Vol_Fuel;     %Fuel Volume
+% Ceq(2)=Ap-Area_Pass;      %Pax Volume
 
 end
