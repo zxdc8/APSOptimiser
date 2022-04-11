@@ -31,6 +31,8 @@ M=0.7; %Placeholder
 %Calculate current volume of fuel tank required
 [Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
 
+
+%% Joes code
 Np = 2;
 
 [massfilename, Area_Pass, Vol_Fuel] = MassDist(Np, iter-1, Struc_Mass, Payload_Mass, Mf);
@@ -42,11 +44,7 @@ Vol_Fuel; %Volume of Fuel module, should be multiplied by a factor to account fo
 %Express area of passengers required
 Ap=450*0.5*0.5*1.2;
 
-%OR USE FIXED FUEL
-%Vf = 400;
 
-
-%C(3) = Vf - (Vwing+Vfuse/2)
 
 %Stability Part
 target_cmtot = -0.01;
