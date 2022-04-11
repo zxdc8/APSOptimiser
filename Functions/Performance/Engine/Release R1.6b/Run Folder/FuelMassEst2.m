@@ -40,13 +40,13 @@ Par.K_Clean                = 0.048;     % Induced Drag factor - clean [-] (DP)
 
 % Extra parameters that are set but might be modified - Look at Weight
 Par.Range_req              = 7750;      % Required design range [nm] (DP)
-Par.PLmax                  = 48000;     % Max payload [kg] (DP)
+Par.PLmax                  = 105160;     % Max payload [kg] (DP)
 Par.MFC                    = 60000;     % Max Fuel capacity [kg] (DP)
 Par.MTOM                   = 313000;    % Max Take Off Mass [kg] (DP)
-Par.Airframe               = 200000;    % Operating Mass Empty [kg] (DP)
-Par.PL_req                 = 48000;     % Design Payload [kg] (DP)
+Par.Airframe               = 131375;    % Operating Mass Empty [kg] (DP)
+Par.PL_req                 = 105160;     % Design Payload [kg] (DP)
 
-Par.SF = 4;
+Par.SF = 6;
 
 
 % call function FindDesignPoint to calculate mission properties

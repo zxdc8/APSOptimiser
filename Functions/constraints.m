@@ -4,6 +4,7 @@ function [C, Ceq] = constraints(x)
 %Calculate Wing Area
 [S,X,Z,dih]=DesignToSXZ(x);
 
+
 %Read out Constrains Input Text file
 pth='././';
 % pth = 'C:/Users/Joe/OneDrive - University of Bristol/Documents/GitHub/APSOptimiser'; %/\/\/\/\
@@ -67,7 +68,7 @@ C(6)=Cmtot*alpha_tol-target_cmtot;  %Longitudinal stability
 
 %Equality Constraints
 %Ceq=[]
-Ceq(1)=Vf-Vol_Fuel*0.8;     %Fuel Volume
-Ceq(2)=Ap-Area_Pass*0.8;      %Pax Volume
+Ceq(1)=Vf-Vol_Fuel;     %Fuel Volume
+Ceq(2)=Ap-Area_Pass;      %Pax Volume
 
 end

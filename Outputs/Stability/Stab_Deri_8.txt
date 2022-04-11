@@ -7,7 +7,7 @@
      # Vortices = 960
 
   Sref =  2250.0       Cref =  40.000       Bref =  80.000    
-  Xref =  26.653       Yref = 0.14188E-06   Zref =  0.0000    
+  Xref =  24.684       Yref =-0.28366E-06   Zref =  0.0000    
 
  Standard axis orientation,  X fwd, Z down         
 
@@ -18,7 +18,7 @@
   Mach  =     0.000     rb/2V =  -0.00000     r'b/2V =  -0.00000
 
   CXtot =  -0.00598     Cltot =  -0.00000     Cl'tot =   0.00000
-  CYtot =  -0.00000     Cmtot =   0.00729
+  CYtot =  -0.00000     Cmtot =  -0.00181
   CZtot =  -0.18486     Cntot =   0.00000     Cn'tot =   0.00000
 
   CLtot =   0.18470
@@ -36,18 +36,18 @@
                   ----------------    ----------------
  z' force CL |    CLa =   3.021688    CLb =   0.000000
  y  force CY |    CYa =  -0.000211    CYb =  -0.005966
- x' mom.  Cl'|    Cla =   0.000003    Clb =  -0.048091
- y  mom.  Cm |    Cma =   0.700405    Cmb =   0.000000
- z' mom.  Cn'|    Cna =   0.000100    Cnb =   0.000501
+ x' mom.  Cl'|    Cla =   0.000004    Clb =  -0.048088
+ y  mom.  Cm |    Cma =   0.551261    Cmb =   0.000000
+ z' mom.  Cn'|    Cna =   0.000105    Cnb =   0.000648
 
                      roll rate  p'      pitch rate  q'        yaw rate  r'
                   ----------------    ----------------    ----------------
- z' force CL |    CLp =  -0.000002    CLq =   1.038785    CLr =   0.000000
- y  force CY |    CYp =   0.088963    CYq =   0.000023    CYr =  -0.003073
- x' mom.  Cl'|    Clp =  -0.238341    Clq =  -0.000000    Clr =   0.047599
- y  mom.  Cm |    Cmp =   0.000000    Cmq =  -0.199017    Cmr =  -0.000000
- z' mom.  Cn'|    Cnp =  -0.016006    Cnq =  -0.000005    Cnr =  -0.002706
+ z' force CL |    CLp =  -0.000002    CLq =   1.337933    CLr =   0.000000
+ y  force CY |    CYp =   0.088969    CYq =   0.000002    CYr =  -0.002779
+ x' mom.  Cl'|    Clp =  -0.238338    Clq =   0.000000    Clr =   0.049967
+ y  mom.  Cm |    Cmp =   0.000000    Cmq =  -0.195947    Cmr =  -0.000000
+ z' mom.  Cn'|    Cnp =  -0.018195    Cnq =   0.000005    Cnr =  -0.002662
 
- Neutral point  Xnp =  17.381775
+ Neutral point  Xnp =  17.386978
 
- Clb Cnr / Clr Cnb  =   5.457194    (  > 1 if spirally stable )
+ Clb Cnr / Clr Cnb  =   3.954986    (  > 1 if spirally stable )

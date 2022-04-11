@@ -7,7 +7,7 @@
      # Vortices = 960
 
   Sref =  1500.0       Cref =  40.000       Bref =  90.000    
-  Xref =  29.743       Yref =-0.26356E-06   Zref =  0.0000    
+  Xref =  28.311       Yref =-0.57193E-07   Zref =  0.0000    
 
  Standard axis orientation,  X fwd, Z down         
 
@@ -18,7 +18,7 @@
   Mach  =     0.000     rb/2V =  -0.00000     r'b/2V =  -0.00000
 
   CXtot =  -0.00240     Cltot =   0.00000     Cl'tot =   0.00000
-  CYtot =   0.00000     Cmtot =  -0.02853
+  CYtot =   0.00000     Cmtot =  -0.03846
   CZtot =  -0.27728     Cntot =   0.00000     Cn'tot =   0.00000
 
   CLtot =   0.27705
