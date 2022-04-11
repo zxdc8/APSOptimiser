@@ -276,6 +276,7 @@ h_val = Data.h_ft(Data.ROC_fpm<0);
 h_ceiling =h_val(ind);
 if  ~isempty(h_ceiling)
     disp(['Warning: ... Altitude Ceiling reached for Mission Climb just below ' num2str(round(h_ceiling)) ' ft. The RoC this altitude is ' num2str(-ROC_ceiling)])
+%     return
 end
 end
 

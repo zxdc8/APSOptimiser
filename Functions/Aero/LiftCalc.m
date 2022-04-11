@@ -10,11 +10,11 @@ function CL=LiftCalc(M,At,CD0)
     DynVisc=14.23e-6;
     c=(80^2)/At;
     Re= (rho*a*M*c)/DynVisc;
-
+    
     %Create Run File
     pth='././Inputs';
+%     pth = fullfile('C:','Users','Joe','OneDrive - University of Bristol','Documents','GitHub','APSOptimiser','Inputs'); %/\/\/\/\
     filename=sprintf('w.run');
-    %gfile=fopen('././Inputs/w.run','w');
 
     gfile=fopen(fullfile(pth,filename),'w');
 

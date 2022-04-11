@@ -32,7 +32,6 @@ for mc = [1:length(X_Pos)] %Loop creates an array needed for finding Passenger C
     end
 end
 
-
 for mc = [1:length(X_Pos)-1]
     if mc <= (Np - 1)
         X_Pos = (X_Pos + X_Pos_Array);

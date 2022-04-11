@@ -1,4 +1,4 @@
-    function RawEngineData = TF15Data(SF)
+function RawEngineData = TF15Data(SF)
 %UBB65Data provides raw engine data for the engine UBB65 scaled up to a
 %maximum thrust of 75,000 lbf.
 %

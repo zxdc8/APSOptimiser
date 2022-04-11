@@ -36,10 +36,12 @@ switch (Option)
         FuelSF = 1;
         Time   = Time_Taxiout;
         Range  = Range_Taxiout;
+        Fuel   = 8; %Modified, From Hydrogen Airbus Task Spec
     case 'In'
         FuelSF = Time_Taxiin / (Time_Taxiout + 2.2);
         Time   = Time_Taxiin;
         Range  = Range_Taxiin;
+        Fuel   = 7; %Modified, From Hydrogen Airbus Task Spec
 end
 
 % Nominal Sea-Level Static Thrust [lb]
@@ -48,8 +50,7 @@ T_lb = TakeoffStaticThrust_lb;
 par1 = 75.46;
 par2 = 0.002250;
 % Fuel formula directly from Airbus Specification
-Fuel_lb = FuelSF * n * (par1 + (par2 * T_lb));
-Fuel = lb2kg(Fuel_lb);
-
+%Fuel_lb = FuelSF * n * (par1 + (par2 * T_lb));
+%Fuel = lb2kg(Fuel_lb);
+%Fuel calculations not needed for taxi
 end
-

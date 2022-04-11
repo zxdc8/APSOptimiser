@@ -302,4 +302,3 @@ RawEngineData.Diversion(:,3) =  RawEngineData.Diversion(:,3).*SF;
 RawEngineData.Diversion(:,4) =  RawEngineData.Diversion(:,4).*SF/3;  
 
 end
-

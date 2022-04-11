@@ -85,4 +85,3 @@ Par.dh_max                 = 10000;      % Max allowed difference for Alltitide 
 Par.interp_method          = 'spline';  % 'spline' or 'linear'
 
 end
-

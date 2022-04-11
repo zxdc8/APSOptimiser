@@ -39,13 +39,13 @@ Par.K_Clean                = k;     % Induced Drag factor - clean [-] (DP)
 
 % Extra parameters that are set but might be modified - Look at Weight
 Par.Range_req              = 7750;      % Required design range [nm] (DP)
-Par.PLmax                  = 48000;     % Max payload [kg] (DP)
+Par.PLmax                  = 105160;     % Max payload [kg] (DP)
 Par.MFC                    = 60000;     % Max Fuel capacity [kg] (DP)
 Par.MTOM                   = 313000;    % Max Take Off Mass [kg] (DP)
-Par.Airframe               = 160000;    % Operating Mass Empty [kg] (DP)
-Par.PL_req                 = 48000;     % Design Payload [kg] (DP)
+Par.Airframe               = 131375;    % Operating Mass Empty [kg] (DP)
+Par.PL_req                 = 105160;     % Design Payload [kg] (DP)
 
-Par.SF = 40;
+Par.SF = 10;
 
 % call function FindDesignPoint to calculate mission properties
 dp1 = FindDesignPoint(Par);
@@ -53,7 +53,10 @@ dp1 = FindDesignPoint(Par);
 for jj = 1:16
  while dp1.Mission.Range(jj)< 0
      
-    Par.SF = Par.SF + 10; 
+    Par.SF = Par.SF + 1; 
+    
+     astring = ['SF = ' num2str(Par.SF)];
+     disp(astring)
      
      dp1 = FindDesignPoint(Par);
 
@@ -62,8 +65,7 @@ for jj = 1:16
 end
 %% Output results
 
-     astring = ['SF = ' num2str(Par.SF)];
-     disp(astring)
+
      
      
      
@@ -79,8 +81,3 @@ rholh2 = 71; %[kg/m3]
 Vf = (Mf)/rholh2;%[m3]
 
 end
-
-
-
-
-
