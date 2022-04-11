@@ -42,9 +42,9 @@ Area_Pass; %Area of Passenger module floor, used to determine if there is enough
            %height space for passengers to sit
 Vol_Fuel; %Volume of Fuel module, should be multiplied by a factor to account for structures and sub-systems that take up volume in this moudle
 
+
 %Express area of passengers required
 Ap=450*0.5*0.5*1.2;
-
 
 
 %Stability Part
@@ -64,11 +64,11 @@ C(3)=S(2)+X(2)-72;  %Length Constraint
 C(4)=S(3)+X(3)-72;  %Length Constraint
 C(5)=x(6)+x(7)-40; %Wingspan
 
-C(6)=Cmtot*alpha_tol-target_cmtot;  %Longitudinal stability
+%C(6)=Cmtot*alpha_tol-target_cmtot;  %Longitudinal stability
 
 %Equality Constraints
-%Ceq=[]
-Ceq(1)=Vf-Vol_Fuel;     %Fuel Volume
-Ceq(2)=Ap-Area_Pass;      %Pax Volume
+Ceq=[]
+%Ceq(1)=Vf-Vol_Fuel;     %Fuel Volume
+%Ceq(2)=Ap-Area_Pass;      %Pax Volume
 
 end

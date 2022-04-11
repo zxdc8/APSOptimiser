@@ -1,5 +1,5 @@
-LOAD Inputs/AVLcases/case_8.avl
-MASS Inputs/Massfiles/mass_8.mass
+LOAD Inputs/AVLcases/case_10.avl
+MASS Inputs/Massfiles/mass_10.mass
 CASE Inputs/w.run
 PLOP
 GF
@@ -9,9 +9,9 @@ mset
 OPER
 X
 FT
-Out_Force_8.txt
+Out_Force_10.txt
 ST
-Stab_Deri_8.txt
+Stab_Deri_10.txt
 G
 V
 0 90

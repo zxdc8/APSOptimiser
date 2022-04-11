@@ -32,7 +32,7 @@ alpha_tol = 0.01; % 1% tolerance from target Cm
 
 %x0=[50 30 15 30 40 10 10];
 x0=[40 20 10 20 40 40 40];
-LB=[20 5 5 0 0 5 5];
+LB=[20 15 10 0 0 10 10];
 UB=[72 72 72 72 72 35 40];
 
 %Write AVL case file and get filename, constraint values
@@ -42,7 +42,7 @@ UB=[72 72 72 72 72 35 40];
 objFun=@(x)objective(x);
 
 %Define solver options 
-options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',10,'FunctionTolerance',1e-7,'StepTolerance',1e-7,'PlotFcns',@optimplotfval);
+options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-6,'StepTolerance',1e-7,'PlotFcns',@optimplotfval);
 
 %Run Optimisation
 [X,J]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options)   
