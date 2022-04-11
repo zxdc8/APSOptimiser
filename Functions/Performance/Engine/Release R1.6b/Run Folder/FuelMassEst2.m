@@ -31,9 +31,9 @@ disp(' ')
 
 Par.Mach_Cruise            = 0.7;      % Mach number cruise [-]
 Par.Alt_Cruise             = 38000;     % Cruise Alt [ft]
-Par.S                      = 450;       % Wing area [m^2] (DP)
-Par.CD0_Clean              = 0.0164;     % Zero Lift Drag Coef [-] (DP)
-Par.K_Clean                = 0.3;     % Induced Drag factor - clean [-] (DP)
+Par.S                      = 3300;       % Wing area [m^2] (DP)
+Par.CD0_Clean              = 0.0059;     % Zero Lift Drag Coef [-] (DP)
+Par.K_Clean                = 0.048;     % Induced Drag factor - clean [-] (DP)
 
 
 
@@ -46,7 +46,7 @@ Par.MTOM                   = 313000;    % Max Take Off Mass [kg] (DP)
 Par.Airframe               = 200000;    % Operating Mass Empty [kg] (DP)
 Par.PL_req                 = 48000;     % Design Payload [kg] (DP)
 
-Par.SF = 40;
+Par.SF = 4;
 
 
 % call function FindDesignPoint to calculate mission properties
@@ -56,7 +56,7 @@ dp1 = FindDesignPoint(Par);
 for jj = 1:16
  while dp1.Mission.Range(jj)< 0
      
-    Par.SF = Par.SF + 10; 
+    Par.SF = Par.SF + 1; 
      
      dp1 = FindDesignPoint(Par);
 
@@ -64,16 +64,17 @@ for jj = 1:16
  
 end
 
-% for jj = 1:37
-%  while dp1.Mission.Data.h_ft(jj)< Par.Alt_Cruise
+% 
+%  while dp1.Mission.Data.ROC_fpm(end)< 0
 %      
-%     Par.SF = Par.SF + 10; 
+%     Par.SF = Par.SF + 1; 
 %      
 %      dp1 = FindDesignPoint(Par);
 % 
 %  end
-%  
-% end
+ 
+
+ 
 
 %% Output results
 
@@ -95,9 +96,3 @@ Vf = (Mf)/rholh2;%[m3]
 
 
 % end
-
-
-
-
-
->>>>>>> da57431f0eca6f5b3e2a61fff76496693f4577e8:Functions/Performance/Engine/Release R1.6b/Run Folder/FuelMassEst2.m
