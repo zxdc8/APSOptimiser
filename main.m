@@ -9,9 +9,6 @@ ifile=fopen(filename,'w');
 fprintf(ifile,'1');
 
 fclose(ifile);
-
-
-
     
 %Define x0 - Start Point
 %And Upper/Lower Bounds, format:

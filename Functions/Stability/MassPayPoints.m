@@ -65,7 +65,7 @@ CoM_Fuel(1,:) = CoM_X_Fuel;
 CoM_Fuel(2,:) = CoM_Y_Fuel;
 CoM_Fuel(3,:) = CoM_Z_Fuel;
 for c = [1:length(CoM_Fuel(1,:))]
-    CoM_Fuel(4,c) = Vol_Fuel(c)/sum(Vol_Fuel)*Fuel_Mass/2;
+    CoM_Fuel(4,c) = Vol_Fuel(c)*71;
 end
 
 CoM_Array{1} = CoM_Pass;
