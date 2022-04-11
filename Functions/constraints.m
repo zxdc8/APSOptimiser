@@ -36,7 +36,7 @@ Area_Pass; %Area of Passenger module floor, used to determine if there is enough
 Vol_Fuel; %Volume of Fuel module, should be multiplied by a factor to account for structures and sub-systems that take up volume in this moudle
 
 %Express area of passengers required
-Ap=450*0.5*0.5*1.2;
+Ap=225*0.5*0.8*1.2;
 
 
 
@@ -61,7 +61,7 @@ C(6)=Cmtot*alpha_tol-target_cmtot;  %Longitudinal stability
 
 %Equality Constraints
 Ceq=[]
-% Ceq(1)=Vf-Vol_Fuel;     %Fuel Volume
-% Ceq(2)=Ap-Area_Pass;      %Pax Volume
+Ceq(1)=Vf-Vol_Fuel;     %Fuel Volume
+Ceq(2)=Ap-Area_Pass;      %Pax Volume
 
 end
