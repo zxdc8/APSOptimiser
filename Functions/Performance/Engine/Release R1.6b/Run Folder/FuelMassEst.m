@@ -45,7 +45,7 @@ Par.MTOM                   = 313000;    % Max Take Off Mass [kg] (DP)
 Par.Airframe               = 160000;    % Operating Mass Empty [kg] (DP)
 Par.PL_req                 = 48000;     % Design Payload [kg] (DP)
 
-Par.SF = 40;
+Par.SF = 4;
 
 % call function FindDesignPoint to calculate mission properties
 dp1 = FindDesignPoint(Par);
@@ -53,7 +53,7 @@ dp1 = FindDesignPoint(Par);
 for jj = 1:16
  while dp1.Mission.Range(jj)< 0
      
-    Par.SF = Par.SF + 10; 
+    Par.SF = Par.SF + 1; 
      
      dp1 = FindDesignPoint(Par);
 
