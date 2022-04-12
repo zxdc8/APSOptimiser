@@ -1,4 +1,4 @@
-function [massfilename, Area_Pass, Vol_Fuel] = MassDist(Np, iter, Struc_Mass, Payload_Mass, Fuel_Mass)
+function [massfilename, Area_Pass, Vol_Fuel, Fuel_Mass] = MassDist(Np, iter, Struc_Mass, Payload_Mass)
 
 %Units of measurement
 Lunit = 1; % metres
@@ -35,7 +35,7 @@ fprintf(gfile,'\n');
 
 % Below loop implements Mass point of Passengers based on area of 1st and 2nd segment
 Payload_Mass = Payload_Mass*0.453592;
-Fuel_Mass = Fuel_Mass*0.453592;
+Fuel_Mass = Vol_Seg(2)*71; %Fuel segment Volume * Hydrogen Fuel density
 [CoM_Array] = MassPayPoints(Np, Vol_Seg, Payload_Mass, Fuel_Mass, filename);
 
 for mcc = [1:length(CoM_Array)]
