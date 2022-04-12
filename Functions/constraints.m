@@ -29,7 +29,7 @@ Np = 2;
 Struc_Mass = 131375; %weight of wing structures
 Payload_Mass = 105160; %weight of Passengers
 
-[massfilename, Area_Pass, Vol_Fuel, Fuel_Mass] = MassDist(Np, iter-1, Struc_Mass, Payload_Mass, );
+[massfilename, Area_Pass, Vol_Fuel, Fuel_Mass] = MassDist(Np, iter-1, Struc_Mass, Payload_Mass);
 Area_Pass; %Area of Passenger module floor, used to determine if there is enough floor space for all passengers ...
            %Given the height of the aerofoils for the passeneger modules, assume at all points there is enough ...
            %height space for passengers to sit
@@ -64,6 +64,8 @@ C(8) = X(2) - X(3);
 C(9) = (X(1)+S(1)) - (S(2) + X(2)); 
 C(10) = (X(2)+S(2)) - (S(3) + X(3)); 
 
+C(11)=Vf-Vol_Fuel;     %Fuel Volume
+C(12)=Ap-Area_Pass;      %Pax Volume
 
 %Equality Constraints
 Ceq=[]

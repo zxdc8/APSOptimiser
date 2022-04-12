@@ -1,5 +1,5 @@
 %////////OBJECTIVE FUNCTION/////////
-function [objFun, Fuel_Mass] = objective(x)
+function [objFun] = objective(x)
 %generate geometry
 
 [filename,iter]=aeromodule(x);
@@ -54,7 +54,7 @@ Payload_Mass = 105160; %weight of Passengers
 [filename,At]=AVLgen(S,Z,dih,X,iter);
 
 %filename = AVLgen(L,N,S,X,iter,alpha);
-[massfilepath, Area_Pass, Vol_Fuel, Fuel_Mass] = MassDist(Np, iter, Struc_Mass, Payload_Mass, Mf); %Uses MassPoints & Foil_Integral functions to determine Mass distribution of Segments using previously made .avl file
+[massfilepath, Area_Pass, Vol_Fuel, Fuel_Mass] = MassDist(Np, iter, Struc_Mass, Payload_Mass); %Uses MassPoints & Foil_Integral functions to determine Mass distribution of Segments using previously made .avl file
 
 
 %%
