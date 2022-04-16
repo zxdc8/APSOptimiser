@@ -162,6 +162,8 @@ FuelBurn      = ss;
 meanTAS       = ss;
 Range_m       = ss;
 Range_nm      = ss;
+
+kk = 1;  
 %% Flip altitude increments if required
 switch (Type)
     case 'Climb'
@@ -247,6 +249,14 @@ for j = 2:length(h_ft)
         deltat_sec(j) = deltah_m(j) / meanROC(j);
         deltat_min(j) = TimeFunc(deltat_sec(j), 'sec', 'min');
         deltat_hr(j) = TimeFunc(deltat_sec(j), 'sec', 'hr');
+        
+%         if deltat_sec(j) < 0
+%             deltat_sec(j) = -deltat_sec(j);
+%             deltat_min(j) = -deltat_min(j);
+%             deltat_hr(j) = -deltat_hr(j);
+% %             Range_nm(j) = -Range_nm(nm);
+%         end
+        
         % Calculate mean fuel flow for segment
         meanFF(j) = 0.5 * ( FF_aircraft(j) + FF_aircraft(j-1) );
         % Calculate fuel burn for segment
@@ -256,6 +266,11 @@ for j = 2:length(h_ft)
         % Calculate range for segment
         Range_m(j) = meanTAS(j) * deltat_sec(j); % metres
         Range_nm(j) = m2nm(Range_m(j));          % nautical miles
+        
+        
+
+      
+        
         %% Calculate mass for next iteration
         switch (Method)
             case 'Forwards'
@@ -263,14 +278,30 @@ for j = 2:length(h_ft)
                 if Error(j) > tol
                     m(j) = m(j-1) - FuelBurn(j);
                 end
+                kk = kk+1;
             case 'Backwards'
                 Error(j) = abs( ( m(j-1) + FuelBurn(j) ) - m(j) );
                 if Error(j) > tol
                     m(j) = m(j-1) + FuelBurn(j);
                 end
+            kk = kk+1;    
+                
         end
+        
+        if kk > 100
+           break
+           
+        end
+           
     end
+        if kk > 100
+           break
+           
+        end
+           
+    
 end
+
 
 
 %% Total time
@@ -279,6 +310,12 @@ Time = sum(deltat_min);
 Range = sum(Range_nm);
 %% Total fuel burn
 Fuel = sum(FuelBurn);
+
+        if kk > 100
+           Fuel = 1000;
+           Range = -1000;
+           
+        end
 
 % Climb Details
 if strcmp(flag,'Mission:Climb')

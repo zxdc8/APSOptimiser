@@ -140,6 +140,11 @@ while Err_Diversion > Tol_Diversion
     DiversionRange = sum(Range(12:14));
     % Update diversion range error
     Err_Diversion = abs( Range_Diversion - DiversionRange);
+    
+    
+    if count1 > 100
+        break
+    end
 end
 % Mass at the end of reserve overshoot
 Mass(11) = Mass(12) + Fuel(12);

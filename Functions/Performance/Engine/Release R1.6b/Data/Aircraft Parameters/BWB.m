@@ -61,7 +61,7 @@ Par.Mach_Div_Climb         = Par.Mach_Cruise-0.02;      % Mach number Div Climb 
 Par.Mach_Div_Descent       = Par.Mach_Cruise-0.02;      % Mach number Div Descent [-]
 
 Par.Alt_Cruise             = 35000;     % Cruise Alt [ft]
-Par.Alt_Diversion          = 25000;     % Div Cruise Alt [ft]
+Par.Alt_Diversion          = 20000;     % Div Cruise Alt [ft]
 Par.Alt_Hold               = 1500;      % Hold Alt [ft]
 Par.Alt_approach           = 1500;      % Approach Alt [ft]
 Par.Alt_ClimbDescent_min   = 1500;      % Min Climb/Descent Alt [ft]
@@ -76,9 +76,9 @@ Par.Range_Takeoff          = 0;         % Take-off [nm]
 Par.PercentagePolicy       = 0;         % Percentage cruise fuel reserve [%] - optional
 
 % Computation parameters
-Par.Tol_ContCruise         = 0.02;      % Computation Tolerance for criuse iterations
-Par.Tol_Diversion          = 0.02;      % Computation Tolerance for Div iterations
-Par.Tol_PercentPolicy      = 0.02;      % Computation Tolerance for reserve iterations
+Par.Tol_ContCruise         = 0.1;      % Computation Tolerance for criuse iterations
+Par.Tol_Diversion          = 0.1;      % Computation Tolerance for Div iterations
+Par.Tol_PercentPolicy      = 0.1;      % Computation Tolerance for reserve iterations
 Par.dM_max                 = 0.4;       % Max allowed difference for Mach number in engine data
 Par.dh_max                 = 10000;      % Max allowed difference for Alltitide in engine data
 
