@@ -5,6 +5,9 @@ Lunit = 1; % metres
 Munit = 1; % kilograms
 Tunit = 1; % seconds
 
+
+
+
 filename = sprintf('././Inputs/AVLcases/case_%.0f.avl',iter);
 % filename = sprintf('C:/Users/Joe/OneDrive - University of Bristol/Documents/GitHub/APSOptimiser/Inputs/AVLcases/case_%.0f.avl',iter); %/\/\/\/\
 

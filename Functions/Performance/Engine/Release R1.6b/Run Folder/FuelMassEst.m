@@ -45,7 +45,7 @@ Par.MTOM                   = 313000;    % Max Take Off Mass [kg] (DP)
 Par.Airframe               = 131375;    % Operating Mass Empty [kg] (DP)
 Par.PL_req                 = 105160;     % Design Payload [kg] (DP)
 
-Par.SF = 5;
+Par.SF = 4;
 astring = ['SF = ' num2str(Par.SF)];
 disp(astring)
 
