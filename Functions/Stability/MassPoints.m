@@ -28,6 +28,9 @@ while ischar(tline)
 end
 fclose(fid);
 
+FoilA=[]
+FoilA=[string('2412'), string('2412'), string('2412')]
+
 Wing_Pos(1,:) = X_Pos;
 Wing_Pos(2,:) = Y_Pos;
 Wing_Pos(3,:) = Z_Pos;
