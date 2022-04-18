@@ -6,7 +6,7 @@ clear all
 %set iteration file-workaround
 filename='iteration.csv';
 ifile=fopen(filename,'w');
-fprintf(ifile,'2');
+fprintf(ifile,'1');
 
 fclose(ifile);
     
@@ -34,14 +34,13 @@ objFun=@(x)objective(x);
 %options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',5e-7,'StepTolerance',1e-7,'PlotFcns',@optimplotfval);
 
 %PSO Options
-%options=
+options=
 
 %Run Optimisation
 %[X,J]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options)   
 
-%
 %Particle Swarm
-[X,J,exitflag,output,population,scores]=pso(objFun,length(x0),[],[],[],[],LB,UB);
+[X,J,exitflag,output,population,scores]=pso(objFun,x0,[],[],[],[],LB,UB,nonlcon,options);
 
 %Generate Final AVL case file
 %[filename, iter]=aeromodule(X)
