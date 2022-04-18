@@ -24,7 +24,7 @@ CL=LiftCalc(M,At,CD0);
 %Define number of vortices and spacing etc
 Nchord=12;  %number of chordwise vortices
 Cspace=1;   %chordwise spacing, linear, cosine etc
-Nspan=20;   %no spanwise vortices per section
+Nspan=30;   %no spanwise vortices per section
 Sspace=1.0; %spanwise spacing
 
 %create geometry file and create headers
@@ -56,10 +56,12 @@ for ii=1:length(Z)
     
     %define section properties
     fprintf(gfile,'SECTION\n');
-    fprintf(gfile,'%.2f      %.2f  %.2f  %.2f  %.2f  %.2f  %.2f\n ',Xle,Yle,Zle,Chord,Ainc, Nspan,Sspace);
+    fprintf(gfile,'%.2f      %.2f  %.2f  %.2f  %.2f  %.2f  %.2f\n',Xle,Yle,Zle,Chord,Ainc, Nspan,Sspace);
     
     %define section camber line
     fprintf(gfile,'NACA\n2412\n');
+    %fprintf(gfile,'AFILE\n');
+    %fprintf(gfile,'Inputs/NACA23012av.txt\n')
 
 end
 

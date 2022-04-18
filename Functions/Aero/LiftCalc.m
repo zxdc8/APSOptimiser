@@ -1,7 +1,7 @@
 %/////Works out required CL and writes to run file//////
 function CL=LiftCalc(M,At,CD0)
     
-    %Calculate required Cl for Wing Area
+    %Calculate required Cl for Wing Area-SHIEEET need mass
     [T,a,~,rho]=atmosisa(11582.4);
     CL=(300e3*9.81)/(0.5*rho*At*(M*a)^2);
     
