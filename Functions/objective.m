@@ -61,14 +61,14 @@ Payload_Mass = 105160; %weight of Passengers
 
 iterUpdate;
 
-massfilename='Inputs/TotMass.csv'
+massfilename='Inputs/TotMass.csv';
 liftmass=fopen(massfilename,'w');
-mass=[Struc_Mass; Payload_Mass; Mf]
-massT=sum(mass)
+mass=[Struc_Mass; Payload_Mass; Mf];
+massT=sum(mass);
 
 csvwrite(massfilename,massT);
 
-fclose(liftmass)
+fclose(liftmass);
 
 objFun = Mf;  %Load fuel mass as objective function
 
