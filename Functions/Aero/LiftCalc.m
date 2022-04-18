@@ -2,8 +2,12 @@
 function CL=LiftCalc(M,At,CD0)
     
     %Calculate required Cl for Wing Area-SHIEEET need mass
+
+    %Hey now we have mass
+    MT=csvread('././Inputs/TotMass.csv')
+
     [T,a,~,rho]=atmosisa(11582.4);
-    CL=(300e3*9.81)/(0.5*rho*At*(M*a)^2);
+    CL=(MT*9.81)/(0.5*rho*At*(M*a)^2);
     
     %Also work out reynolds number
     
