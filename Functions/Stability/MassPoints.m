@@ -11,7 +11,7 @@ while ischar(tline)
     tline = fgetl(fid);
     string_line = string(tline);
     
-        if string_line == string(SECTION) %Reads the dimensional components of the aerofoil in the line following the SECTION phrase
+        if string_line == string('SECTION') %Reads the dimensional components of the aerofoil in the line following the SECTION phrase
             tline = fgetl(fid);
             string_line = string(tline);
             panel_values = double(split(string_line));
@@ -19,7 +19,7 @@ while ischar(tline)
             Y_Pos = [Y_Pos panel_values(2)];
             Z_Pos = [Z_Pos panel_values(3)];
             Chord = [Chord panel_values(4)];
-        elseif string_line == string( NACA) || string_line == string(NACA) %Reads the NACA foil number of each aerofoil
+        elseif string_line == string(' NACA') || string_line == string('NACA') %Reads the NACA foil number of each aerofoil
             tline = fgetl(fid);
             NACA_Unit = string(tline);
             FoilA = [FoilA NACA_Unit]; %List contains the NACA no. for each aerofoil of the .avl file
