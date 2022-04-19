@@ -22,7 +22,7 @@ alpha_tol = 0.01; % 1% tolerance from target Cm
 %x0=[50 30 15 30 40 10 10];
 x0=[30 15 10 20 50 20 40];
 LB=[20 15 10 0 0 10 10];
-UB=[72 72 72 72 72 35 40];
+UB=[72 50 20 40 72 30 30];
 
 %Write AVL case file and get filename, constraint values
 [filename,iter,At]=aeromodule(x0);
