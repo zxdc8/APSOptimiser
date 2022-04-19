@@ -1,5 +1,5 @@
 %////////OBJECTIVE FUNCTION/////////
-function [objFun] = objective(x,iter)
+function [objFun] = objectivepso(x,iter)
 %generate geometry
 
 [filename]=aeromodule(x,iter);

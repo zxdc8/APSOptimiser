@@ -20,10 +20,10 @@ function [X,J]=PSO(x0, LB, UB,npts)
     %Set pbest
     pbest=X;
     
-    delete(gcp('nocreate'))
+    %delete(gcp('nocreate'))
     % workers initialization:
         
-    parpool(4);
+    %parpool(4);
     
 
     rng('shuffle'); % shuffle the client
@@ -37,7 +37,7 @@ function [X,J]=PSO(x0, LB, UB,npts)
     end
     
     %Inital Evaluation of objective function
-    parfor (ii=1:size(X,1),8)
+    parfor (ii=1:size(X,1),4) %change 4 to 0 to debug
             
             key=randi([1 1e6])
             pbest_obj(ii)=ObjConWrapper(pbest(ii,:),key);
@@ -65,7 +65,7 @@ function [X,J]=PSO(x0, LB, UB,npts)
 
         %Evaluation of objective function
         
-        parfor (ii=1:size(X,1),8)
+        parfor (ii=1:size(X,1),4)
                 
             obj(ii)=ObjConWrapper(X(ii,:));
     

@@ -20,10 +20,10 @@ function [X,J]=PSO(x0, LB, UB,npts)
     %Set pbest
     pbest=X;
     
-    delete(gcp('nocreate'))
+    %delete(gcp('nocreate'))
     % workers initialization:
         
-    parpool(8);
+    parpool(4);
     
 
     rng('shuffle'); % shuffle the client
