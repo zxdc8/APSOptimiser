@@ -1,9 +1,7 @@
 %////////MAIN FILE - RUN THIS/////////
-fclose('all');
+fclose('all')
 close all
 clear all
-
-echo off all
 
 %set iteration file-workaround
 filename='iteration.csv';
@@ -32,11 +30,8 @@ UB=[72 72 72 72 72 35 40];
 %Define Objective Function
 objFun=@(x)objective(x);
 
-%Define solver options - Active set Algorithm
-options = optimoptions('fmincon','Algorithm','active-set','Display','iter','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'UseParallel',true);
-
-%Interior Point Algorithm
-% options = optimoptions('fmincon','Algorithm','interior-point','Display','iter','FunctionTolerance',1e-7,'PlotFcns',@optimplotfval);
+%Define solver options 
+options = optimoptions('fmincon','Algorithm','active-set','Display','iter','FunctionTolerance',1e-7,'StepTolerance',1e-12,'PlotFcns',@optimplotfval);
 
 %Run Optimisation
 [X,J]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options)   

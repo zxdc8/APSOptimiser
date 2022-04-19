@@ -28,8 +28,8 @@ EngineData.Diversion  = EngineGridFunc3( 'Diversion' , 1, EngFileName, M_ext, SF
 EngineData.Hold       = EngineGridFunc3( 'Hold'      , 1, EngFileName, M_ext, SF ); % Hold
 EngineData.Approach   = EngineGridFunc3( 'Approach'  , 1, EngFileName, M_ext, SF ); % Approach
 
-disp(' ');
-disp(['... Engine data prepared from ' EngFileName]);
-disp(' ');
+% disp(' ');
+% disp(['... Engine data prepared from ' EngFileName]);
+% disp(' ');
 end
 

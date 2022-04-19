@@ -1,6 +1,6 @@
 %///////CALLS AVL/////////
 function outname = AVLcall(avl,mass,run,i)
-
+echo off all
 %define command file
 cmdfile=fopen('.\.\commandfile.txt','w');
 
@@ -28,7 +28,7 @@ system('avl < commandfile.txt');
 %Move output files
 tot_forc=sprintf('Out_Force_%.0f.txt',i);
 % movefile(tot_forc,'C:/Users/Joe/OneDrive - University of Bristol/Documents/GitHub/APSOptimiser/Outputs/Forces'); %/\/\/\/\
-movefile(tot_forc,'Outputs/Forces')
+movefile(tot_forc,'Outputs/Forces');
 
 stab_deri=sprintf('Stab_Deri_%.0f.txt',i);
 % movefile(stab_deri,'C:/Users/Joe/OneDrive - University of Bristol/Documents/GitHub/APSOptimiser/Outputs/Stability'); %/\/\/\/\
@@ -36,7 +36,7 @@ movefile(stab_deri,'Outputs/Stability');
 
 % Move plot file
 filename=sprintf('geom_%.0f.ps',i);
-movefile('plot.ps',filename)
+movefile('plot.ps',filename);
 movefile(filename,'Outputs/Plots/Geometry')
 
 outname=sprintf('out_%.0f.txt',i);

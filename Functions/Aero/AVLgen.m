@@ -43,7 +43,7 @@ fprintf(gfile,'%.2f  %.2f\n',Nchord,Cspace);
 fprintf(gfile,'YDUPLICATE\n0\n');
 
 %Specify Drag Curve
-fprintf(gfile,'CDCL\n -0.513    0.01088     0.11      0.00587    1.0    0.0105\n')
+fprintf(gfile,'CDCL\n -0.513    0.01088     0.11      0.00587    1.0    0.0105\n');
 
 %construct wing
 for ii=1:length(Z)

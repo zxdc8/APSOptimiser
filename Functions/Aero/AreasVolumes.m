@@ -5,7 +5,7 @@ function [VF,VW,VP] = AreasVolumes(S,X,Z,dih)
     %Import NACA aerofoil
     
 %     NACA=table2array(readtable('././Inputs/NACA23012.txt'))
-    NACA=table2array(readtable('NACA23012.txt'))
+    NACA=table2array(readtable('NACA23012.txt'));
     len=length(NACA);
 
     %GENERATE 3D WING POINTS
