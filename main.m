@@ -33,7 +33,7 @@ UB=[72 72 72 72 72 35 40];
 objFun=@(x)objective(x);
 
 %Define solver options - Active set Algorithm
-options = optimoptions('fmincon','Algorithm','active-set','Display','iter','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'UseParallel',true);
+options = optimoptions('fmincon','Algorithm','active-set','Display','final-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'UseParallel',true,'MaxIterations',30);
 
 %Interior Point Algorithm
 % options = optimoptions('fmincon','Algorithm','interior-point','Display','iter','FunctionTolerance',1e-7,'PlotFcns',@optimplotfval);
@@ -45,5 +45,7 @@ options = optimoptions('fmincon','Algorithm','active-set','Display','iter','Fini
 %[filename, iter]=aeromodule(X)
 
 %AVLcall(filename,'mass_1.avl','w.run',iter);
+
+save('GeometryOpt.mat','X')
 
 fclose('all');
