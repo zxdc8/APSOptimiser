@@ -32,11 +32,9 @@ UB=[72 72 72 72 72 35 40];
 %Define Objective Function
 objFun=@(x)objective(x);
 
-%Define solver options - Active set Algorithm
-% options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',30);
 
-%Interior Point Algorithm
-options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-10,'PlotFcns',@optimplotfval,'MaxIterations',30);
+%SQP Algorithm
+options = optimoptions('fmincon','Algorithm','sqp','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-10,'PlotFcns',@optimplotfval,'MaxIterations',30);
 
 %Run Optimisation
 [X,J,EXITFLAG,OUTPUT]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
@@ -50,6 +48,6 @@ fclose('all');
 %% Output geometry and save file
 
 vis3D(X)
-save('Details_IP.mat','OUTPUT')
-save('GeometryOpt_IP.mat','X')
+save('Details_sqp.mat','OUTPUT')
+save('GeometryOpt_sqp.mat','X')
 
