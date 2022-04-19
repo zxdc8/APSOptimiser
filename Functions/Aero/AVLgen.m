@@ -59,7 +59,7 @@ for ii=1:length(Z)
     fprintf(gfile,'%.2f      %.2f  %.2f  %.2f  %.2f  %.2f  %.2f\n ',Xle,Yle,Zle,Chord,Ainc, Nspan,Sspace);
     
     %define section camber line
-    fprintf(gfile,'NACA\n2412\n');
+    fprintf(gfile,'NACA\n2212\n');
 
 end
 
