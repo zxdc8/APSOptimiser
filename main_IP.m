@@ -1,7 +1,9 @@
 %////////MAIN FILE - RUN THIS/////////
-fclose('all')
+fclose('all');
 close all
 clear all
+
+echo off all
 
 %set iteration file-workaround
 filename='iteration.csv';
@@ -30,15 +32,24 @@ UB=[72 72 72 72 72 35 40];
 %Define Objective Function
 objFun=@(x)objective(x);
 
-%Define solver options 
-options = optimoptions('fmincon','Algorithm','active-set','Display','iter','FunctionTolerance',1e-7,'StepTolerance',1e-12,'PlotFcns',@optimplotfval);
+%Define solver options - Active set Algorithm
+% options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',30);
+
+%Interior Point Algorithm
+options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',30);
 
 %Run Optimisation
-[X,J]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options)   
+[X,J,EXITFLAG,OUTPUT]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
 
 %Generate Final AVL case file
 %[filename, iter]=aeromodule(X)
 
 %AVLcall(filename,'mass_1.avl','w.run',iter);
-
 fclose('all');
+
+%% Output geometry and save file
+
+vis3D(X)
+save('Details_IP.mat','OUTPUT')
+save('GeometryOpt_IP.mat','X')
+
