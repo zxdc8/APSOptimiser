@@ -31,7 +31,7 @@ UB=[72 72 72 72 72 35 40];
 objFun=@(x)objective(x);
 
 %Define solver options 
-options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',5e-7,'StepTolerance',1e-7,'PlotFcns',@optimplotfval);
+options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-6,'StepTolerance',1e-7,'PlotFcns',@optimplotfval);
 
 %Run Optimisation
 [X,J]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options)   
