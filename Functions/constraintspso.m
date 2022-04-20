@@ -59,8 +59,8 @@ C(5)=x(6)+x(7)-40; %Wingspan
 
 C(6)=Cmtot*alpha_tol-target_cmtot;  %Longitudinal stability
 
-C(7) = X(1) - X(2);
-C(8) = X(2) - X(3);
+C(7) = X(1) - X(2); %enforce sweep
+C(8) = X(2) - X(3); %enforce sweep
 % C(9) = (X(1)+S(1)) - (S(2) + X(2)); 
 % C(10) = (X(2)+S(2)) - (S(3) + X(3)); 
 
