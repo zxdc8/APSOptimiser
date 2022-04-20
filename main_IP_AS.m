@@ -32,28 +32,31 @@ UB=[72 72 72 72 72 35 40];
 %Define Objective Function
 objFun=@(x)objective(x);
 
-%Define solver options - Active set Algorithm
-% options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',30);
 
 %Interior Point Algorithm
 options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-detailed','FiniteDifferenceStepSize',1,'FunctionTolerance',1e-3,'StepTolerance',1e-9,'PlotFcns',@optimplotfval,'MaxIterations',40);
 
 
 %Run Optimisation
-[X,J,EXITFLAG,OUTPUT]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
+[x0]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options); 
 
-%Generate Final AVL case file
-%[filename, iter]=aeromodule(X)
+saveas(gcf,'Step_IPAS')
+
+%Define solver options - Active set Algorithm
+options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',3,'FunctionTolerance',1e-2,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',30);
+
+%Run Optimisation
+[X,J,EXITFLAG,OUTPUT]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
+saveas(gcf,'Step_ASS')
 
 %AVLcall(filename,'mass_1.avl','w.run',iter);
 fclose('all');
 
 %% Output geometry and save file
-saveas(gcf,'Step_IP2')
 
 vis3D(X)
-save('J_IP2.mat','J')
-save('Details_IP2.mat','OUTPUT')
-save('GeometryOpt_IP2.mat','X')
+save('J_IPAS.mat','J')
+save('Details_IPAS.mat','OUTPUT')
+save('GeometryOpt_IPAS.mat','X')
 
 tEnd = toc(tstart)

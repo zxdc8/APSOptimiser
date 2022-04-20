@@ -4,7 +4,7 @@ close all
 clear all
 
 echo off all
-
+tstart = tic;
 %set iteration file-workaround
 filename='iteration.csv';
 ifile=fopen(filename,'w');
@@ -34,7 +34,7 @@ objFun=@(x)objective(x);
 
 
 %SQP Algorithm
-options = optimoptions('fmincon','Algorithm','sqp','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',40,'UseParallel',true);
+options = optimoptions('fmincon','Algorithm','sqp','Display','iter-detailed','FiniteDifferenceStepSize',1,'FunctionTolerance',1e-3,'StepTolerance',1e-9,'PlotFcns',@optimplotfval,'MaxIterations',40);
 
 %Run Optimisation
 [X,J,EXITFLAG,OUTPUT]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
@@ -48,8 +48,9 @@ fclose('all');
 %% Output geometry and save file
 
 vis3D(X)
-saveas(gcf,'Step_SQP')
-save('J_SQP.mat','J')
-save('Details_sqp.mat','OUTPUT')
-save('GeometryOpt_sqp.mat','X')
+saveas(gcf,'Step_SQP1')
+save('J_SQP1.mat','J')
+save('Details_sqp1.mat','OUTPUT')
+save('GeometryOpt_sqp1.mat','X')
 
+tEnd = toc(tstart)

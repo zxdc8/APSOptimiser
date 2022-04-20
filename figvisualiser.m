@@ -1,13 +1,19 @@
-clear all
-close all
 
-load('GeometryOpt_IP.mat');
-load('J_IP.mat');
-load('Details_IP.mat');
+
+load('GeometryOpt_AS1.mat');
+load('J_AS1.mat');
+load('Details_AS1.mat');
+
+openfig('Step_AS1')
 
 %%
 vis3D(X)
 
 J = round(J);
+a = string(['Fuel = ']);
+b = num2str(J);
+c = string(['kg']);
 
-title(['Fuel = ' num2str(J)"kg"]) 
+a = join([a b c]);
+
+title(a) 

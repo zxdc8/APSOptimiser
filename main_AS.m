@@ -4,7 +4,7 @@ close all
 clear all
 
 echo off all
-
+tstart = tic;
 %set iteration file-workaround
 filename='iteration.csv';
 ifile=fopen(filename,'w');
@@ -22,7 +22,7 @@ target_cmtot = -0.01;
 alpha_tol = 0.01; % 1% tolerance from target Cm
 
 %x0=[50 30 15 30 40 10 10];
-x0=[40 20 10 20 40 40 40];
+x0=[25 20 10 5 20 15 30];
 LB=[20 15 10 0 0 10 10];
 UB=[72 72 72 72 72 35 40];
 
@@ -33,11 +33,11 @@ UB=[72 72 72 72 72 35 40];
 objFun=@(x)objective(x);
 
 %Define solver options - Active set Algorithm
-options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',28);
+options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',3,'FunctionTolerance',1e-2,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',30);
 
 
 %Run Optimisation
-[X,J,EXITFLAG,OUTPUT]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
+[X,J,EXITFLAG,OUTPUT]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);
 
 %Generate Final AVL case file
 %[filename, iter]=aeromodule(X)
@@ -46,10 +46,11 @@ options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detail
 fclose('all');
 
 %% Output geometry and save file
-
+saveas(gcf,'Step_AS1')
 vis3D(X)
-saveas(gcf,'Step_AS')
-save('J_AS.mat','J')
-save('Details_AS.mat','OUTPUT')
-save('GeometryOpt_AS.mat','X')
 
+save('J_AS1.mat','J')
+save('Details_AS1.mat','OUTPUT')
+save('GeometryOpt_AS1.mat','X')
+
+tEnd = toc(tstart)
