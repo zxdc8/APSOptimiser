@@ -39,8 +39,7 @@ function [X,J]=PSO(x0, LB, UB,npts)
     %Inital Evaluation of objective function
     parfor (ii=1:size(X,1),4) %change 4 to 0 to debug
             
-            key=randi([1 1e6])
-            pbest_obj(ii)=ObjConWrapper(pbest(ii,:),key);
+            pbest_obj(ii)=ObjConWrapper(pbest(ii,:));
 
     end
     

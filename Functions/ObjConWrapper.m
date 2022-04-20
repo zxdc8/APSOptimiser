@@ -1,4 +1,4 @@
-function [obj]=ObjConWrapper(X,key)
+function [obj]=ObjConWrapper(X)
 
     key=randi([0 1000000])
     

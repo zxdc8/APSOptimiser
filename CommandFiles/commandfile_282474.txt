@@ -1,0 +1,14 @@
+LOAD Inputs/AVLcases/case_282474.avl
+MASS Inputs/Massfiles/mass_282474.mass
+CASE Inputs/w.run
+PLOP
+GF
+
+mset
+0
+OPER
+X
+FT
+Out_Force_282474.txt
+ST
+Stab_Deri_282474.txt
