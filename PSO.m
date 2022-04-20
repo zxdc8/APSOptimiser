@@ -1,12 +1,19 @@
-
+close all
+clear all
 
 %Set Parameters
 
 LB=[20 15 10 0 0 10 10];
 UB=[72 50 20 40 72 30 30];
 
-npts=20;    %no particles
+npts=40;    %no particles
 nit=20;     %no iterations
+
+%Set Swarm Parameters-These influence swarm behaviour
+c1=0.5; %Cognitive Coefficient (Hunt)
+c2=0.5; %Social Coefficient (Swarm)
+w=0.8;  %Inertia (keep going in same direction)
+
 
 %Initialise Particle Swarm between upper and lower bounds
     for ii=1:length(LB)
@@ -46,17 +53,18 @@ gbest=pbest(I,:);
 gbest_obj=pbest_obj(I);
 
 for kk=1:nit
-%Set Swarm Parameters
     
-    c1=0.5;
-    c2=0.5;
-    w=0.8;
-
     %Update velocities
     r=rand(2,1);
     V=w*V+c1*r(1)*(pbest-X)+c2*r(2)*(gbest-X);
 
     X=X+V;
+    
+    %Set X to LB or UB if outside limits
+    for qq=1:npts
+         X(qq,X(qq,:)<LB)=LB(X(qq,:)<LB);
+         X(qq,X(qq,:)>UB)=UB(X(qq,:)>UB);
+    end
 
     %Work out X and V ranges
     
@@ -68,7 +76,8 @@ for kk=1:nit
     end
 
     %Evaluation of objective function
-    
+    %%
+
     parfor (ii=1:size(X,1),4)
             
         obj(ii)=ObjConWrapper(X(ii,:));
@@ -84,23 +93,37 @@ for kk=1:nit
     gbest=pbest(I,:);
     gbest_obj=pbest_obj(I);
 
+    Gcon(kk)=gbest_obj;
+
     end
 
-    Xo=gbest;
-    Jo=gbest_obj;
-    
-    for ii=1:nit
-        Xcon(ii)=sum(Xrng(ii,:))
-        Vcon(ii)=sum(Vrng(ii,:))
-    end
+Xo=gbest;
+Jo=gbest_obj;
 
-    figure
-    plot(1:nit,Xcon,'x')
-    hold all
-    plot(1:nit,Vcon,'x')
+for ii=1:nit
+    Xcon(ii)=sum(Xrng(ii,:))
+    Vcon(ii)=sum(Vrng(ii,:))
+end
 
+figure
+plot(1:nit,Xcon,'x-')
+hold all
+plot(1:nit,Vcon,'x-')
+legend('Summed Position Range','Summed Velocity Range')
+grid on
 
+figure
+plot(1:nit,Gcon,'x-')
+ylabel('J')
+xlabel('iteration')
 
+%Export some data for studies
+DatOut(:,1)=Xcon;
+DatOut(:,2)=Vcon;
+DatOut(:,3)=Gcon;
+
+logfile=sprintf('Logging/n_%.1f_c1_%.1f_c2_%.1f_w_%.1f.csv',npts,c1,c2,w);0
+csvwrite(logfile,DatOut);
 
 
 
