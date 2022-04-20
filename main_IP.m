@@ -50,6 +50,7 @@ fclose('all');
 %% Output geometry and save file
 
 vis3D(X)
-save('Details_IP3.mat','OUTPUT')
-save('GeometryOpt_IP3.mat','X')
+save('J_IP.mat','J')
+save('Details_IP.mat','OUTPUT')
+save('GeometryOpt_IP.mat','X')
 

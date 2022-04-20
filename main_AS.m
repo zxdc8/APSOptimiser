@@ -33,7 +33,7 @@ UB=[72 72 72 72 72 35 40];
 objFun=@(x)objective(x);
 
 %Define solver options - Active set Algorithm
-options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-10,'PlotFcns',@optimplotfval,'MaxIterations',28);
+options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',28);
 
 
 %Run Optimisation
@@ -48,6 +48,7 @@ fclose('all');
 %% Output geometry and save file
 
 vis3D(X)
+save('J_AS.mat','J')
 save('Details_AS.mat','OUTPUT')
 save('GeometryOpt_AS.mat','X')
 
