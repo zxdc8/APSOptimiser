@@ -36,7 +36,7 @@ objFun=@(x)objective(x);
 % options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',30);
 
 %Interior Point Algorithm
-options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-10,'PlotFcns',@optimplotfval,'MaxIterations',30);
+options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',30);
 
 %Run Optimisation
 [X,J,EXITFLAG,OUTPUT]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
@@ -50,6 +50,6 @@ fclose('all');
 %% Output geometry and save file
 
 vis3D(X)
-save('Details_IP.mat','OUTPUT')
-save('GeometryOpt_IP.mat','X')
+save('Details_IP3.mat','OUTPUT')
+save('GeometryOpt_IP3.mat','X')
 
