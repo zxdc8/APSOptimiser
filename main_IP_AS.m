@@ -59,6 +59,6 @@ save('J_IPAS2.mat','J')
 save('Details_IPAS2.mat','OUTPUT')
 save('GeometryOpt_IPAS2.mat','X')
 
-% openfig('Step_IPAS')
+openfig('Step_IPAS')
 
 tEnd = toc(tstart)
