@@ -34,7 +34,7 @@ objFun=@(x)objective(x);
 
 
 %SQP Algorithm
-options = optimoptions('fmincon','Algorithm','sqp','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',30);
+options = optimoptions('fmincon','Algorithm','sqp','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',40,'UseParallel',true);
 
 %Run Optimisation
 [X,J,EXITFLAG,OUTPUT]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
@@ -48,6 +48,7 @@ fclose('all');
 %% Output geometry and save file
 
 vis3D(X)
+saveas(gcf,'Step_SQP')
 save('J_SQP.mat','J')
 save('Details_sqp.mat','OUTPUT')
 save('GeometryOpt_sqp.mat','X')

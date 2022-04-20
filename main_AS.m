@@ -48,6 +48,7 @@ fclose('all');
 %% Output geometry and save file
 
 vis3D(X)
+saveas(gcf,'Step_AS')
 save('J_AS.mat','J')
 save('Details_AS.mat','OUTPUT')
 save('GeometryOpt_AS.mat','X')
