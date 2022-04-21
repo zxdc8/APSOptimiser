@@ -59,7 +59,7 @@ Payload_Mass = 105160; %weight of Passengers
 
 %%
 
-% iterUpdate; 
+iterUpdate; 
 
 objFun = Mf;  %Load fuel mass as objective function
 
