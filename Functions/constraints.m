@@ -72,4 +72,6 @@ Ceq=[]
 %Ceq(1)=Vf-Vol_Fuel;     %Fuel Volume
 %Ceq(2)=Ap-Area_Pass;      %Pax Volume
 
+iterUpdate;
+
 end

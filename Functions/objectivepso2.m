@@ -1,19 +1,19 @@
 %////////OBJECTIVE FUNCTION/////////
-function [objFun] = objective(x)
+function [objFun] = objectivepso2(x,iter)
 %generate geometry
 
-[filename,iter]=aeromodule(x);
+[filename]=aeromodule(x,iter);
 
 %Take design variables into a form the code likes
 [S,X,Z,dih]=DesignToSXZ(x);
 
 %Get iteration number
 
-iter=getIteration();
+%iter=getIteration();
 % iter = 1; %/\/\/\/\
 
 
-
+% fclose('all')
 massfile=sprintf('mass_%.0f.mass',iter);
 
 %call avl
@@ -58,9 +58,7 @@ Payload_Mass = 105160; %weight of Passengers
 
 
 %%
-
-% iterUpdate; 
-
+% iter=randi([0 1000000]);
 objFun = Mf;  %Load fuel mass as objective function
 
 end
