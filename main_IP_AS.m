@@ -34,20 +34,22 @@ objFun=@(x)objective(x);
 
 
 %Interior Point Algorithm
-options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-detailed','FiniteDifferenceStepSize',1,'FunctionTolerance',1e-3,'StepTolerance',1e-10,'PlotFcns',@optimplotfval,'MaxIterations',40);
+options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',25);
 
 
 %Run Optimisation
 [x0]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options); 
 
-saveas(gcf,'Step_IPAS2')
+saveas(gcf,'Step_IPAS4')
+
+fclose('all')
 
 %Define solver options - Active set Algorithm
 options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',3,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',30);
 
 %Run Optimisation
 [X,J,EXITFLAG,OUTPUT]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
-saveas(gcf,'Step_ASS2')
+saveas(gcf,'Step_ASS4')
 
 %AVLcall(filename,'mass_1.avl','w.run',iter);
 fclose('all');
@@ -55,10 +57,10 @@ fclose('all');
 %% Output geometry and save file
 
 vis3D(X)
-save('J_IPAS2.mat','J')
-save('Details_IPAS2.mat','OUTPUT')
-save('GeometryOpt_IPAS2.mat','X')
+save('J_IPAS4.mat','J')
+save('Details_IPAS4.mat','OUTPUT')
+save('GeometryOpt_IPAS4.mat','X')
 
-openfig('Step_IPAS')
+openfig('Step_IPAS4')
 
 tEnd = toc(tstart)
