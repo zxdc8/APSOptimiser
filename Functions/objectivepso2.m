@@ -1,7 +1,17 @@
 %////////OBJECTIVE FUNCTION/////////
-function [objFun] = objectivepso2(x,iter)
-%generate geometry
+function [objFun] = objectivepso2(x)
 
+iter = 1e13-tic;
+
+a = num2str(iter);
+b = '.txt';
+filename = join([a b]);
+ifile = fopen(filename,'w');
+fclose('all');
+
+movefile(filename,'././TIC');
+
+%generate geometry
 [filename]=aeromodule(x,iter);
 
 %Take design variables into a form the code likes
@@ -58,7 +68,7 @@ Payload_Mass = 105160; %weight of Passengers
 
 
 %%
-% iter=randi([0 1000000]);
+
 objFun = Mf;  %Load fuel mass as objective function
 
 end

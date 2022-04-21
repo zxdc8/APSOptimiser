@@ -1,6 +1,12 @@
 %////////CONSTRAINTS/////////
 function [C, Ceq] = constraints(x,iter)
 
+% txtfile = dir('././TIC/*.txt');
+% iter1 = txtfile.name;
+% [~,iter,~] = fileparts(iter1);
+% 
+% iter = str2num(iter);
+
 %Calculate Wing Area
 [S,X,Z,dih]=DesignToSXZ(x);
 
@@ -8,7 +14,7 @@ function [C, Ceq] = constraints(x,iter)
 %% Fuel Volume constraint
 
 
-%iter=getIteration();
+% iter=getIteration();
 outname=sprintf('Out_Force_%i.txt',iter);
 
            
@@ -35,6 +41,10 @@ Area_Pass; %Area of Passenger module floor, used to determine if there is enough
            %height space for passengers to sit
 Vol_Fuel; %Volume of Fuel module, should be multiplied by a factor to account for structures and sub-systems that take up volume in this moudle
 
+
+% a = '././TIC/';
+% string = join([a iter1]);
+% delete(string);
 
 %Express area of passengers required
 Ap=225*0.5*0.8*1.2;
@@ -68,8 +78,10 @@ C(11)=Vf-2.5*Vol_Fuel;     %Fuel Volume
 C(12)=Ap-Area_Pass;      %Pax Volume
 
 %Equality Constraints
-Ceq=[]
+Ceq=[];
 %Ceq(1)=Vf-Vol_Fuel;     %Fuel Volume
 %Ceq(2)=Ap-Area_Pass;      %Pax Volume
+
+
 
 end
