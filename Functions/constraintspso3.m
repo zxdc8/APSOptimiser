@@ -2,23 +2,23 @@
 function [C, Ceq] = constraints(x,iter)
 
 
-% [filename]=aeromodule(x,iter);
+[filename]=aeromodule(x,iter);
 
 
 %Calculate Wing Area
 [S,X,Z,dih]=DesignToSXZ(x);
 
 %%
-% 
-% massfile=sprintf('mass_%.0f.mass',iter);
-% fclose('all')
-% %call avl
-% outname=AVLcall(filename,massfile,'w.run',iter);
-% 
-% %read data
-% 
-% [CdCl, CD0, s, k, M]=ReadOutput(outname,x);
-% 
+
+massfile=sprintf('mass_%.0f.mass',iter);
+fclose('all')
+%call avl
+outname=AVLcall(filename,massfile,'w.run',iter);
+
+%read data
+
+[CdCl, CD0, s, k, M]=ReadOutput(outname,x);
+
 
 
 %% Fuel Volume constraint

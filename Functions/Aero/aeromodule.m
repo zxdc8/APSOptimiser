@@ -5,6 +5,6 @@ function [filename,At] = aeromodule(x,iter)
 [S,X,Z,dih]=DesignToSXZ(x);
 
 %Generate AVL Aero Input file
-[filename,At]=AVLgen(S,Z,dih,X,iter);
+[filename,At]=AVLgen2(S,Z,dih,X,iter);
 
 end

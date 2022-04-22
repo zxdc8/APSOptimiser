@@ -103,8 +103,9 @@ elseif data.T ~= 0
             fprintf(fid,['ERROR: Data required for ', data.Setting , ' is outside available range ... \n']);
             fprintf(fid,['Mach number: ',num2str(Mach),', Alt: ' ,num2str(h_ft),' ft, Thrust: ' ,num2str(T_engine), ' lb. \n' ]);
             fclose(fid);
-            error(['Data required for ', data.Setting , ' is outside available range. ' ...
-                'Mach number: ',num2str(Mach),', Alt: ' ,num2str(h_ft),' ft, Thrust: ' ,num2str(T_engine), ' lb.' ]);
+%             error(['Data required for ', data.Setting , ' is outside available range. ' ...
+%                 'Mach number: ',num2str(Mach),', Alt: ' ,num2str(h_ft),' ft, Thrust: ' ,num2str(T_engine), ' lb.' ]);
+            FF_engine = 1e6;
         end
         % Message
         if Extrap==1 && display == 1
