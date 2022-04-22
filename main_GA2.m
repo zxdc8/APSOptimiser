@@ -42,12 +42,12 @@ objFun=@(x)ObjConWrapper(x);
 
 
 %% GA Algorithm
-options = optimoptions('ga','Display','iter','FunctionTolerance',1e-2,'PopulationSize',120,'MaxGenerations',100,'PlotFcn',{@gaplotbestf,@gaplotstopping,@gaplotbestindiv},'UseParallel',true);
+options = optimoptions('ga','Display','iter','FunctionTolerance',1e-2,'PopulationSize',200,'MaxGenerations',60,'MutationFcn','mutationadaptfeasible','PlotFcn',{@gaplotbestf,@gaplotstopping,@gaplotbestindiv},'UseParallel',true);
 
 %Hybrid Function - Active set
 
-fminconOptions = optimoptions(@fmincon,'Algorithm','active-set','PlotFcn',{'optimplotfval','optimplotx'});
-options = optimoptions(options,'HybridFcn',{@fmincon, fminconOptions});
+% fminconOptions = optimoptions(@fmincon,'Algorithm','active-set','PlotFcn',{'optimplotfval','optimplotx'},'UseParallel',true);
+% options = optimoptions(options,'HybridFcn',{@fmincon, fminconOptions});
 
 %Run Optimisation
 [X,fval,exitflag,output,population,scores]=ga(objFun,7,[],[],[],[],LB,UB,[],options);   
@@ -68,14 +68,14 @@ options = optimoptions(options,'HybridFcn',{@fmincon, fminconOptions});
 fclose('all');
 
 %% Output geometry and save file
-saveas(gcf,'././GA/Step_1')
+saveas(gcf,'././GA/Step_2')
 
 vis3D(X)
 
-save('././GA/fval_1.mat','fval')
-save('././GA/Details_1.mat','output')
-save('././GA/Geom_1.mat','X')
-save('././GA/pop_1.mat','population')
-save('././GA/scores_1.mat','scores')
+save('././GA/fval_2.mat','fval')
+save('././GA/Details_2.mat','output')
+save('././GA/Geom_2.mat','X')
+save('././GA/pop_2.mat','population')
+save('././GA/scores_2.mat','scores')
 
 tEnd = toc(tstart)

@@ -42,7 +42,7 @@ objFun=@(x)ObjConWrapper(x);
 
 
 %GA Algorithm
-options = optimoptions('particleswarm','Display','iter','FunctionTolerance',1e-2,'PlotFcn',{@pswplotbestf},'UseParallel',true);
+options = optimoptions('particleswarm','Display','iter','SwarmSize',100,'FunctionTolerance',1e-2,'PlotFcn',{@pswplotbestf},'UseParallel',true);
 
 
 %Run Optimisation
