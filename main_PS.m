@@ -27,7 +27,9 @@ target_cmtot = -0.01;
 alpha_tol = 0.01; % 1% tolerance from target Cm
 
 % x0=[50 30 15 30 40 10 10];
-x0=[40 20 10 20 40 40 40];
+% x0=[40 20 10 20 40 40 40];
+x0 = [20 15 10 17 45 26 14]; 
+
 LB=[20 15 10 0 0 10 10];
 UB=[40 40 30 30 70 30 60];
 
@@ -42,7 +44,7 @@ objFun=@(x)ObjConWrapper(x);
 
 
 %GA Algorithm
-options = optimoptions('patternsearch','Display','iter','InitialMeshSize',1,'MeshTolerance',1e-10,'FunctionTolerance',1e-2,'SearchFcn','searchlhs','PlotFcn',{@psplotbestf,@psplotfuncount,@psplotmeshsize},'UseParallel',true,'UseCompleteSearch',true);
+options = optimoptions('patternsearch','Display','iter','InitialMeshSize',1,'MeshTolerance',1e-10,'FunctionTolerance',1e-2,'AccelerateMesh',true,'PlotFcn',{@psplotbestf,@psplotfuncount,@psplotmeshsize},'UseParallel',true,'UseCompleteSearch',true);
 
 % options = optimoptions('patternsearch','Display','iter','InitialMeshSize',1,'MeshTolerance',1e-10,'FunctionTolerance',1e-2,'SearchFcn','searchlhs','PlotFcn',{@psplotbestf,@psplotfuncount,@psplotmeshsize},'Cache','on','UseVectorized',true,'UseCompleteSearch',true);
 
@@ -65,12 +67,12 @@ options = optimoptions('patternsearch','Display','iter','InitialMeshSize',1,'Mes
 fclose('all');
 
 %% Output geometry and save file
-saveas(gcf,'././PS/Step_5')
+saveas(gcf,'././PS/Step_6')
 
 vis3D(X)
-save('././PS/fval_5.mat','fval')
-save('././PS/Details_5.mat','output')
-save('././PS/Geom_5.mat','X')
+save('././PS/fval_6.mat','fval')
+save('././PS/Details_6.mat','output')
+save('././PS/Geom_6.mat','X')
 % save('././PS/pop_1.mat',population)
 % save('././PS/scores_1.mat',scores)
 

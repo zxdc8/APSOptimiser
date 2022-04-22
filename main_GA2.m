@@ -41,9 +41,13 @@ objFun=@(x)ObjConWrapper(x);
 % constFun = @(x)constraintspso2(x,key);
 
 
-%GA Algorithm
-options = optimoptions('ga','Display','iter','FunctionTolerance',1e-2,'PopulationSize',100,'MaxGenerations',100,'PlotFcn',{@gaplotbestf,@gaplotstopping,@gaplotbestindiv},'UseParallel',true);
+%% GA Algorithm
+options = optimoptions('ga','Display','iter','FunctionTolerance',1e-2,'PopulationSize',120,'MaxGenerations',100,'PlotFcn',{@gaplotbestf,@gaplotstopping,@gaplotbestindiv},'UseParallel',true);
 
+%Hybrid Function - Active set
+
+fminconOptions = optimoptions(@fmincon,'Algorithm','active-set','PlotFcn',{'optimplotfval','optimplotx'});
+options = optimoptions(options,'HybridFcn',{@fmincon, fminconOptions});
 
 %Run Optimisation
 [X,fval,exitflag,output,population,scores]=ga(objFun,7,[],[],[],[],LB,UB,[],options);   

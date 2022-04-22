@@ -42,11 +42,11 @@ objFun=@(x)ObjConWrapper(x);
 
 
 %GA Algorithm
-options = optimoptions('simulannealbnd','Display','iter','FunctionTolerance',1e-2,'PlotFcn',{@saplotbestx,@saplotbestf,@saplotx,@saplotf,@saplottemperature},'UseParallel',true);
+options = optimoptions('simulannealbnd','Display','iter','AnnealingFcn','annealingboltz','TemperatureFcn','temperatureexp','FunctionTolerance',1e-2,'PlotFcn',{@saplotbestx,@saplotbestf,@saplotx,@saplotf,@saplottemperature});
 
 
 %Run Optimisation
-[X,fval,exitflag,output,population,scores]=ga(objFun,x0,LB,UB,options);   
+[X,fval,exitflag,output]=simulannealbnd(objFun,x0,LB,UB,options);   
 
 
 % %Interior Point Algorithm
@@ -64,14 +64,13 @@ options = optimoptions('simulannealbnd','Display','iter','FunctionTolerance',1e-
 fclose('all');
 
 %% Output geometry and save file
-saveas(gcf,'././GA/Step_1')
+saveas(gcf,'././SA/Step_1')
 
 vis3D(X)
 
-save('././GA/fval_1.mat','fval')
-save('././GA/Details_1.mat','output')
-save('././GA/Geom_1.mat','X')
-save('././GA/pop_1.mat','population')
-save('././GA/scores_1.mat','scores')
+save('././SA/fval_1.mat','fval')
+save('././SA/Details_1.mat','output')
+save('././SA/Geom_1.mat','X')
+
 
 tEnd = toc(tstart)
