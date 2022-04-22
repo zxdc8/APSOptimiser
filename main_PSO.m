@@ -42,11 +42,11 @@ objFun=@(x)ObjConWrapper(x);
 
 
 %GA Algorithm
-options = optimoptions('ga','Display','iter','FunctionTolerance',1e-3,'PlotFcn',{@gaplotbestf,@gaplotscorediversity,@gaplotbestindiv,@gaplotscores},'UseParallel',true);
+options = optimoptions('particleswarm','Display','iter','FunctionTolerance',1e-2,'PlotFcn',{@pswplotbestf},'UseParallel',true);
 
 
 %Run Optimisation
-[X,fval,exitflag,output,population,scores]=ga(objFun,7,[],[],[],[],LB,UB,[],options);   
+[X,fval,exitflag,output]=particleswarm(objFun,7,LB,UB,options);   
 
 
 % %Interior Point Algorithm
@@ -64,11 +64,11 @@ options = optimoptions('ga','Display','iter','FunctionTolerance',1e-3,'PlotFcn',
 fclose('all');
 
 %% Output geometry and save file
-% saveas(gcf,'Step_IP2')
+saveas(gcf,'././PSO/Step_2')
 
 vis3D(X)
-% save('J_IP2.mat','J')
-% save('Details_IP2.mat','OUTPUT')
-% save('GeometryOpt_IP2.mat','X')
+save('././PSO/fval_2.mat','fval')
+save('././PSO/Details_2.mat','output')
+save('././PSO/Geom_2.mat','X')
 
 tEnd = toc(tstart)

@@ -27,7 +27,7 @@ target_cmtot = -0.01;
 alpha_tol = 0.01; % 1% tolerance from target Cm
 
 % x0=[50 30 15 30 40 10 10];
-% x0=[40 20 10 20 40 40 40];
+x0=[40 20 10 20 40 40 40];
 LB=[20 15 10 0 0 10 10];
 UB=[40 40 30 30 70 30 60];
 
@@ -42,11 +42,11 @@ objFun=@(x)ObjConWrapper(x);
 
 
 %GA Algorithm
-options = optimoptions('ga','Display','iter','FunctionTolerance',1e-2,'PopulationSize',100,'MaxGenerations',100,'PlotFcn',{@gaplotbestf,@gaplotstopping,@gaplotbestindiv},'UseParallel',true);
+options = optimoptions('simulannealbnd','Display','iter','FunctionTolerance',1e-2,'PlotFcn',{@saplotbestx,@saplotbestf,@saplotx,@saplotf,@saplottemperature},'UseParallel',true);
 
 
 %Run Optimisation
-[X,fval,exitflag,output,population,scores]=ga(objFun,7,[],[],[],[],LB,UB,[],options);   
+[X,fval,exitflag,output,population,scores]=ga(objFun,x0,LB,UB,options);   
 
 
 % %Interior Point Algorithm
