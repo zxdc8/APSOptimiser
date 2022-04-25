@@ -83,17 +83,17 @@ subplot(7,1,1)
 
 title('Log range of particles by component')
 drawnow
-a(1) = "Range of particles for X(1)";
-a(2) = "Range of particles for X(2)";
-a(3) = "Range of particles for X(3)";
-a(4) = "Range of particles for X(4)";
-a(5) = "Range of particles for X(5)";
-a(6) = "Range of particles for X(6)";
-a(7) = "Range of particles for X(7)";
+a(1) = 'Range of particles for X(1)';
+a(2) = 'Range of particles for X(2)';
+a(3) = 'Range of particles for X(3)';
+a(4) = 'Range of particles for X(4)';
+a(5) = 'Range of particles for X(5)';
+a(6) = 'Range of particles for X(6)';
+a(7) = 'Range of particles for X(7)';
 
 
     figure(3)
-    hold on
+    grid on
     for rr = 1:7
     plot(rr,X(:,rr),'bo')
     end
@@ -177,16 +177,14 @@ for kk=1:nit
     end
     drawnow
     
-    clf(3)
     figure(3)
-    hold on
+    grid on
     for rr = 1:7
     plot(rr,X(:,rr),'bo')
     end
     title('Particles convergence')
     xlabel('X Variable')
     ylabel('Value')
-    drawnow
     
     
 end
