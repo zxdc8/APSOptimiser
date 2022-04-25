@@ -40,7 +40,7 @@ options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-de
 %Run Optimisation
 [x0]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options); 
 
-saveas(gcf,'././IPAS/figI_1')
+saveas(gcf,'././IPAS/figA_1')
 
 fclose('all')
 
@@ -49,7 +49,7 @@ options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detail
 
 %Run Optimisation
 [x,fval,exitflag,details,lambda,grad,hessian]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
-saveas(gcf,'././IPAS/figA_1')
+saveas(gcf,'././IPAS/figI_1')
 
 output.lambda = {'lambda'};
 output.grad = {'grad'};
@@ -60,7 +60,7 @@ output.hessian = {'hessian'};
 fclose('all');
 
 %% Output geometry and save file
-
+ope
 vis3D(x)
 
 save('././IPAS/J_1.mat','fval')
@@ -68,6 +68,5 @@ save('././IPAS/Details_1.mat','details')
 save('././IPAS/X_1.mat','x')
 save('././IPAS/output_1.mat','output')
 
-openfig('././IPAS/figI_1');
 
 tEnd = toc(tstart)

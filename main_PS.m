@@ -41,9 +41,9 @@ objFun=@(x)objective(x);
 
 
 %PS Algorithm
-% options = optimoptions('patternsearch','Display','iter','InitialMeshSize',1,'MeshTolerance',1e-10,'FunctionTolerance',1e-2,'AccelerateMesh',true,'PlotFcn',{@psplotbestf,@psplotfuncount,@psplotmeshsize},'UseParallel',true,'UseCompleteSearch',true);
+% options = optimoptions('patternsearch','Display','iter','InitialMeshSize',1,'MeshTolerance',1e-10,'SearchFcn','searchlhs','FunctionTolerance',1e-2,'AccelerateMesh',true,'PlotFcn',{@psplotbestf,@psplotfuncount,@psplotmeshsize},'Cache','on','UseCompleteSearch',true);
 
-options = optimoptions('patternsearch','Display','iter','MeshTolerance',1e-10,'FunctionTolerance',1e-2,'PlotFcn',{@psplotbestf,@psplotfuncount,@psplotmeshsize},'Cache','on','UseCompleteSearch',true);
+options = optimoptions('patternsearch','Display','iter','MeshTolerance',1e-12,'AccelerateMesh',true,'SearchFcn','GPSPositiveBasisNp1','PollMethod','GPSPositiveBasis2N','FunctionTolerance',1e-12,'StepTolerance',1e-12,'PlotFcn',{@psplotbestf,@psplotfuncount,@psplotmeshsize},'Cache','on');
 
 %Run Optimisation
 [X,fval,exitflag,output]=patternsearch(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
