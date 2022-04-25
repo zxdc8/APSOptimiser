@@ -3,8 +3,9 @@ clear all
 
 %Set Parameters
 
+tic
 LB=[20 15 10 0 0 10 10];
-UB=[72 50 20 40 72 30 30];
+UB=[40 35 20 40 72 30 30];
 
 npts=40;    %no particles
 nit=20;     %no iterations
@@ -24,7 +25,7 @@ w=2;  %Inertia (keep going in same direction)
 
 
 %Set random velocities
-V=rand(size(X))*20m,k. ;
+V=rand(size(X))*20;
 
 %Set pbest
 pbest=X;
@@ -97,6 +98,7 @@ for kk=1:nit
 
     end
 
+t=toc;
 Xo=gbest;
 Jo=gbest_obj;
 
@@ -122,6 +124,7 @@ DatOut(:,1)=Xcon;
 DatOut(:,2)=Vcon;
 DatOut(:,3)=Gcon;
 DatOut(1:length(Xo),4)=Xo;
+Datout(1,5)=t;
 
 logfile=sprintf('Logging/n_%i_c1_%.1f_c2_%.1f_w_%.1f.csv',npts,c1,c2,w);
 csvwrite(logfile,DatOut);
