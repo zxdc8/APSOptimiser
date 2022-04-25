@@ -42,7 +42,7 @@ objFun=@(x)ObjConWrapper(x);
 
 
 %GA Algorithm
-options = optimoptions('simulannealbnd','Display','iter','AnnealingFcn','annealingboltz','TemperatureFcn','temperatureexp','FunctionTolerance',1e-2,'PlotFcn',{@saplotbestx,@saplotbestf,@saplotx,@saplotf,@saplottemperature});
+options = optimoptions('simulannealbnd','Display','iter','AnnealingFcn','annealingfast','TemperatureFcn','temperatureexp','FunctionTolerance',1e-2,'PlotFcn',{@saplotbestx,@saplotbestf,@saplotx,@saplotf,@saplottemperature});
 
 
 %Run Optimisation
