@@ -39,8 +39,7 @@ options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detail
 %Run Optimisation
 [x,fval,exitflag,details,lambda,grad,hessian]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);
 
-%Generate Final AVL case file
-%[filename, iter]=aeromodule(X)
+
 
 output.lambda = {'lambda'};
 output.grad = {'grad'};
