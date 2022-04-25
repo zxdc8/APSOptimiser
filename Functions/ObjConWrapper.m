@@ -1,6 +1,6 @@
 function [obj]=ObjConWrapper(X)
 
-    key=randi([0 1000000])
+    key=randi([0 100000000])
     
     J=objectivepso(X,key);
 

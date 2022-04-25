@@ -12,7 +12,7 @@ nit=20;     %no iterations
 %Set Swarm Parameters-These influence swarm behaviour
 c1=0.5; %Cognitive Coefficient (Hunt)
 c2=0.5; %Social Coefficient (Swarm)
-w=0.8;  %Inertia (keep going in same direction)
+w=2;  %Inertia (keep going in same direction)
 
 
 %Initialise Particle Swarm between upper and lower bounds
@@ -24,7 +24,7 @@ w=0.8;  %Inertia (keep going in same direction)
 
 
 %Set random velocities
-V=rand(size(X))*10;
+V=rand(size(X))*20m,k. ;
 
 %Set pbest
 pbest=X;
@@ -121,8 +121,9 @@ xlabel('iteration')
 DatOut(:,1)=Xcon;
 DatOut(:,2)=Vcon;
 DatOut(:,3)=Gcon;
+DatOut(1:length(Xo),4)=Xo;
 
-logfile=sprintf('Logging/n_%.1f_c1_%.1f_c2_%.1f_w_%.1f.csv',npts,c1,c2,w);0
+logfile=sprintf('Logging/n_%i_c1_%.1f_c2_%.1f_w_%.1f.csv',npts,c1,c2,w);
 csvwrite(logfile,DatOut);
 
 
