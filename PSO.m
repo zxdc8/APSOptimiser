@@ -11,9 +11,9 @@ npts=40;    %no particles
 nit=20;     %no iterations
 
 %Set Swarm Parameters-These influence swarm behaviour
-c1=0.5; %Cognitive Coefficient (Hunt)
-c2=0.5; %Social Coefficient (Swarm)
-w=2;  %Inertia (keep going in same direction)
+c1=0.7; %Cocignitive Coeffient (Hunt)
+c2=0.4; %Social Coefficient (Swarm)
+w=0.8;  %Inertia (keep going in same direction)
 
 
 %Initialise Particle Swarm between upper and lower bounds
@@ -25,7 +25,7 @@ w=2;  %Inertia (keep going in same direction)
 
 
 %Set random velocities
-V=rand(size(X))*20;
+V=rand(size(X))*10;
 
 %Set pbest
 pbest=X;
@@ -95,8 +95,11 @@ for kk=1:nit
     gbest_obj=pbest_obj(I);
 
     Gcon(kk)=gbest_obj;
+    
+    
+    
 
-    end
+end
 
 t=toc;
 Xo=gbest;
