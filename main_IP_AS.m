@@ -34,33 +34,39 @@ objFun=@(x)objective(x);
 
 
 %Interior Point Algorithm
-options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',25);
+options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-2,'StepTolerance',1e-7,'PlotFcns',{@optimplotfvalconstr,@optimplotx,@optimplotfirstorderopt,@optimplotstepsize},'MaxIterations',25);
 
 
 %Run Optimisation
 [x0]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options); 
 
-saveas(gcf,'Step_IPAS4')
+saveas(gcf,'././IPAS/figA_1')
 
 fclose('all')
 
 %Define solver options - Active set Algorithm
-options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',3,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',30);
+options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-10,'PlotFcns',{@optimplotfvalconstr,@optimplotx,@optimplotfirstorderopt,@optimplotstepsize},'MaxIterations',30);
 
 %Run Optimisation
-[X,J,EXITFLAG,OUTPUT]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
-saveas(gcf,'Step_ASS4')
+[x,fval,exitflag,details,lambda,grad,hessian]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
+saveas(gcf,'././IPAS/figI_1')
+
+output.lambda = {'lambda'};
+output.grad = {'grad'};
+output.hessian = {'hessian'};
+
 
 %AVLcall(filename,'mass_1.avl','w.run',iter);
 fclose('all');
 
 %% Output geometry and save file
 
-vis3D(X)
-save('J_IPAS4.mat','J')
-save('Details_IPAS4.mat','OUTPUT')
-save('GeometryOpt_IPAS4.mat','X')
+vis3D(x)
 
-openfig('Step_IPAS4')
+save('././IPAS/J_1.mat','fval')
+save('././IPAS/Details_1.mat','details')
+save('././IPAS/X_1.mat','x')
+save('././IPAS/output_1.mat','output')
+
 
 tEnd = toc(tstart)
