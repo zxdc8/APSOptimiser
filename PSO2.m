@@ -5,9 +5,9 @@ clear all
 
 tic
 LB=[20 15 10 0 0 10 10];
-UB=[40 35 20 40 72 30 30];
+UB=[40 35 20 30 72 30 30];
 
-npts=48;    %no particles
+npts=42;    %no particles
 nit=20;     %no iterations
 
 %Set Swarm Parameters-These influence swarm behaviour
@@ -120,8 +120,10 @@ c = 0;
 for kk=1:nit
     iter = iter + 1;
     %Update velocities
-    r=rand(1,7);
-    V=w*V+y1*r.*(pbest-X)+y2*r.*(gbest-X);
+    r1=rand(1,7);
+    r2=rand(1,7);
+    
+    V=w*V+y1*r1.*(pbest-X)+y2*r2.*(gbest-X);
     
     X2{kk,1} = X;
     V2{kk} = V;
@@ -191,7 +193,7 @@ for kk=1:nit
         flag = true;
         c = max(0,c-1);
         if c<2
-            w = 1.3*w;
+            w = 2*w;
         end
         if c>3
             w = w/2;
@@ -246,9 +248,9 @@ for kk=1:nit
     ylabel('Value')
     drawnow
     
-    if c>8
-        break
-    end
+%     if c>8
+%         break
+%     end
     
     
 end

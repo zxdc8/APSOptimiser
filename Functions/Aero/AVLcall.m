@@ -36,10 +36,12 @@ system(avlcmd);
 %Move output files
 tot_forc=sprintf('Out_Force_%.0f.txt',i);
 %movefile(tot_forc,'C:/Users/Joe/OneDrive - University of Bristol/Documents/GitHub/APSOptimiser/Outputs/Forces'); %/\/\/\/\
+fclose('all');
 movefile(tot_forc,'Outputs/Forces')
 
 stab_deri=sprintf('Stab_Deri_%.0f.txt',i);
 %movefile(stab_deri,'C:/Users/Joe/OneDrive - University of Bristol/Documents/GitHub/APSOptimiser/Outputs/Stability'); %/\/\/\/\
+fclose('all');
 movefile(stab_deri,'Outputs/Stability');
 
 % Move plot file
