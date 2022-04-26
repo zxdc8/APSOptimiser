@@ -11,8 +11,8 @@ npts=42;    %no particles
 nit=20;     %no iterations
 
 %Set Swarm Parameters-These influence swarm behaviour
-y1=1.49; %Cocignitive Coeffient (Hunt) Self adjustment weight
-y2=1.49; %Social Coefficient (Swarm) Social adjustment weight
+y1=1.7; %Cocignitive Coeffient (Hunt) Self adjustment weight
+y2=1.5; %Social Coefficient (Swarm) Social adjustment weight
 w=1.1;  %Inertia (keep going in same direction)
 
 
@@ -191,9 +191,9 @@ for kk=1:nit
         flag = true;
         c = max(0,c-1);
         if c<2
-            w = 1.5*w;
+            w = 1.4*w;
         end
-        if c>4
+        if c>3
             w = w/2;
         end
     else
@@ -246,9 +246,9 @@ for kk=1:nit
     ylabel('Value')
     drawnow
     
-%     if c>8
-%         break
-%     end
+    if c>6
+        break
+    end
     
     
 end
@@ -280,15 +280,17 @@ FuncTolerance = Gcon(2:length(Gcon))-Gcon(1:length(Gcon)-1);
 
 %% Save data
 
+vis3D(Xo);
+
 %Iteraiton and Particle position
-save('././Logging/X_1.mat',X2)
-save('././Logging/V_1.mat',V2)
+save('././Logging/X_2.mat','X2')
+save('././Logging/V_2.mat','V2')
 
 %Final solution
-save('././Logging/Output_1.mat',Output)
+save('././Logging/Output_2.mat','Output')
 
 %Range of X values
-save('././Logging/Ranges_1.mat',Range)
+save('././Logging/Ranges_2.mat','Range')
 
 
 
