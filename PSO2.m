@@ -191,7 +191,7 @@ for kk=1:nit
         flag = true;
         c = max(0,c-1);
         if c<2
-            w = 1.3*w;
+            w = 1.5*w;
         end
         if c>4
             w = w/2;
@@ -246,9 +246,9 @@ for kk=1:nit
     ylabel('Value')
     drawnow
     
-    if c>8
-        break
-    end
+%     if c>8
+%         break
+%     end
     
     
 end
@@ -264,8 +264,8 @@ Range.X = Xrng;
 Range.V = Vrng;
 
 for ii=1:kk
-    Xcon(ii)=sum(Xrng(ii,:))
-    Vcon(ii)=sum(Vrng(ii,:))
+    Xcon(ii)=sum(Xrng(ii,:));
+    Vcon(ii)=sum(Vrng(ii,:));
 end
 
 figure
