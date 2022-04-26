@@ -11,15 +11,15 @@ npts=40;    %no particles
 nit=20;     %no iterations
 
 %Set Swarm Parameters-These influence swarm behaviour
-c1=0.8; %Cocignitive Coeffient (Hunt)
-c2=0.8; %Social Coefficient (Swarm)
+c1=0.7; %Cocignitive Coeffient (Hunt)
+c2=0.5; %Social Coefficient (Swarm)
 w=0.8;  %Inertia (keep going in same direction)
 
 
 %Initialise Particle Swarm between upper and lower bounds
     for ii=1:length(LB)
         
-            X(:,ii)=randi([LB(ii) UB(ii)],npts,1)
+            X(:,ii)=randi([LB(ii) UB(ii)],npts,1);
 
     end
 
@@ -110,7 +110,7 @@ for kk=1:nit
     r=rand(2,1);
     V=w*V+c1*r(1)*(pbest-X)+c2*r(2)*(gbest-X);
     
-    X2{kk} = X;
+    X2{kk,1} = X;
     V2{kk} = V;
     X=X+V;
     
@@ -139,7 +139,12 @@ for kk=1:nit
         obj(ii)=ObjConWrapper(X(ii,:));
 
     end
-
+    
+    %Output objective to data
+    obj2 = obj';
+    
+    X2{kk}(:,8) = obj2;
+    
     pbest((pbest_obj >= obj),:)= X((pbest_obj >= obj),:);
     pbest_obj((pbest_obj >= obj))= obj((pbest_obj >= obj));
 
@@ -195,6 +200,12 @@ t=toc;
 Xo=gbest;
 Jo=gbest_obj;
 
+Output.Geometry = Xo;
+Output.Fuel = Jo;
+
+Range.X = Xrng;
+Range.V = Vrng;
+
 for ii=1:nit
     Xcon(ii)=sum(Xrng(ii,:))
     Vcon(ii)=sum(Vrng(ii,:))
@@ -207,20 +218,22 @@ plot(1:nit,Vcon,'x-')
 legend('Summed Position Range','Summed Velocity Range')
 grid on
 
-figure
-plot(1:nit,Gcon,'x-')
-ylabel('J')
-xlabel('iteration')
 
-%Export some data for studies
-DatOut(:,1)=Xcon;
-DatOut(:,2)=Vcon;
-DatOut(:,3)=Gcon;
-DatOut(1:length(Xo),4)=Xo;
-Datout(1,5)=t;
+FuncTolerance = Gcon(2:length(Gcon))-Gcon(1:length(Gcon)-1);
 
-logfile=sprintf('Logging/n_%i_c1_%.1f_c2_%.1f_w_%.1f.csv',npts,c1,c2,w);
-csvwrite(logfile,DatOut);
+%% Save data
+
+%Iteraiton and Particle position
+save('././Logging/X_1.mat',X2)
+save('././Logging/V_1.mat',V2)
+
+%Final solution
+save('././Logging/Output_1.mat',Output)
+
+%Range of X values
+save('././Logging/Ranges_1.mat',Range)
+
+
 
 
 

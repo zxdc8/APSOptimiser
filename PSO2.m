@@ -7,21 +7,26 @@ tic
 LB=[20 15 10 0 0 10 10];
 UB=[40 35 20 40 72 30 30];
 
-npts=40;    %no particles
+npts=42;    %no particles
 nit=20;     %no iterations
 
 %Set Swarm Parameters-These influence swarm behaviour
-c1=0.8; %Cocignitive Coeffient (Hunt)
-c2=0.8; %Social Coefficient (Swarm)
-w=0.8;  %Inertia (keep going in same direction)
+y1=1.49; %Cocignitive Coeffient (Hunt) Self adjustment weight
+y2=1.49; %Social Coefficient (Swarm) Social adjustment weight
+w=1.1;  %Inertia (keep going in same direction)
+
 
 
 %Initialise Particle Swarm between upper and lower bounds
     for ii=1:length(LB)
         
-            X(:,ii)=randi([LB(ii) UB(ii)],npts,1)
-
+%             X(:,ii)=linspace(LB(ii), UB(ii),npts);
+              X(:,ii)=randi([LB(ii) UB(ii)],npts,1);
+            
+%             k(ii) = (UB(ii) - LB(ii));
+%             V(:,ii) = randi([-k(ii) k(ii)],npts,1);
     end
+
 
 
 %Set random velocities
@@ -56,6 +61,8 @@ gbest=pbest(I,:);
 gbest_init = gbest;
 gbest_obj=pbest_obj(I);
 
+Gcon(1)=gbest_obj;
+
 X2 = cell(nit,1);
 V2 = cell(nit,1);
 %%
@@ -64,7 +71,10 @@ hold on
 grid on
 subplot(2,1,1)
 plot(iter,gbest_obj,'r*')
-title('Function Value (Fuel) [kg]')
+b = "Best Function Value:";
+b2 = num2str(round(gbest_obj,2));
+b3 = join([b b2]);
+title(b3)
 xlabel('Iteration')
 
 subplot(2,1,2)
@@ -83,17 +93,17 @@ subplot(7,1,1)
 
 title('Log range of particles by component')
 drawnow
-a(1) = 'Range of particles for X(1)';
-a(2) = 'Range of particles for X(2)';
-a(3) = 'Range of particles for X(3)';
-a(4) = 'Range of particles for X(4)';
-a(5) = 'Range of particles for X(5)';
-a(6) = 'Range of particles for X(6)';
-a(7) = 'Range of particles for X(7)';
+a(1) = "Range of particles for X(1)";
+a(2) = "Range of particles for X(2)";
+a(3) = "Range of particles for X(3)";
+a(4) = "Range of particles for X(4)";
+a(5) = "Range of particles for X(5)";
+a(6) = "Range of particles for X(6)";
+a(7) = "Range of particles for X(7)";
 
 
     figure(3)
-    grid on
+    hold on
     for rr = 1:7
     plot(rr,X(:,rr),'bo')
     end
@@ -102,23 +112,35 @@ a(7) = 'Range of particles for X(7)';
     ylabel('Value')
     drawnow
 
+    
+%particleswarm initializes the stall counter
+c = 0;
 
-%%
+%% Main loop
 for kk=1:nit
     iter = iter + 1;
     %Update velocities
-    r=rand(2,1);
-    V=w*V+c1*r(1)*(pbest-X)+c2*r(2)*(gbest-X);
+    r=rand(1,7);
+    V=w*V+y1*r.*(pbest-X)+y2*r.*(gbest-X);
     
-    X2{kk} = X;
+    X2{kk,1} = X;
     V2{kk} = V;
     X=X+V;
     
     
     %Set X to LB or UB if outside limits
     for qq=1:npts
-         X(qq,X(qq,:)<LB)=LB(X(qq,:)<LB);
-         X(qq,X(qq,:)>UB)=UB(X(qq,:)>UB);
+        for qqq = 1:7
+            if X(qq,qqq)<LB(qqq)
+                X(qq,qqq) = LB(qqq);
+                V(qq,qqq) = 0;                
+            end
+            
+            if X(qq,qqq)>UB(qqq)
+                X(qq,qqq) = UB(qqq);
+                V(qq,qqq) = 0; 
+            end
+        end
     end
 
     %Work out X and V ranges
@@ -139,9 +161,22 @@ for kk=1:nit
         obj(ii)=ObjConWrapper(X(ii,:));
 
     end
-
+    
+    %Output objective to data
+    obj2 = obj';
+    
+    X2{kk}(:,8) = obj2;
+    
     pbest((pbest_obj >= obj),:)= X((pbest_obj >= obj),:);
     pbest_obj((pbest_obj >= obj))= obj((pbest_obj >= obj));
+    
+%     for ss = 1:npts
+%         if obj(ss)<= pbest_obj(ss)
+%             
+%             pbest_obj(ss) = obj(ss);
+%             pbest(ss,:) = X(ss,:);
+%         end
+%     end
 
     %Find Global Optimimum
     [M I]=min(pbest_obj);
@@ -150,12 +185,35 @@ for kk=1:nit
 %     gbest2{kk} = gbest;
     gbest_obj=pbest_obj(I);
 
-    Gcon(kk)=gbest_obj;
+
+    if gbest_obj<Gcon(kk)
+        
+        flag = true;
+        c = max(0,c-1);
+        if c<2
+            w = 1.3*w;
+        end
+        if c>4
+            w = w/2;
+        end
+    else
+        flag = false;
+        c = c+1;        
+    end
+    
+    Gcon(kk+1)=gbest_obj;
+    
+
+    
     
     figure(1)
     subplot(2,1,1)
     hold on
     plot(iter,gbest_obj,'r*')
+    b = "Best Function Value:";
+    b2 = num2str(round(gbest_obj,2));
+    b3 = join([b b2]);
+    title(b3)
     subplot(2,1,2)
     hold off
     bar(gbest)
@@ -177,14 +235,20 @@ for kk=1:nit
     end
     drawnow
     
+    clf(3)
     figure(3)
-    grid on
+    hold on
     for rr = 1:7
     plot(rr,X(:,rr),'bo')
     end
     title('Particles convergence')
     xlabel('X Variable')
     ylabel('Value')
+    drawnow
+    
+    if c>8
+        break
+    end
     
     
 end
@@ -193,32 +257,40 @@ t=toc;
 Xo=gbest;
 Jo=gbest_obj;
 
-for ii=1:nit
+Output.Geometry = Xo;
+Output.Fuel = Jo;
+
+Range.X = Xrng;
+Range.V = Vrng;
+
+for ii=1:kk
     Xcon(ii)=sum(Xrng(ii,:))
     Vcon(ii)=sum(Vrng(ii,:))
 end
 
 figure
-plot(1:nit,Xcon,'x-')
+plot(1:kk,Xcon,'x-')
 hold all
-plot(1:nit,Vcon,'x-')
+plot(1:kk,Vcon,'x-')
 legend('Summed Position Range','Summed Velocity Range')
 grid on
 
-figure
-plot(1:nit,Gcon,'x-')
-ylabel('J')
-xlabel('iteration')
 
-%Export some data for studies
-DatOut(:,1)=Xcon;
-DatOut(:,2)=Vcon;
-DatOut(:,3)=Gcon;
-DatOut(1:length(Xo),4)=Xo;
-Datout(1,5)=t;
+FuncTolerance = Gcon(2:length(Gcon))-Gcon(1:length(Gcon)-1);
 
-logfile=sprintf('Logging/n_%i_c1_%.1f_c2_%.1f_w_%.1f.csv',npts,c1,c2,w);
-csvwrite(logfile,DatOut);
+%% Save data
+
+%Iteraiton and Particle position
+save('././Logging/X_1.mat',X2)
+save('././Logging/V_1.mat',V2)
+
+%Final solution
+save('././Logging/Output_1.mat',Output)
+
+%Range of X values
+save('././Logging/Ranges_1.mat',Range)
+
+
 
 
 
