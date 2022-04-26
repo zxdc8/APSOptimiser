@@ -22,7 +22,7 @@ target_cmtot = -0.01;
 alpha_tol = 0.01; % 1% tolerance from target Cm
 
 %x0=[50 30 15 30 40 10 10];
-x0=[20 15 10 0.25261 1.7516 10 30];
+x0=[20 15 10 0 0 10 30];
 LB=[20 15 10 0 0 10 10];
 UB=[72 72 72 72 72 35 40];
 
@@ -33,7 +33,7 @@ UB=[72 72 72 72 72 35 40];
 objFun=@(x)objective(x);
 
 %Define solver options - Active set Algorithm
-options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',3,'FunctionTolerance',1e-2,'StepTolerance',1e-10,'PlotFcns',{@optimplotfvalconstr,@optimplotx,@optimplotfirstorderopt,@optimplotstepsize},'MaxIterations',30);
+options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',1,'FunctionTolerance',1e-2,'StepTolerance',1e-10,'PlotFcns',{@optimplotfvalconstr,@optimplotx,@optimplotfirstorderopt,@optimplotstepsize},'MaxIterations',30);
 
 
 %Run Optimisation

@@ -22,7 +22,7 @@ target_cmtot = -0.01;
 alpha_tol = 0.01; % 1% tolerance from target Cm
 
 %x0=[50 30 15 30 40 10 10];
-x0=[40 20 10 20 40 40 40];
+x0=[20 15 10 0 0 10 30];
 LB=[20 15 10 0 0 10 10];
 UB=[72 72 72 72 72 35 40];
 
@@ -36,11 +36,11 @@ objFun=@(x)objective(x);
 % options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',30);
 
 %Interior Point Algorithm
-options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-detailed','FiniteDifferenceStepSize',1,'FunctionTolerance',1e-3,'StepTolerance',1e-9,'PlotFcns',@optimplotfval,'MaxIterations',40);
+options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-2,'StepTolerance',1e-10,'PlotFcns',{@optimplotfvalconstr,@optimplotx,@optimplotfirstorderopt,@optimplotstepsize},'MaxIterations',25);
 
 
 %Run Optimisation
-[X,J,EXITFLAG,OUTPUT]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
+[x,fval,exitflag,details,lambda,grad,hessian]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
 
 %Generate Final AVL case file
 %[filename, iter]=aeromodule(X)
@@ -49,11 +49,17 @@ options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-de
 fclose('all');
 
 %% Output geometry and save file
-saveas(gcf,'Step_IP2')
+saveas(gcf,'././IP/fig_H')
 
-vis3D(X)
-save('J_IP2.mat','J')
-save('Details_IP2.mat','OUTPUT')
-save('GeometryOpt_IP2.mat','X')
+vis3D(x)
+
+output.lambda = {'lambda'};
+output.grad = {'grad'};
+output.hessian = {'hessian'};
+
+save('././IP/J_H.mat','fval')
+save('././IP/Details_H.mat','details')
+save('././IP/X_H.mat','x')
+save('././IP/output_H.mat','output')
 
 tEnd = toc(tstart)
