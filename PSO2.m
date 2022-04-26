@@ -7,12 +7,12 @@ tic
 LB=[20 15 10 0 0 10 10];
 UB=[40 35 20 40 72 30 30];
 
-npts=42;    %no particles
+npts=48;    %no particles
 nit=20;     %no iterations
 
 %Set Swarm Parameters-These influence swarm behaviour
-y1=1.7; %Cocignitive Coeffient (Hunt) Self adjustment weight
-y2=1.5; %Social Coefficient (Swarm) Social adjustment weight
+y1=1.49; %Cocignitive Coeffient (Hunt) Self adjustment weight
+y2=1.49; %Social Coefficient (Swarm) Social adjustment weight
 w=1.1;  %Inertia (keep going in same direction)
 
 
@@ -191,7 +191,7 @@ for kk=1:nit
         flag = true;
         c = max(0,c-1);
         if c<2
-            w = 1.4*w;
+            w = 1.3*w;
         end
         if c>3
             w = w/2;
@@ -246,7 +246,7 @@ for kk=1:nit
     ylabel('Value')
     drawnow
     
-    if c>6
+    if c>8
         break
     end
     
