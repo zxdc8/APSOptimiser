@@ -51,7 +51,7 @@ for mcc = [1:length(CoM_Array)]
 end
 
 Area_Pass = sum(CoM_Array{1}(4,:));
-Vol_Fuel = sum(CoM_Array{2}(4,:));
+Vol_Fuel = Vol_Seg(2);
 
 %% Graph Mass point coords of BWB components
 BWB_Mass_Graph(Np, Wing_Pos, CoM_Array{1}, CoM_Array{2}, CoM_X_Disp, CoM_Y_Disp)

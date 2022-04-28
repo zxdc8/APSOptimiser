@@ -80,6 +80,6 @@ Mf = dp1.TotalFuel;
 rholh2 = 71; %[kg/m3]
 
 
-Vf = (Mf)/rholh2;%[m3]
+Vf = 1.2*((Mf)/rholh2);%[m3]
 
 end

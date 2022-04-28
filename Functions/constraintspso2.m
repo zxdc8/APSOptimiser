@@ -1,5 +1,5 @@
 %////////CONSTRAINTS/////////
-function [C, Ceq] = constraints(x,iter)
+function [C, Ceq] = constraintspso2(x,iter)
 
 %Calculate Wing Area
 [S,X,Z,dih]=DesignToSXZ(x);
@@ -15,6 +15,11 @@ outname=sprintf('Out_Force_%i.txt',iter);
 %Requires function for Mach, Alt, S, CD0, k - func
 
 [CdCl, CD0, s, k, M]=ReadOutput(outname,x);
+
+
+
+%%
+
 
 Alt=38000;
 M=0.7; %Placeholder
@@ -61,11 +66,9 @@ C(6)=Cmtot*alpha_tol-target_cmtot;  %Longitudinal stability
 
 C(7) = X(1) - X(2); %enforce sweep
 C(8) = X(2) - X(3); %enforce sweep
-% C(9) = (X(1)+S(1)) - (S(2) + X(2)); 
-% C(10) = (X(2)+S(2)) - (S(3) + X(3)); 
 
-C(11)=Vf-2*Vol_Fuel;     %Fuel Volume
-C(12)=Ap-Area_Pass;      %Pax Volume
+C(9)=Vf-2.5*Vol_Fuel;     %Fuel Volume
+C(10)=Ap-Area_Pass;      %Pax Volume
 
 %Equality Constraints
 Ceq=[]

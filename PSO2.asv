@@ -4,16 +4,16 @@ clear all
 %Set Parameters
 
 tic
-LB=[20 15 5 0 0 10 10];
-UB=[40 40 40 40 50 35 40];
+LB=[20 15 2 0 0 5 10];
+UB=[30 35 10 30 30 30 30];
 
-npts=42;    %no particles
+npts=4;    %no particles
 nit=20;     %no iterations
 
 %Set Swarm Parameters-These influence swarm behaviour
-y1=1.49; %Cocignitive Coeffient (Hunt) Self adjustment weight
+y1=1.2; %Cocignitive Coeffient (Hunt) Self adjustment weight
 y2=1.49; %Social Coefficient (Swarm) Social adjustment weight
-w=1.1;  %Inertia (keep going in same direction)
+w=0.8;  %Inertia (keep going in same direction)
 
 
 
@@ -160,7 +160,7 @@ for kk=1:nit
 
     parfor (ii=1:size(X,1))
             
-        obj(ii)=ObjConWrapper2(X(ii,:));
+        obj(ii)=ObjConWrapper(X(ii,:));
 
     end
     
