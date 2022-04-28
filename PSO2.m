@@ -5,10 +5,10 @@ clear all
 
 tic
 LB=[20 15 5 0 0 10 10];
-UB=[40 40 40 40 50 35 40];
+UB=[40 40 40 40 40 35 40];
 
-npts=42;    %no particles
-nit=20;     %no iterations
+npts=48;    %no particles
+nit=30;     %no iterations
 
 %Set Swarm Parameters-These influence swarm behaviour
 y1=1.49; %Cocignitive Coeffient (Hunt) Self adjustment weight
@@ -262,13 +262,16 @@ Jo=gbest_obj;
 Output.Geometry = Xo;
 Output.Fuel = Jo;
 
-Range.X = Xrng;
-Range.V = Vrng;
+
 
 for ii=1:kk
     Xcon(ii)=sum(Xrng(ii,:));
     Vcon(ii)=sum(Vrng(ii,:));
 end
+
+
+Range.X = Xcon;
+Range.V = Vcon;
 
 figure
 plot(1:kk,Xcon,'x-')
@@ -285,14 +288,14 @@ FuncTolerance = Gcon(2:length(Gcon))-Gcon(1:length(Gcon)-1);
 vis3D(Xo);
 
 %Iteraiton and Particle position
-save('././Logging/X_2.mat','X2')
-save('././Logging/V_2.mat','V2')
+save('././Logging/X_5.mat','X2')
+save('././Logging/V_5.mat','V2')
 
 %Final solution
-save('././Logging/Output_2.mat','Output')
+save('././Logging/Output_5.mat','Output')
 
 %Range of X values
-save('././Logging/Ranges_2.mat','Range')
+save('././Logging/Ranges_5.mat','Range')
 
 
 
