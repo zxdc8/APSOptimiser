@@ -29,7 +29,7 @@ function [obj]=ObjConWrapper2(X)
     %Evaluate constraints and add to objective function if needed.
     
     %Scale Constraints
-    C = C.*1e10;
+    C = C.*1e8;
 
     
 

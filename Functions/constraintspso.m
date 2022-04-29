@@ -19,8 +19,13 @@ outname=sprintf('Out_Force_%i.txt',iter);
 Alt=38000;
 M=0.7; %Placeholder
 
+%% Load in Fuel Volume
+
 %Calculate current volume of fuel tank required
-[Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
+% [Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
+
+
+
 
 
 %% Joes code

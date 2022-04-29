@@ -5,9 +5,9 @@ clear all
 
 tic
 LB=[20 15 5 0 0 10 10];
-UB=[40 40 40 40 40 35 40];
+UB=[40 40 40 40 50 35 40];
 
-npts=114;    %no particles
+npts=240;    %no particles
 nit=20;     %no iterations
 
 %Set Swarm Parameters-These influence swarm behaviour
@@ -160,7 +160,7 @@ for kk=1:nit
 
     parfor (ii=1:size(X,1))
             
-        obj(ii)=ObjConWrapper2(X(ii,:));
+        obj(ii)=ObjConWrapper(X(ii,:));
 
     end
     
@@ -195,7 +195,7 @@ for kk=1:nit
         if c<2
             w = 2*w;
         end
-        if c>3
+        if c>4
             w = w/2;
         end
     else
@@ -288,14 +288,14 @@ FuncTolerance = Gcon(2:length(Gcon))-Gcon(1:length(Gcon)-1);
 vis3D(Xo);
 
 %Iteraiton and Particle position
-save('././Logging/X_6.mat','X2')
-save('././Logging/V_6.mat','V2')
+save('././Logging/X_7.mat','X2')
+save('././Logging/V_7.mat','V2')
 
 %Final solution
-save('././Logging/Output_6.mat','Output')
+save('././Logging/Output_7.mat','Output')
 
 %Range of X values
-save('././Logging/Ranges_6.mat','Range')
+save('././Logging/Ranges_7.mat','Range')
 
 
 

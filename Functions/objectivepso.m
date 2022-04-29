@@ -37,6 +37,8 @@ Alt = 38000;
 
 [Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
 
+save
+
 %%
 
 %Joe's Parameters
