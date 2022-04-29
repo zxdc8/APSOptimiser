@@ -16,12 +16,15 @@ outname=sprintf('Out_Force_%i.txt',iter-1);
 
 [CdCl, CD0, s, k, M]=ReadOutput(outname,x);
 
+
+
 Alt=38000;
 M=0.7; %Placeholder
+%%
 
 %Calculate current volume of fuel tank required
-[Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
-
+% [Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
+load('././Outputs/Vf.mat','Vf')
 
 %% Joes code
 Np = 2;

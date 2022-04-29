@@ -22,9 +22,9 @@ target_cmtot = -0.01;
 alpha_tol = 0.01; % 1% tolerance from target Cm
 
 %x0=[50 30 15 30 40 10 10];
-x0=[40 20 10 20 40 40 40];
-LB=[20 15 10 0 0 10 10];
-UB=[72 72 72 72 72 35 40];
+x0=[40 20 10 20 40 10 30];
+LB=[20 15 5 0 0 10 10];
+UB=[40 40 40 40 50 35 40];
 
 %Write AVL case file and get filename, constraint values
 [filename,iter,At]=aeromodule(x0);
@@ -49,7 +49,7 @@ options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-de
 fclose('all');
 
 %% Output geometry and save file
-saveas(gcf,'././IP/fig_H')
+saveas(gcf,'././IP/fig_1')
 
 vis3D(x)
 
@@ -57,9 +57,9 @@ output.lambda = {'lambda'};
 output.grad = {'grad'};
 output.hessian = {'hessian'};
 
-save('././IP/J_H.mat','fval')
-save('././IP/Details_H.mat','details')
-save('././IP/X_H.mat','x')
-save('././IP/output_H.mat','output')
+save('././IP/J_1.mat','fval')
+save('././IP/Details_1.mat','details')
+save('././IP/X_1.mat','x')
+save('././IP/output_1.mat','output')
 
 tEnd = toc(tstart)

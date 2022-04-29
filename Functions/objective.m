@@ -37,6 +37,11 @@ Alt = 38000;
 
 [Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
 
+%save to file outputs
+save('././Outputs/Mf.mat','Mf')
+save('././Outputs/Vf.mat','Vf')
+
+
 %%
 
 %Joe's Parameters
