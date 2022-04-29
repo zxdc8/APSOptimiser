@@ -21,10 +21,10 @@ alpha = 0;
 target_cmtot = -0.01;
 alpha_tol = 0.01; % 1% tolerance from target Cm
 
-%x0=[50 30 15 30 40 10 10];
-x0=[40 20 10 20 40 10 30];
+x0=[40 30 15 30 40 15 20];
+% x0=[40 20 10 20 40 10 30];
 LB=[20 15 5 0 0 10 10];
-UB=[40 40 40 40 50 35 40];
+UB=[40 40 40 40 72 35 40];
 
 %Write AVL case file and get filename, constraint values
 [filename,iter,At]=aeromodule(x0);
@@ -33,7 +33,7 @@ UB=[40 40 40 40 50 35 40];
 objFun=@(x)objective(x);
 
 %Define solver options - Active set Algorithm
-options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',1,'FunctionTolerance',1e-2,'StepTolerance',1e-10,'PlotFcns',{@optimplotfvalconstr,@optimplotx,@optimplotfirstorderopt,@optimplotstepsize},'MaxIterations',30);
+options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',1,'FunctionTolerance',1e-2,'StepTolerance',1e-10,'PlotFcns',{@optimplotfval,@optimplotx,@optimplotfirstorderopt,@optimplotstepsize},'MaxIterations',30);
 
 
 %Run Optimisation
@@ -41,15 +41,17 @@ options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detail
 
 
 
-output.lambda = {'lambda'};
-output.grad = {'grad'};
-output.hessian = {'hessian'};
+output.lambda = lambda;
+output.grad = grad;
+output.hessian = hessian;
 
 %AVLcall(filename,'mass_1.avl','w.run',iter);
 fclose('all');
 
-%% Output geometry and save file
+
 saveas(gcf,'././AS/fig_1')
+%% Output geometry and save file
+
 vis3D(x)
 
 save('././AS/J_1.mat','fval')

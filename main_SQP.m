@@ -22,9 +22,10 @@ target_cmtot = -0.01;
 alpha_tol = 0.01; % 1% tolerance from target Cm
 
 %x0=[50 30 15 30 40 10 10];
-x0=[40 20 10 20 40 40 40];
-LB=[20 15 10 0 0 10 10];
-UB=[72 72 72 72 72 35 40];
+x0=[40 30 15 30 40 15 20];
+LB=[20 15 5 0 0 10 10];
+UB=[40 40 40 40 72 35 40];
+
 
 %Write AVL case file and get filename, constraint values
 [filename,iter,At]=aeromodule(x0);
@@ -34,23 +35,29 @@ objFun=@(x)objective(x);
 
 
 %SQP Algorithm
-options = optimoptions('fmincon','Algorithm','sqp','Display','iter-detailed','FiniteDifferenceStepSize',1,'FunctionTolerance',1e-3,'StepTolerance',1e-9,'PlotFcns',@optimplotfval,'MaxIterations',40);
+options = optimoptions('fmincon','Algorithm','sqp','Display','iter-detailed','FiniteDifferenceStepSize',1,'FunctionTolerance',1e-2,'StepTolerance',1e-10,'PlotFcns',{@optimplotfval,@optimplotx,@optimplotfirstorderopt,@optimplotstepsize},'MaxIterations',30);
 
 %Run Optimisation
-[X,J,EXITFLAG,OUTPUT]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);   
+[x,fval,exitflag,details,lambda,grad,hessian]=fmincon(objFun,x0,[],[],[],[],LB,UB,@constraints,options);
 
-%Generate Final AVL case file
-%[filename, iter]=aeromodule(X)
+
+
+output.lambda = lambda;
+output.grad = grad;
+output.hessian = hessian;
 
 %AVLcall(filename,'mass_1.avl','w.run',iter);
 fclose('all');
 
+
+saveas(gcf,'././SQP/fig_1')
 %% Output geometry and save file
 
-vis3D(X)
-saveas(gcf,'Step_SQP1')
-save('J_SQP1.mat','J')
-save('Details_sqp1.mat','OUTPUT')
-save('GeometryOpt_sqp1.mat','X')
+vis3D(x)
+
+save('././SQP/J_1.mat','fval')
+save('././SQP/Details_1.mat','details')
+save('././SQP/X_1.mat','x')
+save('././SQP/output_1.mat','output')
 
 tEnd = toc(tstart)
