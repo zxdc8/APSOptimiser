@@ -39,7 +39,7 @@ function [obj]=ObjConWrapper2(X)
     
     else
         
-        obj = 9e6;
+        obj = 1e6;
         
     end
     
