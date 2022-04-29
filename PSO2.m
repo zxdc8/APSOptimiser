@@ -7,8 +7,8 @@ tic
 LB=[20 15 5 0 0 10 10];
 UB=[40 40 40 40 40 35 40];
 
-npts=48;    %no particles
-nit=30;     %no iterations
+npts=114;    %no particles
+nit=20;     %no iterations
 
 %Set Swarm Parameters-These influence swarm behaviour
 y1=1.49; %Cocignitive Coeffient (Hunt) Self adjustment weight
@@ -50,7 +50,7 @@ end
 %Inital Evaluation of objective function
 parfor (ii=1:size(X,1)) %change 4 to 0 to debug
         
-        pbest_obj(ii)=ObjConWrapper(pbest(ii,:));
+        pbest_obj(ii)=ObjConWrapper2(pbest(ii,:));
 
 end
 
