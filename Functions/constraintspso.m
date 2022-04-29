@@ -25,7 +25,10 @@ M=0.7; %Placeholder
 % [Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
 
 
+%load Volume of Fuel Output
+filenameMass=sprintf('././Outputs/Vf_%i.mat',iter);
 
+load(filenameMass);
 
 
 %% Joes code
