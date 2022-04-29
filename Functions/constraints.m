@@ -63,7 +63,7 @@ C(7) = X(1) - X(2);
 C(8) = X(2) - X(3);
 
 
-C(11)=Vf-2.5*Vol_Fuel;     %Fuel Volume
+C(11)=Vf-2*Vol_Fuel;     %Fuel Volume
 C(12)=Ap-Area_Pass;      %Pax Volume
 
 %Equality Constraints
