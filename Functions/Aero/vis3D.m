@@ -52,6 +52,10 @@ function [] = vis3D(X)
     trisurf(kF,Fus3D(:,1),Fus3D(:,2),Fus3D(:,3))
     hold all
     trisurf(kW,Wing3D(:,1),Wing3D(:,2),Wing3D(:,3))
+    hold all
+    trisurf(kF,Fus3D(:,1),Fus3D(:,2),-Fus3D(:,3))
+    hold all
+    trisurf(kW,Wing3D(:,1),Wing3D(:,2),-Wing3D(:,3))
     axis equal
 
 
