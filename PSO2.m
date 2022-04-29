@@ -288,14 +288,14 @@ FuncTolerance = Gcon(2:length(Gcon))-Gcon(1:length(Gcon)-1);
 vis3D(Xo);
 
 %Iteraiton and Particle position
-save('././Logging/X_5.mat','X2')
-save('././Logging/V_5.mat','V2')
+save('././Logging/X_6.mat','X2')
+save('././Logging/V_6.mat','V2')
 
 %Final solution
-save('././Logging/Output_5.mat','Output')
+save('././Logging/Output_6.mat','Output')
 
 %Range of X values
-save('././Logging/Ranges_5.mat','Range')
+save('././Logging/Ranges_6.mat','Range')
 
 
 
