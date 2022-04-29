@@ -28,7 +28,7 @@ plot(xs,10*ones(length(xs),1),'r','LineWidth',2.0);
 plot(xs,30*ones(length(xs),1),'r','LineWidth',2.0);
 plot(10*ones(length(xs),1),ys,'r','LineWidth',2.0);
 plot(30*ones(length(xs),1),ys,'r','LineWidth',2.0);
-plot(29.605167800902674,10,'*m','MarkerSize',20.0,'Linewidth',2.0)
+plot(10,29.605167800902674,'*m','MarkerSize',20.0,'Linewidth',2.0)
 legend('','Span Constraint','LB/UB','','','','Optimum')
 
 
@@ -52,14 +52,14 @@ hold all
 %plot(1:31,40*ones(31,1),'r','LineWidth',2.0);
 %plot(40*ones(31,1),1:31,'r','LineWidth',2.0);
 %plot(72*ones(31,1),1:31,'r','LineWidth',2.0);
-plot(40,0,'*m','MarkerSize',20.0,'Linewidth',2.0)
+plot(0,40,'*m','MarkerSize',20.0,'Linewidth',2.0)
 legend('','Optimum')
 
 
 subplot(2,2,4)
 surf(xx,yx,xpos)
 title('Fore/Aft Sensitivity')
-ylabel('X(Mid)')
-xlabel('X(Tip)')
+xlabel('X(Mid)')
+ylabel('X(Tip)')
 c=colorbar;
 ylabel(c,'J','Rotation',0);
