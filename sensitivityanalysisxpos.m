@@ -2,8 +2,8 @@ close all
 clear all
 
 %Wingtip Scaling
-X1=0:30;
-X2=0:30;
+X1=0:5:70;
+X2=0:5:70;
 
 
 rng('shuffle'); % shuffle the client
@@ -20,7 +20,7 @@ end
 for ii=1:length(X1)
     parfor jj=1:length(X2)
 
-        X=[20 15 10 X1(ii) X2(jj) 10 30];
+        X=[20.109129956805420,15,5, X1(ii), X2(jj),10,29.605167800902674];
         J(ii,jj)=ObjWrapper(X);
 
     end

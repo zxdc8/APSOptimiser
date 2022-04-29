@@ -20,7 +20,7 @@ end
 for ii=1:length(Z1)
     parfor jj=1:length(Z2)
 
-        X=[20 15 10 0.252 1.7516 Z1(ii) Z2(jj)];
+        X=[20.109129956805420,15,5,0,40, Z1(ii), Z2(jj)];
         J(ii,jj)=ObjWrapper(X);
 
     end
