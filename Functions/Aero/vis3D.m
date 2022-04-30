@@ -57,9 +57,13 @@ function [] = vis3D(X)
     hold all
     trisurf(kW,Wing3D(:,1),-Wing3D(:,3),Wing3D(:,2),'Facecolor','cyan','Edgecolor','none')
     axis equal
+    xlabel('X')
+    ylabel('Y')
+    zlabel('Z')
    
     %camlight
-    lightangle(-45,70)
+    lightangle(-45,50)
+    view([0, 90])
 
     %Multiply volumes by two for each wing
     VF=2*VF;

@@ -4,10 +4,10 @@
 clear all
 close all
 
-algo = "AS";
+algo = "IP";
 
 %run
-n = 2;
+n = 1;
 
 %% load
 load1 = sprintf('././%s/J_%d.mat',algo,n);
