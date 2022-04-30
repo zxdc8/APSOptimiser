@@ -4,10 +4,10 @@
 clear all
 close all
 
-algo = "SQP";
+algo = "AS";
 
 %run
-n = 1;
+n = 2;
 
 %% load
 load1 = sprintf('././%s/J_%d.mat',algo,n);

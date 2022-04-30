@@ -49,11 +49,17 @@ function [] = vis3D(X)
     [kW, VW]=convhull(Wing3D(:,1),Wing3D(:,2),Wing3D(:,3),'Simplify',true);
 
     figure
-    trisurf(kF,Fus3D(:,1),Fus3D(:,2),Fus3D(:,3))
+    trisurf(kF,Fus3D(:,1),Fus3D(:,3),Fus3D(:,2),'Facecolor','cyan','Edgecolor','none')
     hold all
-    trisurf(kW,Wing3D(:,1),Wing3D(:,2),Wing3D(:,3))
+    trisurf(kW,Wing3D(:,1),Wing3D(:,3),Wing3D(:,2),'Facecolor','cyan','Edgecolor','none')
+    hold all
+    trisurf(kF,Fus3D(:,1),-Fus3D(:,3),Fus3D(:,2),'Facecolor','cyan','Edgecolor','none')
+    hold all
+    trisurf(kW,Wing3D(:,1),-Wing3D(:,3),Wing3D(:,2),'Facecolor','cyan','Edgecolor','none')
     axis equal
-
+   
+    %camlight
+    lightangle(-45,70)
 
     %Multiply volumes by two for each wing
     VF=2*VF;
