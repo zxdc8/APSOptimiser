@@ -29,17 +29,21 @@ function [obj]=ObjConWrapper2(X)
     %Evaluate constraints and add to objective function if needed.
     
     %Scale Constraints
-    C = C.*1e10;
+    C = C.*1e6;
 
     
 
     Cviolate=C(C>0);
-    Cpenalty=sum(Cviolate)
+    Cpenalty=sum(Cviolate);
     obj=J+Cpenalty;
     
     else
+        C2 = C2.*1e6;
+        Cviolate=C2(C2>0);
+        Cpenalty=sum(Cviolate);
+        J = 1e5;
+        obj=J+Cpenalty;
         
-        obj = 1e6;
         
     end
     

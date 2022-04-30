@@ -5,15 +5,15 @@ clear all
 
 tic
 LB=[20 15 5 0 0 10 10];
-UB=[40 40 40 20 40 35 40];
+UB=[40 40 40 40 40 35 40];
 
-npts=180;    %no particles
+npts=200;    %no particles
 nit=40;     %no iterations
 
 %Set Swarm Parameters-These influence swarm behaviour
-y1=1.60; %Cocignitive Coeffient (Hunt) Self adjustment weight
-y2=1.50; %Social Coefficient (Swarm) Social adjustment weight
-w=0.8;  %Inertia (keep going in same direction)
+y1=1.49; %Cocignitive Coeffient (Hunt) Self adjustment weight
+y2=1.40; %Social Coefficient (Swarm) Social adjustment weight
+w=1.1;  %Inertia (keep going in same direction)
 
 
 
@@ -195,7 +195,7 @@ for kk=1:nit
         if c<2
             w = 2*w;
         end
-        if c>3
+        if c>4
             w = w/2;
         end
     else
@@ -254,7 +254,7 @@ for kk=1:nit
     
     
 end
-%% Outputs
+%%
 t=toc;
 Xo=gbest;
 Jo=gbest_obj;
@@ -288,14 +288,14 @@ FuncTolerance = Gcon(2:length(Gcon))-Gcon(1:length(Gcon)-1);
 vis3D(Xo);
 
 %Iteraiton and Particle position
-save('././Logging/X_9.mat','X2')
-save('././Logging/V_9.mat','V2')
+save('././Logging/X_8.mat','X2')
+save('././Logging/V_8.mat','V2')
 
 %Final solution
-save('././Logging/Output_9.mat','Output')
+save('././Logging/Output_8.mat','Output')
 
 %Range of X values
-save('././Logging/Ranges_9.mat','Range')
+save('././Logging/Ranges_7.mat','Range')
 
 
 

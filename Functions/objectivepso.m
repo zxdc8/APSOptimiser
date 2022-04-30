@@ -31,11 +31,15 @@ outname=AVLcall(filename,massfile,'w.run',iter);
 %Outputs Fuel Weight and Fuel Volume - NOTE Fuel Volume used for
 %constraints
 
-%Example inputs
-
 Alt = 38000;
 
 [Mf, Vf] = FuelMassEst(M,Alt,s,CD0,k);
+
+
+%save Volume of Fuel Output
+filenameMass=sprintf('././Outputs/Fuel/Vf_%i.mat',iter);
+
+save(filenameMass,'Vf');
 
 %%
 
