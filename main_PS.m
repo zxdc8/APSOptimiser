@@ -63,7 +63,6 @@ vis3D(X)
 save('././PS/fval_1.mat','fval')
 save('././PS/Details_1.mat','output')
 save('././PS/Geom_1.mat','X')
-% save('././PS/pop_1.mat',population)
-% save('././PS/scores_1.mat',scores)
+
 
 tEnd = toc(tstart)
