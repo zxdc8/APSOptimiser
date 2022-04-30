@@ -7,12 +7,12 @@ tic
 LB=[20 15 5 0 0 10 10];
 UB=[40 40 40 20 40 35 40];
 
-npts=180;    %no particles
+npts=80;    %no particles
 nit=40;     %no iterations
 
 %Set Swarm Parameters-These influence swarm behaviour
-y1=1.60; %Cocignitive Coeffient (Hunt) Self adjustment weight
-y2=1.50; %Social Coefficient (Swarm) Social adjustment weight
+y1=0.7; %Cocignitive Coeffient (Hunt) Self adjustment weight
+y2=0.5; %Social Coefficient (Swarm) Social adjustment weight
 w=0.8;  %Inertia (keep going in same direction)
 
 
