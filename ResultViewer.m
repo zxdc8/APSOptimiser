@@ -3,7 +3,7 @@
 close all
 clear all
 
-n = 4;
+n = 8;
 
 %% Load in variables
 
@@ -13,7 +13,22 @@ pathfile2 =sprintf('././Logging/V_%.0f.mat',n);
 load(pathfile1)
 load(pathfile2)
 
-iterations = length(X2);
+ii = length(X2);
+iterations = 1;
+
+
+for kk = 1:ii
+    
+    
+    if any(X2{kk}) == 1
+        
+        iterations = kk;
+    
+    end
+    
+end
+
+
 
 %Final solution
 pathfile3 =sprintf('././Logging/Output_%.0f.mat',n);
@@ -39,7 +54,7 @@ Val = zeros(iterations,1);
 X3 = X2{1};
 [Val(1)] = min(X3(:,8));
 Obj = Val;
-for kk = 2:iterations
+for kk = 2:iterations-1
     
     X3 = X2{kk};
     

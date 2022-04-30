@@ -26,7 +26,7 @@ M=0.7; %Placeholder
 
 
 %load Volume of Fuel Output
-filenameMass=sprintf('././Outputs/Vf_%i.mat',iter);
+filenameMass=sprintf('././Outputs/Fuel/Vf_%i.mat',iter);
 
 load(filenameMass);
 

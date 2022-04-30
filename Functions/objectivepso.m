@@ -37,7 +37,7 @@ Alt = 38000;
 
 
 %save Volume of Fuel Output
-filenameMass=sprintf('././Outputs/Vf_%i.mat',iter);
+filenameMass=sprintf('././Outputs/Fuel/Vf_%i.mat',iter);
 
 save(filenameMass,'Vf');
 
