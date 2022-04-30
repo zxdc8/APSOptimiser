@@ -1,0 +1,28 @@
+%% Figure visualiser for the fmincon function
+%Define Algorithm to view - 'AS': Active-set, 'SQP': Sequential Quadratic
+%Programming, 'IP' - Interior Point
+clear all
+close all
+
+algo = 'IP';
+
+%run
+n = 1;
+
+%% load
+sprintf('././%s/J_%d.mat'
+load('././AS/J_1.mat')
+load('././AS/Details_1.mat')
+load('././AS/X_1.mat')
+load('././AS/output_1.mat')
+
+openfig('././AS/fig_1')
+
+%%
+
+
+vis3D(x)
+
+
+funcevals = details.funcCount
+iterations = details.iterations

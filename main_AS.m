@@ -54,9 +54,9 @@ saveas(gcf,'././AS/fig_1')
 
 vis3D(x)
 
-save('././AS/J_1.mat','fval')
-save('././AS/Details_1.mat','details')
-save('././AS/X_1.mat','x')
-save('././AS/output_1.mat','output')
+save('././AS/J_2.mat','fval')
+save('././AS/Details_2.mat','details')
+save('././AS/X_2.mat','x')
+save('././AS/output_2.mat','output')
 
 tEnd = toc(tstart)

@@ -36,7 +36,7 @@ objFun=@(x)objective(x);
 % options = optimoptions('fmincon','Algorithm','active-set','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-3,'StepTolerance',1e-7,'PlotFcns',@optimplotfval,'MaxIterations',30);
 
 %Interior Point Algorithm
-options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-detailed','FiniteDifferenceStepSize',2,'FunctionTolerance',1e-2,'StepTolerance',1e-10,'PlotFcns',{@optimplotfval,@optimplotx,@optimplotfirstorderopt,@optimplotstepsize},'MaxIterations',25);
+options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-detailed','FiniteDifferenceStepSize',1,'FunctionTolerance',1e-2,'StepTolerance',1e-10,'PlotFcns',{@optimplotfval,@optimplotx,@optimplotfirstorderopt,@optimplotstepsize},'MaxIterations',25);
 
 
 %Run Optimisation
@@ -59,9 +59,9 @@ output.lambda = lambda;
 output.grad = grad;
 output.hessian = hessian;
 
-save('././IP/J_1.mat','fval')
-save('././IP/Details_1.mat','details')
-save('././IP/X_1.mat','x')
-save('././IP/output_1.mat','output')
+save('././IP/J_2.mat','fval')
+save('././IP/Details_2.mat','details')
+save('././IP/X_2.mat','x')
+save('././IP/output_2.mat','output')
 
 tEnd = toc(tstart)
