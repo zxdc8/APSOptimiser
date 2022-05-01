@@ -3,7 +3,7 @@
 close all
 clear all
 
-n = 5;
+n = 11;
 
 %% Load in variables
 
