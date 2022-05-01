@@ -7,7 +7,7 @@ close all
 algo = "IP";
 
 %run
-n = 1;
+n = 2
 
 %% load
 load1 = sprintf('././%s/J_%d.mat',algo,n);

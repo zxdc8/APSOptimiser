@@ -21,8 +21,8 @@ alpha = 0;
 target_cmtot = -0.01;
 alpha_tol = 0.01; % 1% tolerance from target Cm
 
-x0=[40 30 15 30 40 15 20];
-% x0=[40 20 10 20 40 10 30];
+x0=[40 30 15 30 40 15 20]; % run 1
+% x0=[30 20 10 10 30 10 15]; % run 2
 LB=[20 15 5 0 0 10 10];
 UB=[40 40 40 40 72 35 40];
 
@@ -49,14 +49,14 @@ output.hessian = hessian;
 fclose('all');
 
 
-saveas(gcf,'././AS/fig_1')
-%% Output geometry and save file
 
+%% Output geometry and save file
+saveas(gcf,'././AS/fig_1')
 vis3D(x)
 
-save('././AS/J_2.mat','fval')
-save('././AS/Details_2.mat','details')
-save('././AS/X_2.mat','x')
-save('././AS/output_2.mat','output')
+save('././AS/J_1.mat','fval')
+save('././AS/Details_1.mat','details')
+save('././AS/X_1.mat','x')
+save('././AS/output_1.mat','output')
 
 tEnd = toc(tstart)

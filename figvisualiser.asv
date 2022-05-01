@@ -4,19 +4,26 @@
 clear all
 close all
 
-algo = 'IP';
+algo = "AS";
 
 %run
-n = 1;
+n = 1
 
 %% load
-sprintf('././%s/J_%d.mat'
-load('././AS/J_1.mat')
-load('././AS/Details_1.mat')
-load('././AS/X_1.mat')
-load('././AS/output_1.mat')
+load1 = sprintf('././%s/J_%d.mat',algo,n);
+load(load1)
 
-openfig('././AS/fig_1')
+load2 = sprintf('././%s/Details_%d.mat',algo,n);
+load(load2)
+
+load3 = sprintf('././%s/X_%d.mat',algo,n);
+load(load3)
+
+load4 = sprintf('././%s/output_%d.mat',algo,n);
+load(load4)
+
+fig = sprintf('././%s/fig_%d',algo,n);
+openfig(fig)
 
 %%
 

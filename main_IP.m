@@ -21,8 +21,8 @@ alpha = 0;
 target_cmtot = -0.01;
 alpha_tol = 0.01; % 1% tolerance from target Cm
 
-x0=[40 30 15 30 40 15 20];
-% x0=[40 20 10 20 40 10 30];
+% x0=[40 30 15 30 40 15 20];% run 1
+x0=[30 20 10 10 30 10 15]; % run 2
 LB=[20 15 5 0 0 10 10];
 UB=[40 40 40 40 72 35 40];
 
@@ -48,11 +48,11 @@ options = optimoptions('fmincon','Algorithm','interior-point','Display','iter-de
 %AVLcall(filename,'mass_1.avl','w.run',iter);
 fclose('all');
 
-saveas(gcf,'././IP/fig_1')
+
 
 %% Output geometry and save file
 
-
+saveas(gcf,'././IP/fig_2')
 vis3D(x)
 
 output.lambda = lambda;
