@@ -27,7 +27,7 @@ target_cmtot = -0.01;
 alpha_tol = 0.01; % 1% tolerance from target Cm
 
 % x0=[50 30 15 30 40 10 10];
-x0=[40 20 10 20 30 20 40];
+x0=[30 20 10 10 30 10 15];
 % x0 = [20 15 10 17 45 26 14]; 
 
 LB=[20 15 5 0 0 10 10];
@@ -44,7 +44,10 @@ objFun=@(x)ObjConWrapper2(x);
 
 
 %GA Algorithm
-options = optimoptions('patternsearch','Display','iter','MeshTolerance',1e-8,'FunctionTolerance',1e-2,'PlotFcn',{@psplotbestf,@psplotfuncount,@psplotmeshsize},'UseParallel',true,'UseCompleteSearch',true);
+options = optimoptions('patternsearch','Display','iter','InitialMeshSize',20,'MeshTolerance',1e-12,'FunctionTolerance',1e-2,'PlotFcn',{@psplotbestf,@psplotfuncount,@psplotmeshsize},'UseParallel',true,'UseCompleteSearch',true);
+
+
+
 
 % options = optimoptions('patternsearch','Display','iter','InitialMeshSize',1,'MeshTolerance',1e-8,'FunctionTolerance',1e-2,'SearchFcn','searchlhs','PlotFcn',{@psplotbestf,@psplotfuncount,@psplotmeshsize},'Cache','on','UseVectorized',true,'UseCompleteSearch',true);
 
