@@ -44,9 +44,9 @@ objFun=@(x)ObjConWrapper2(x);
 
 
 %GA Algorithm
-options = optimoptions('patternsearch','Display','iter','SearchFcn','ga','MeshTolerance',1e-8,'FunctionTolerance',1e-2,'PlotFcn',{@psplotbestf,@psplotfuncount,@psplotmeshsize},'UseParallel',true,'UseCompleteSearch',true);
+options = optimoptions('patternsearch','Display','iter','MeshTolerance',1e-8,'FunctionTolerance',1e-2,'PlotFcn',{@psplotbestf,@psplotfuncount,@psplotmeshsize},'UseParallel',true,'UseCompleteSearch',true);
 
-% options = optimoptions('patternsearch','Display','iter','InitialMeshSize',1,'MeshTolerance',1e-10,'FunctionTolerance',1e-2,'SearchFcn','searchlhs','PlotFcn',{@psplotbestf,@psplotfuncount,@psplotmeshsize},'Cache','on','UseVectorized',true,'UseCompleteSearch',true);
+% options = optimoptions('patternsearch','Display','iter','InitialMeshSize',1,'MeshTolerance',1e-8,'FunctionTolerance',1e-2,'SearchFcn','searchlhs','PlotFcn',{@psplotbestf,@psplotfuncount,@psplotmeshsize},'Cache','on','UseVectorized',true,'UseCompleteSearch',true);
 
 %Run Optimisation
 [X,fval,exitflag,output]=patternsearch(objFun,x0,[],[],[],[],LB,UB,[],options);   
@@ -57,12 +57,12 @@ options = optimoptions('patternsearch','Display','iter','SearchFcn','ga','MeshTo
 fclose('all');
 
 %% Output geometry and save file
-saveas(gcf,'././PS/Step_1')
+saveas(gcf,'././PS/Step_2')
 
 vis3D(X)
-save('././PS/fval_1.mat','fval')
-save('././PS/Details_1.mat','output')
-save('././PS/Geom_1.mat','X')
+save('././PS/fval_2.mat','fval')
+save('././PS/Details_2.mat','output')
+save('././PS/Geom_2.mat','X')
 
 
 tEnd = toc(tstart)
