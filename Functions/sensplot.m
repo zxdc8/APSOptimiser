@@ -61,6 +61,7 @@ xlabel('Z_{Mid->Tip}/m')
 c=colorbar;
 ylabel(c,'J','Rotation',0);
 
+Contours=[30 36 38 39 40.1 40.2 40.5 41 42 43 45 50 60 70 80 100]*1e3;
 figure
 [C,h]=contour(xx,yx,xpos,Contours);
 clabel(C,h)
