@@ -63,7 +63,7 @@ function [] = vis3D(X)
    
     %camlight
     lightangle(-45,50)
-    %view([0, 90])
+    view([0, 90])
 
     %Multiply volumes by two for each wing
     VF=2*VF;

@@ -58,17 +58,17 @@ Cmtot = str2double( Case_Results([ strfind(Case_Results,'Cmtot=') + 6 :  strfind
 
 %% 
 %Inequality Constraints
-C(1)=S(2)-S(1);     %Make sure wing tapers
-C(2)=S(3)-S(2);
+C(1)=0;%S(2)-S(1);     %Make sure wing tapers
+C(2)=0;%S(3)-S(2);
 
-C(3)=S(2)+X(2)-72;  %Length Constraint
-C(4)=S(3)+X(3)-72;  %Length Constraint
-C(5)=x(6)+x(7)-40; %Wingspan
+C(3)=0;%S(2)+X(2)-72;  %Length Constraint
+C(4)=0;%S(3)+X(3)-72;  %Length Constraint
+C(5)=0;%x(6)+x(7)-40; %Wingspan
 
 C(6)=Cmtot*alpha_tol-target_cmtot;  %Longitudinal stability
 
-C(7) = X(1) - X(2); %enforce sweep
-C(8) = X(2) - X(3); %enforce sweep
+C(7) = 0;% X(1) - X(2); %enforce sweep
+C(8) = 0;%X(2) - X(3); %enforce sweep
 % C(9) = (X(1)+S(1)) - (S(2) + X(2)); 
 % C(10) = (X(2)+S(2)) - (S(3) + X(3)); 
 

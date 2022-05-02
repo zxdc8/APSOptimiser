@@ -2,8 +2,8 @@ close all
 clear all
 
 %Wingtip Scaling
-X1=0:5:70;
-X2=0:5:70;
+ST=5:0.5:15;
+
 
 
 rng('shuffle'); % shuffle the client
@@ -17,26 +17,21 @@ spmd
 end
 
 
-for ii=1:length(X1)
-    parfor jj=1:length(X2)
+    parfor jj=1:length(ST)
 
-        X=[20.042808086131696,15,5.004365913034243, X1(ii), X2(jj),10.065899371081569,29.922740893508383]
-        J(ii,jj)=ObjConWrapper(X);
+        X=[20.042808086131696,15,ST(jj),9.740143774296792,27.757912051431890,10.065899371081569,29.922740893508383]
+        J(jj)=ObjConWrapper(X);
 
     end
-end
 
 %%
 %Save J Matrix
-filename=('Logging/xvariationcs.csv')
+filename=('Logging/Tvariationc.csv')
 csvwrite(filename,J);
 
 %%
-contourf(J,50)
-colorbar
-
 figure
-surf(J)
-
+plot(ST,J)
+grid on
 
 

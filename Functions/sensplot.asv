@@ -11,10 +11,8 @@ taper=readmatrix('./Logging/Tvariation.csv');
 %Apply fore aft constraint
 xcon(xcon<10e5);
 
-xconx=(70/size(xcon,2))*(1:14);
-yconx=(70/size(xcon,2))*([0 1 2 3 4 5 6 7 8 9 10 11 12 12])
-
-xconx2=ones
+xconx=1:size(xcon,2);
+yconx=([1 2 3 4 5 6 7 8 9 10 11 12 12])
 
 %%
 close all
@@ -66,12 +64,11 @@ xlabel('X_{Tip}/m')
 c=colorbar;
 ylabel(c,'J','Rotation',0);
 hold all
-%plot(xconx,yconx,'Linewidth',2.0)
 %plot(1:31,0*ones(31,1),'r','LineWidth',2.0);
 %plot(1:31,40*ones(31,1),'r','LineWidth',2.0);
 %plot(40*ones(31,1),1:31,'r','LineWidth',2.0);
 %plot(72*ones(31,1),1:31,'r','LineWidth',2.0);
-plot(27.757912051431890,9.740143774296792,'*m','MarkerSize',20.0,'Linewidth',2.0)
+plot(40,0,'*m','MarkerSize',20.0,'Linewidth',2.0)
 legend('','Optimum')
 
 
@@ -91,16 +88,9 @@ xlabel('Chord_{Mid}/m')
 c=colorbar;
 ylabel(c,'J (kg)','Rotation',0);
 hold all
-plot(15,20.042808086131696,'*m','MarkerSize',20.0,'Linewidth',2.0)
 
 figure
 plot(xt,taper);
 title('Tip Chord')
 ylabel('J(kg)')
 xlabel('Chord_{Tip}/m')
-hold all
-plot(5.004365913034243,40185,'*m','MarkerSize',20.0,'Linewidth',2.0)
-grid on
-legend('Optimum')
-
-
