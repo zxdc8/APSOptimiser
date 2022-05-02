@@ -33,8 +33,11 @@ ysc=15:2.5:70;
 xt=5:0.5:15;
 
 figure
-subplot(2,2,1)
-contourf(xs,ys,span,50)
+
+Contours=[30 36 38 39 40 41 42 43 45 50 60 70 80 100]*1e3;
+
+[C,h]=contour(xs,ys,span,Contours);
+clabel(C,h)
 title('Span Sensitivity')
 ylabel('Z_{Root->Mid}/m')
 xlabel('Z_{Mid->Tip}/m')
@@ -42,15 +45,15 @@ c=colorbar;
 ylabel(c,'J','Rotation',0);
 hold all
 plot(xc,yc,'g','LineWidth',2.0);
-plot(xs,10*ones(length(xs),1),'r','LineWidth',2.0);
-plot(xs,30*ones(length(xs),1),'r','LineWidth',2.0);
-plot(10*ones(length(xs),1),ys,'r','LineWidth',2.0);
-plot(30*ones(length(xs),1),ys,'r','LineWidth',2.0);
+% plot(xs,10*ones(length(xs),1),'r','LineWidth',2.0);
+% plot(xs,30*ones(length(xs),1),'r','LineWidth',2.0);
+% plot(10*ones(length(xs),1),ys,'r','LineWidth',2.0);
+% plot(30*ones(length(xs),1),ys,'r','LineWidth',2.0);
 plot(29.605167800902674,10,'*m','MarkerSize',20.0,'Linewidth',2.0)
-legend('','Span Constraint','LB/UB','','','','Optimum')
+legend('','Optimum')
 
 
-subplot(2,2,2)
+figure
 surf(xs,ys,span)
 title('Span Sensitivity')
 ylabel('Z_{Root->Mid}/m')
@@ -58,8 +61,9 @@ xlabel('Z_{Mid->Tip}/m')
 c=colorbar;
 ylabel(c,'J','Rotation',0);
 
-subplot(2,2,3)
-contourf(xx,yx,xpos,50)
+figure
+[C,h]=contour(xx,yx,xpos,Contours);
+clabel(C,h)
 title('Fore/Aft Sensitivity')
 ylabel('X_{Mid}/m')
 xlabel('X_{Tip}/m')
@@ -75,7 +79,7 @@ plot(27.757912051431890,9.740143774296792,'*m','MarkerSize',20.0,'Linewidth',2.0
 legend('','Optimum')
 
 
-subplot(2,2,4)
+figure
 surf(xx,yx,xpos)
 title('Fore/Aft Sensitivity')
 ylabel('X_{Mid}/m')
@@ -84,7 +88,8 @@ c=colorbar;
 ylabel(c,'J _(kg)','Rotation',0);
 
 figure
-contourf(ysc,xsc,scale,50)
+[C,h]=contour(ysc,xsc,scale,Contours);
+clabel(C,h)
 title('Chord Sensitivity')
 ylabel('Chord_{Root}/m')
 xlabel('Chord_{Mid}/m')
