@@ -7,7 +7,7 @@ close all
 algo = "IP";
 
 %run
-n = 2
+n = 1
 
 %% load
 load1 = sprintf('././%s/J_%d.mat',algo,n);
@@ -27,8 +27,10 @@ openfig(fig)
 
 %%
 
+% x0=[40 30 15 30 40 15 20]; % run 1
+x0=[30 20 10 10 30 10 15]; % run 2
 
-vis3D(x)
+vis3D(x0)
 
 
 funcevals = details.funcCount
