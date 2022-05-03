@@ -21,7 +21,7 @@ for ii=1:length(Z1)
     parfor jj=1:length(Z2)
 
         X=[20.042808086131696,15,5.004365913034243,9.740143774296792,27.757912051431890,Z1(ii), Z2(jj)];
-        J(ii,jj)=ObjConWrapper(X);
+        J(ii,jj)=ObjConWrapper2(X);
 
     end
 end

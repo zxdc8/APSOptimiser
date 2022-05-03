@@ -1,10 +1,10 @@
 close all
 clear all
 
-span=readmatrix('./Logging/zvariation.csv');
+span=readmatrix('./Logging/zvariationc.csv');
 xpos=readmatrix('./Logging/xvariation.csv');
 xcon=readmatrix('./Logging/xvariationc.csv');
-scale=readmatrix('./Logging/svariation.csv');
+scale=readmatrix('./Logging/svariationc.csv');
 taper=readmatrix('./Logging/Tvariation.csv');
 
 
@@ -50,7 +50,7 @@ plot(xc,yc,'g','LineWidth',2.0);
 % plot(10*ones(length(xs),1),ys,'r','LineWidth',2.0);
 % plot(30*ones(length(xs),1),ys,'r','LineWidth',2.0);
 plot(29.605167800902674,10,'*m','MarkerSize',20.0,'Linewidth',2.0)
-legend('','Optimum')
+legend('','Span Constraint','Optimum')
 
 
 figure
@@ -63,7 +63,7 @@ ylabel(c,'J','Rotation',0);
 
 Contours=[30 36 38 39 40.1 40.2 40.5 41 42 43 45 50 60 70 80 100]*1e3;
 figure
-[C,h]=contour(xx,yx,xpos,Contours);
+[C,h]=contour(xx,yx,xcon,Contours);
 clabel(C,h)
 title('Fore/Aft Sensitivity')
 ylabel('X_{Mid}/m')
@@ -81,7 +81,7 @@ legend('','Optimum')
 
 
 figure
-surf(xx,yx,xpos)
+surf(xx,yx,xcon)
 title('Fore/Aft Sensitivity')
 ylabel('X_{Mid}/m')
 xlabel('X_{Tip}/m')
