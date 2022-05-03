@@ -4,7 +4,7 @@ clear all
 span=readmatrix('./Logging/zvariationc.csv');
 xpos=readmatrix('./Logging/xvariation.csv');
 xcon=readmatrix('./Logging/xvariationc.csv');
-scale=readmatrix('./Logging/svariationc.csv');
+scale=readmatrix('./Logging/svariation.csv');
 taper=readmatrix('./Logging/Tvariation.csv');
 
 
@@ -23,6 +23,12 @@ yc=40-xc;
 
 xs=10:2:40;
 ys=10:2:40;
+
+xs2=0:2:72;
+ys2=0:2:72;
+
+xs3=20:2:72;
+ys3=20:2:72;
 
 xx=0:5:70;
 yx=0:5:70;
@@ -44,7 +50,7 @@ xlabel('Z_{Mid->Tip}/m')
 c=colorbar;
 ylabel(c,'J','Rotation',0);
 hold all
-plot(xc,yc,'g','LineWidth',2.0);
+plot(xc,yc,'r--','LineWidth',2.0);
 % plot(xs,10*ones(length(xs),1),'r','LineWidth',2.0);
 % plot(xs,30*ones(length(xs),1),'r','LineWidth',2.0);
 % plot(10*ones(length(xs),1),ys,'r','LineWidth',2.0);
@@ -63,31 +69,34 @@ ylabel(c,'J','Rotation',0);
 
 Contours=[30 36 38 39 40.1 40.2 40.5 41 42 43 45 50 60 70 80 100]*1e3;
 figure
-[C,h]=contour(xx,yx,xcon,Contours);
+[C,h]=contour(xx,yx,xpos,Contours);
 clabel(C,h)
-title('Fore/Aft Sensitivity')
+title('Sweep Sensitivity')
 ylabel('X_{Mid}/m')
 xlabel('X_{Tip}/m')
 c=colorbar;
 ylabel(c,'J','Rotation',0);
 hold all
+plot(xs2,ys2,'r--','LineWidth',2.0);
 %plot(xconx,yconx,'Linewidth',2.0)
 %plot(1:31,0*ones(31,1),'r','LineWidth',2.0);
 %plot(1:31,40*ones(31,1),'r','LineWidth',2.0);
 %plot(40*ones(31,1),1:31,'r','LineWidth',2.0);
 %plot(72*ones(31,1),1:31,'r','LineWidth',2.0);
 plot(27.757912051431890,9.740143774296792,'*m','MarkerSize',20.0,'Linewidth',2.0)
-legend('','Optimum')
+legend('','Sweep Constraint','Optimum')
 
-
+%%
+% not needed
 figure
-surf(xx,yx,xcon)
-title('Fore/Aft Sensitivity')
+surf(xx,yx,xpos)
+title('Sweep Sensitivity')
 ylabel('X_{Mid}/m')
 xlabel('X_{Tip}/m')
 c=colorbar;
 ylabel(c,'J _(kg)','Rotation',0);
 
+%Chord sensitivity - need line
 figure
 [C,h]=contour(ysc,xsc,scale,Contours);
 clabel(C,h)
@@ -97,7 +106,9 @@ xlabel('Chord_{Mid}/m')
 c=colorbar;
 ylabel(c,'J (kg)','Rotation',0);
 hold all
+plot(xs3,ys3,'r--','LineWidth',2.0);
 plot(15,20.042808086131696,'*m','MarkerSize',20.0,'Linewidth',2.0)
+legend('','Chord Constraint','Optimum')
 
 figure
 plot(xt,taper);
